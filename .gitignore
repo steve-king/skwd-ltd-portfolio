@@ -1,4 +1,5 @@
 node_modules
 public
 .env
-server.log
+logs/*.log
+logs/*

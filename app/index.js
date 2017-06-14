@@ -13,12 +13,14 @@ app.use(express.static(process.cwd() + '/public'));
 // Index view
 app.get('/', function(req, res){
   res.render('index.html', {
-    foo: process.env.DATABASE_URL
+    meta: {
+      title: "Stephen King | Portfolio",
+      desc: "Here is the meta description for steveking.info"
+    }
   });
 });
 
 // Listen
-var port = process.env.PORT;
-app.listen(port, function(){
-  console.log('Listening at http://localhost:' + port);
+app.listen(process.env.PORT, function(){
+  console.log('Listening at http://localhost:' + process.env.PORT);
 });
