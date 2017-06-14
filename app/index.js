@@ -5,22 +5,12 @@ var app = express();
 app.engine('html', require('ejs').renderFile);
 app.set('views', __dirname + '/views');
 
-// Routes
-// -----------------------------------------------
-// Static assets
-app.use(express.static(process.cwd() + '/public'));
-
-// Index view
-app.get('/', function(req, res){
-  res.render('index.html', {
-    meta: {
-      title: "Stephen King | Portfolio",
-      desc: "Here is the meta description for steveking.info"
-    }
-  });
-});
+// Load routes
+var routes = require('./routes');
+app.use('/', routes);
 
 // Listen
-app.listen(process.env.PORT, function(){
-  console.log('Listening at http://localhost:' + process.env.PORT);
+var port = process.env.PORT || 5000;
+app.listen(port, function(){
+  console.log('Listening at http://localhost:' + port);
 });

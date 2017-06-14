@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "clean": "rm -rf ./public/*",
-    "devServer": "nodemon ./app/index.js >> logs/server.log",
+    "devServer": "nodemon --debug ./app/index.js >> logs/server.log",
     "webpackWatch": "webpack --watch >> logs/webpack.log",
     "browserSync": "browser-sync start --proxy \"localhost:5000\" --files \"app/**/*\"",
     "start": "npm run clean && npm run devServer | npm run webpackWatch | npm run browserSync",
@@ -20,6 +20,7 @@
     "browsersync": "0.0.1-security",
     "ejs": "^2.5.6",
     "express": "^4.15.3",
+    "js-yaml": "^3.8.4",
     "nodemon": "^1.11.0",
     "webpack": "^2.6.1"
   },
