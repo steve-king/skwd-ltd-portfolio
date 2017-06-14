@@ -1,14 +1,13 @@
 const express = require('express');
 const router = express.Router();
-
-const content = require('./content/parse');
-// console.log('CONTENT', content.getFolder('projects'));
+const content = require('content/parse');
 
 /**
  * Static assets
  * -------------
  */
 router.use('/public', express.static(process.cwd() + '/public'));
+router.use('/api', require('./api'));
 
 /**
  * Index route
@@ -18,21 +17,11 @@ router.use('/public', express.static(process.cwd() + '/public'));
  */
 router.get('/', (req, res) => {
   const meta = content.getFile('meta.yaml');
-  res.render('index.html', {
-    meta
-  });
+  res.render('index.html', { meta });
 });
-
-/**
- * Content API
- * -----------
- * Serve content from projects and other pages in JSON format
- */
 
  /**
   * AUTH API
   * -----------
   */
-
-
 module.exports = router;
