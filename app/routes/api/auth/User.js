@@ -44,11 +44,11 @@ function login(req, res, next) {
   })
   .then(user => {
     // Attach user fields to req.body
-    const { id, email, accessToken } = user.get({ plain: true });
+    const { id, email } = user.get({ plain: true });
     req.body.user = {
       id,
       email,
-      accessToken,
+      accessToken: req.body.accessToken,
       loggedIn: true
     };
     next();
