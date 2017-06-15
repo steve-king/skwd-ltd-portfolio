@@ -1,36 +1,77 @@
 const express = require('express');
 const router = express.Router();
 const content = require('content/parse');
+const accessToken = require('./auth/access-token');
 
-// api/projects
-router.get('/', (req, res) => {
-  const projects = content.getFolder('projects', true);
+// PROJECTS API
+// ------------------------------------------------------
 
-  // TODO: auth check and filter private projects if necessary
+/**
+ * Projects list
+ * endpoint: api/projects
+ */
+router.get('/',
+  (req, res) => {
+    // Get the list of projects
+    var projects = content.getFolder('projects', true);
 
-  // In date order
-  projects.sort((a, b) => {
-    return new Date(b.date) - new Date(a.date);
-  });
-
-  const formattedList = projects.map((item) => {
-    const project = {
-      slug: item.name,
-      title: item.title
+    // Auth check
+    const authorised = accessToken.isValid(req);
+    if (!authorised) {
+      // Filter out private projects
+      projects = projects.filter(project => {
+        return !project.private;
+      });
     }
-    return project;
-  });
 
-  res.json(formattedList);
-});
+    // In date order
+    projects.sort((a, b) => {
+      return new Date(b.date) - new Date(a.date);
+    });
 
-// api/projects/:slug
-router.get('/:slug', (req, res) => {
-  const project = content.getFolder('projects/' + req.params.slug);
+    // Map just the fields we need to send back
+    const formattedList = projects.map((item) => {
+      const project = {
+        slug: item.name,
+        title: item.title
+      }
+      return project;
+    });
 
-  // TODO: auth check
+    res.json({
+      projects: formattedList,
+    });
+  }
+);
 
-  res.json(project);
-});
+/**
+ * Projects list
+ * endpoint: api/projects/:slug
+ */
+router.get('/:slug',
+  (req, res, next) => {
+    // Get the project
+    try { req.body.project = content.getFolder('projects/' + req.params.slug); }
+
+    // 404 if not found
+    catch (err) {
+      console.log(err);
+      let error = new Error();
+      error.status = 404;
+      return next(error);
+    }
+
+    // Auth check if project is marked as 'private'
+    if (req.body.project.private) {
+      return accessToken.protectedResource(req, res, next);
+    }
+
+    // If public, carry on
+    next();
+  },
+  (req, res) => {
+    res.json(req.body.project);
+  }
+);
 
 module.exports = router;

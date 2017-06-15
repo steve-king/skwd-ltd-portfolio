@@ -2,10 +2,6 @@ const express = require('express');
 const router = express.Router();
 const content = require('content/parse');
 
-/**
- * Static assets
- * -------------
- */
 router.use('/public', express.static(process.cwd() + '/public'));
 router.use('/api', require('./api'));
 
@@ -20,8 +16,4 @@ router.get('/', (req, res) => {
   res.render('index.html', { meta });
 });
 
- /**
-  * AUTH API
-  * -----------
-  */
 module.exports = router;

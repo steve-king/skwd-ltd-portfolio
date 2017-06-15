@@ -1,7 +1,7 @@
-var fs = require('fs');
-var path = require('path');
-var yaml = require('js-yaml');
-var yamlPath = path.join(__dirname, 'yaml');
+const fs = require('fs');
+const path = require('path');
+const yaml = require('js-yaml');
+const yamlPath = path.join(__dirname, 'yaml');
 
 /**
  * @param fullFilePath {string} - full file path of the YAML file
@@ -30,23 +30,23 @@ function getFile(relativePath) {
  * @return {object | array} - combined parseYAML output for each file/folder
  */
 function getFolder(_folderPath, asArray = false) {
-  var folderPath = path.join(yamlPath, _folderPath);
-  var folderName = path.basename(folderPath);
-  var files = fs.readdirSync(folderPath);
+  const folderPath = path.join(yamlPath, _folderPath);
+  const folderName = path.basename(folderPath);
+  const files = fs.readdirSync(folderPath);
 
   // array or object format?
   var data = asArray ? [] : {};
 
   // Loop through the directory
-  for (var i in files) {
-    var itemPath = folderPath + '/' + files[i];
-    var stats = fs.statSync(itemPath);
-    var itemName = path.basename(itemPath);
+  for (const i in files) {
+    const itemPath = folderPath + '/' + files[i];
+    const stats = fs.statSync(itemPath);
+    const itemName = path.basename(itemPath);
 
     // Deal with file
     if (stats.isFile()) {
-      var fileName = itemName.split('.')[0];
-      var fileExt = itemName.split('.')[1];
+      const fileName = itemName.split('.')[0];
+      const fileExt = itemName.split('.')[1];
 
       // Deal with .yaml file
       if( fileExt === 'yaml' ){
