@@ -15,10 +15,12 @@ const User = sequelize.define('user', {
 
 /**
  * Syncronise schema to database
- * - BE CAREFUL if you need use this in production
+ * - BE CAREFUL if you need to use 'alter' in production
  */
 if (process.env.NODE_ENV === 'development') {
   sequelize.sync({ alter: true});
+} else {
+  sequelize.sync();
 }
 
 /**
