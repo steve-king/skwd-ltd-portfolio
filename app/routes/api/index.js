@@ -18,14 +18,14 @@ router.get('/about', (req, res) => {
  * Error handling
  * - Generic messages for common errors
  */
-router.use((err, req, res, next) => {
-  if (err.status === 404) {
-    err.message = 'Resource not found';
-  }
-  if (err.status === 500) {
-    err.message = 'Internal server error';
-  }
-  res.json(err);
-});
+// router.use((err, req, res, next) => {
+//   if (err.status === 404) {
+//     err.message = 'Resource not found';
+//   }
+//   if (err.status === 500) {
+//     err.message = 'Internal server error';
+//   }
+//   next(err);
+// });
 
 module.exports = router;
