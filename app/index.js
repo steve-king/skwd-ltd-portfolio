@@ -3,16 +3,21 @@ const app = express();
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 
-//
+// Setup
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 
-// View engine setup
+// Models
+const Sequelize = require('sequelize');
+const sequelize = new Sequelize(process.env.DATABASE_URL);
+require('app/models/user').init(sequelize);
+
+// View
 app.engine('html', require('ejs').renderFile);
 app.set('views', __dirname + '/views');
 
-// Load routes
-const routes = require('./routes');
+// Controller
+const routes = require('app/routes');
 app.use('/', routes);
 
 // Listen

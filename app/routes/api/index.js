@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const content = require('content/parse');
+const content = require('app/content/parse');
 
 // endpoint: api/projects
 router.use('/projects', require('./projects'));

@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const content = require('content/parse');
-const AccessToken = require('utils/access-token');
+const content = require('app/content/parse');
+const AccessToken = require('app/utils/access-token');
 
 // PROJECTS API
 // ------------------------------------------------------

@@ -1,17 +1,16 @@
 const jwt = require('jsonwebtoken');
 const JWT_SECRET = process.env.JWT_SECRET;
 
-const tokenOptions = {
-  expiresIn: '30 days'
-};
-
 /**
  * @param email {string}
+ * @param expDays {integer} (optional)
  * @return accessToken {string | error}
  * - Create a signed JWT accessToken with user's email address
  */
-function generateToken(email) {
-  return jwt.sign({ email }, JWT_SECRET, tokenOptions);
+function generateToken(email, expDays = 30) {
+  return jwt.sign({ email }, JWT_SECRET, {
+    expiresIn: expDays + ' days'
+  });
 }
 
 /**

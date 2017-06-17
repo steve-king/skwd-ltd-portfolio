@@ -1,7 +1,13 @@
 /**
+ * @param numDays {int} - number of days the token will be valid for
+ *
+ */
+function generateToken(numDays = 30) {
+  return 'Generated token';
+}
+
+/**
  * Validate
- * Express middleware
- * - validates req.body.invitationToken
  */
 function validateToken(invitationToken) {
   if (!invitationToken) {
@@ -10,13 +16,7 @@ function validateToken(invitationToken) {
   return invitationToken;
 }
 
-/**
- * @param numDays {int} - number of days the token will be valid for
- *
- */
-function generateToken(numDays) {
 
-}
 
 module.exports = {
   validate: validateToken,

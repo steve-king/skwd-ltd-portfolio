@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const content = require('content/parse');
+const content = require('app/content/parse');
 
 router.use('/public', express.static(process.cwd() + '/public'));
 router.use('/api', require('./api'));

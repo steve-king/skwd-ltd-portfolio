@@ -1,26 +1,31 @@
 const Sequelize = require('sequelize');
-const sequelize = new Sequelize(process.env.DATABASE_URL);
+var User;
 
 /**
  * User schema
  */
-const User = sequelize.define('user', {
+const userSchema = {
   email: Sequelize.STRING,
-  // invitationId: Sequelize.STRING,
   loginCount: { type: Sequelize.INTEGER, defaultValue: 0 },
   lastLogin: Sequelize.DATE,
   logoutCount: { type: Sequelize.INTEGER, defaultValue: 0 },
   lastLogout: Sequelize.DATE,
-});
+}
 
-/**
- * Syncronise schema to database
- * - BE CAREFUL if you need to use 'alter' in production
- */
-if (process.env.NODE_ENV === 'development') {
-  sequelize.sync({ alter: true});
-} else {
-  sequelize.sync();
+function init(sequelize, NODE_ENV, userSchema) {
+  if (!NODE_ENV) {
+    NODE_ENV = process.env.NODE_ENV;
+  }
+
+  User = sequelize.define('user', userSchema);
+
+  // Sync schema to DB
+  // - BE CAREFUL if you need to use 'alter' in production
+  if (NODE_ENV === 'development') {
+    sequelize.sync({ alter: true});
+  } else {
+    sequelize.sync();
+  }
 }
 
 function getCreate(email) {
@@ -60,6 +65,7 @@ function update(id, newFields) {
 }
 
 module.exports = {
+  init,
   getCreate,
   get,
   update,

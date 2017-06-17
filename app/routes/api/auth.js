@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
-const form = require('utils/form');
-const InvitationToken = require('utils/invitation-token');
-const AccessToken = require('utils/access-token');
-const User = require('models/user');
+const form = require('app/utils/form');
+const InvitationToken = require('app/utils/invitation-token');
+const AccessToken = require('app/utils/access-token');
+const User = require('app/models/user');
 
 // AUTH API
 // ----------------------------------------------------
@@ -20,13 +20,12 @@ router.post('/',
   (req, res, next) => {
 
     let email;
-    let invitationToken;
     let accessToken;
 
     try { email = form.validateEmail(req.body.email); }
     catch (err) { return res.status(400).send({ error: err.message }); }
 
-    try { invitationToken = InvitationToken.validate(req.body.invitationToken); }
+    try { InvitationToken.validate(req.body.invitationToken); }
     catch (err) { return res.status(401).send({ error: err.message }); }
 
     try { accessToken = AccessToken.generate(email); }
@@ -38,7 +37,7 @@ router.post('/',
     User.getCreate(email)
       .then(user =>
         User.update(user.id, {
-          invitationToken,
+          invitationToken: req.body.invitationToken,
           loginCount: user.loginCount + 1,
           lastLogin: new Date()
         })
