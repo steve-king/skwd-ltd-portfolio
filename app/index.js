@@ -1,16 +1,13 @@
-const express = require('express');
-const app = express();
-const bodyParser = require('body-parser');
-const morgan = require('morgan');
+const app = require('express')();
 
 // Setup
-app.use(morgan('dev'));
-app.use(bodyParser.json());
+app.use(require('morgan')('dev'));
+app.use(require('body-parser').json());
 
 // Models
 const Sequelize = require('sequelize');
 const sequelize = new Sequelize(process.env.DATABASE_URL);
-require('app/models/user').init(sequelize);
+const UserModel = require('app/models/user')(sequelize);
 
 // View
 app.engine('html', require('ejs').renderFile);

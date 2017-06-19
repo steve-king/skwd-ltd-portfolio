@@ -4,7 +4,7 @@ const router = express.Router();
 const form = require('app/utils/form');
 const InvitationToken = require('app/utils/invitation-token');
 const AccessToken = require('app/utils/access-token');
-const User = require('app/models/user');
+const User = require('app/models/user')();
 
 // AUTH API
 // ----------------------------------------------------
@@ -17,7 +17,9 @@ const User = require('app/models/user');
  * @return user {object}
  */
 router.post('/',
-  (req, res, next) => {
+  (req, res) => {
+
+    // console.log(req.body.email);
 
     let email;
     let accessToken;

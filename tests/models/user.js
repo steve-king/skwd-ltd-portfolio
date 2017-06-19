@@ -5,9 +5,9 @@ const expect = chai.expect;
 const sinon = require('sinon');
 
 const Sequelize = require('sequelize');
-const sequelize = new Sequelize(process.env.DATABASE_URL);
+const sequelize = new Sequelize(process.env.DATABASE_URL, { logging: false });
 
-const User = require('app/models/user');
+const UserModel = require('app/models/user');
 
 describe('models/user', () => {
 
@@ -24,19 +24,19 @@ describe('models/user', () => {
   });
 
   it ('init() calls sequelize.define() with the table name', done => {
-    User.init(sequelize, process.env.NODE_ENV);
+    const User = UserModel(sequelize, process.env.NODE_ENV);
     expect(sequelizeDefine.calledWith('user')).to.equal(true);
     done();
   });
 
   it ('init() calls sequelize.sync() in development', done => {
-    User.init(sequelize, 'development');
+    const User = UserModel(sequelize, 'development');
     expect(sequelizeSync.called).to.equal(true);
     done();
   });
 
   it ('init() calls sequelize.sync() without alter option in production', done => {
-    User.init(sequelize, 'production');
+    const User = UserModel(sequelize, 'production');
     expect(
       sequelizeSync.neverCalledWith(
         sinon.match.has('alter', true)
@@ -48,4 +48,43 @@ describe('models/user', () => {
 
 describe('models/user', () => {
 
+  let user;
+  const User = UserModel(sequelize, process.env.NODE_ENV);
+
+  it('getCreate() gets/creates returns a user by email', done => {
+    User.getCreate('npm.test@steveking.info')
+    .then(_user => {
+      user = _user;
+      expect(user).to.have.property('email');
+      expect(user.email).to.equal('npm.test@steveking.info')
+      done();
+    })
+  });
+
+  it('get() returns a user by id', done => {
+    // const User = UserModel(sequelize, process.env.NODE_ENV);
+    User.get(user.id)
+    .then(user => {
+      expect(user).to.have.property('email');
+      expect(user.email).to.equal('npm.test@steveking.info')
+      done();
+    })
+  });
+
+  it('update() updates user fields', done => {
+    User.update(user.id, { email: 'npm.test2@steveking.info'})
+    .then(user => {
+      expect(user).to.have.property('email');
+      expect(user.email).to.equal('npm.test2@steveking.info')
+      done();
+    })
+  });
+
+  it('delete() deletes a user by id', done => {
+    User.delete(user.id)
+    .then(success => {
+      expect(success).to.equal(1);
+      done();
+    })
+  });
 });

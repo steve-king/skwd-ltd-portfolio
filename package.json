@@ -4,14 +4,15 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "NODE_PATH=./ mocha ./tests --recursive --watch",
     "clean": "rm -rf ./public/* && rm -rf ./logs/*",
-    "devServer": "NODE_ENV=development NODE_PATH=./ nodemon ./app/index.js >>! logs/server.log",
-    "webpackWatch": "webpack --watch >>! logs/webpack.log",
-    "browserSync": "browser-sync start --proxy --open false \"localhost:5000\" --files \"app/**/*\"",
-    "start": "npm run clean && npm run devServer | npm run webpackWatch | npm run browserSync",
-    "buildServer": "NODE_PATH=./ node ./app/index.js",
-    "build": "npm run clean && webpack -p && npm run buildServer"
+    "test": "NODE_PATH=./ mocha ./tests --recursive --watch",
+    "testBuild": "NODE_PATH=./ mocha ./tests --recursive",
+    "serverDev": "NODE_ENV=development NODE_PATH=./ nodemon app/index.js >> logs/server.log",
+    "serverBuild": "NODE_PATH=./ node ./app/index.js",
+    "webpackDev": "webpack --watch >> logs/webpack.log",
+    "browsersyncDev": "browser-sync start --proxy --open false \"localhost:5000\" --files \"app/**/*\"",
+    "start": "npm run clean && npm run webpackDev | npm run serverDev",
+    "build": "npm run clean && webpack -p && npm run testBuild && npm run serverBuild"
   },
   "repository": {
     "type": "git",
