@@ -18,9 +18,6 @@ const User = require('app/models/user')();
  */
 router.post('/',
   (req, res) => {
-
-    // console.log(req.body.email);
-
     let email;
     let accessToken;
 

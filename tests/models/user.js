@@ -11,7 +11,7 @@ const UserModel = require('app/models/user');
 
 describe('models/user', () => {
 
-  // Define/restore stub functions for sequelize
+  // Stub functions on the sequelize object
   let sequelizeDefine;
   let sequelizeSync;
   beforeEach(() => {
@@ -62,7 +62,6 @@ describe('models/user', () => {
   });
 
   it('get() returns a user by id', done => {
-    // const User = UserModel(sequelize, process.env.NODE_ENV);
     User.get(user.id)
     .then(user => {
       expect(user).to.have.property('email');

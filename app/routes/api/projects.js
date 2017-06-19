@@ -36,7 +36,8 @@ router.get('/',
     const projects = projectList.map((item) => {
       const project = {
         slug: item.name,
-        title: item.title
+        title: item.title,
+        private: item.private,
       }
       return project;
     });
@@ -66,7 +67,7 @@ router.get('/:slug',
       catch (err) { return res.status(401).send({ error: err.message }); }
     }
 
-    res.json({project});
+    res.json({ project });
   }
 );
 

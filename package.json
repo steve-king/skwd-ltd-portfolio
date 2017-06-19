@@ -5,14 +5,14 @@
   "main": "index.js",
   "scripts": {
     "clean": "rm -rf ./public/* && rm -rf ./logs/*",
-    "test": "NODE_PATH=./ mocha ./tests --recursive --watch",
-    "testBuild": "NODE_PATH=./ mocha ./tests --recursive",
+    "testDev": "NODE_PATH=./ NODE_ENV=test mocha ./tests --recursive --watch",
+    "test": "NODE_PATH=./ NODE_ENV=test mocha ./tests --recursive",
     "serverDev": "NODE_ENV=development NODE_PATH=./ nodemon app/index.js >> logs/server.log",
     "serverBuild": "NODE_PATH=./ node ./app/index.js",
     "webpackDev": "webpack --watch >> logs/webpack.log",
     "browsersyncDev": "browser-sync start --proxy --open false \"localhost:5000\" --files \"app/**/*\"",
-    "start": "npm run clean && npm run webpackDev | npm run serverDev",
-    "build": "npm run clean && webpack -p && npm run testBuild && npm run serverBuild"
+    "start": "npm test && npm run clean && npm run webpackDev | npm run serverDev",
+    "build": "npm test && npm run clean && webpack -p && npm run serverBuild"
   },
   "repository": {
     "type": "git",

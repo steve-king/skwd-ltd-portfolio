@@ -6,8 +6,8 @@ app.use(require('body-parser').json());
 
 // Models
 const Sequelize = require('sequelize');
-const sequelize = new Sequelize(process.env.DATABASE_URL);
-const UserModel = require('app/models/user')(sequelize);
+const database = new Sequelize(process.env.DATABASE_URL, { logging: false });
+const UserModel = require('app/models/user')(database);
 
 // View
 app.engine('html', require('ejs').renderFile);
@@ -19,6 +19,15 @@ app.use('/', routes);
 
 // Listen
 const port = process.env.PORT || 5000;
-app.listen(port, function(){
+const server = app.listen(port, function(){
   console.log('Listening at http://localhost:' + port);
 });
+
+// export for testing
+if (process.env.NODE_ENV === 'test') {
+  module.exports = {
+    database,
+    server,
+    UserModel,
+  };
+}
