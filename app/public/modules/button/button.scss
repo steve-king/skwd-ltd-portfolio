@@ -1,6 +1,8 @@
 .button {
   @extend .icon;
   @extend .icon-hex-fill;
+  // mix-blend-mode: overlay;
+  opacity:0.85;
 
   width: $tablet / 6;
   height: $tablet / 6;
@@ -9,10 +11,50 @@
   justify-content: space-between;
   align-items: center;
 
-  padding: $gutter / 2;
+  padding: $gutter;
 
   &__text {
     @extend .buttonText;
     color:#fff;
+    position:relative;
+    top:2px;
+  }
+
+  &__icon {
+    position:absolute;
+    transition:all 0.2s ease-out;
+    opacity:0;
+
+    &--down {
+      bottom: $gutter;
+      left: 50%;
+      transform:translate(-50%, 0);
+    }
+
+    &--right {
+      top: 50%;
+      right: $gutter / 1.5;
+      transform:translate(0, -50%);
+    }
+  }
+
+  &:hover, &:active {
+    @extend .icon-hex-fill--white;
+    text-decoration: none;
+
+    .button__text {
+      color:$black;
+    }
+
+    .button__icon {
+      opacity: 1;
+      &--down {
+        bottom:-($gutter);
+      }
+
+      &--right {
+        right:-($gutter / 1.5);
+      }
+    }
   }
 }

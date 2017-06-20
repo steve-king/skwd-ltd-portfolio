@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route } from 'react-router';
+import { Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import * as actions from './actions';
@@ -24,10 +25,10 @@ class Page extends React.Component {
     }
 
     return (
-      <div className="page">
+      <Switch>
         <Route exact path="/" render={() => <Home {...page} />} />
         <Route path="/about" render={() => <About {...page} />} />
-      </div>
+      </Switch>
     );
   }
 }

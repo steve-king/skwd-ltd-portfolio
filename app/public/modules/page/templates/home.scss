@@ -7,7 +7,7 @@
   &__content {
     .icon-logo {
       margin-right: 5px;
-      margin-top:4px;
+      margin-top:8px;
     }
 
     @media (orientation: portrait){
@@ -19,12 +19,32 @@
     }
 
     @media (orientation: landscape){
-      padding-top:70px;
+
       display:flex;
+
+      .subtitle { text-align: center;}
+    }
+
+    @media(min-width: $tablet) {
+      padding-top:70px;
     }
   }
 
   &__nav {
 
+  }
+
+  &__btn--about {
+    position:absolute;
+    bottom:$gutter * 2;
+    left:50%;
+    transform:translate(-50%, 0);
+  }
+
+  &__btn--projects {
+    position:absolute;
+    right:$gutter * 2;
+    top:50%;
+    transform:translate(0, -50%);
   }
 }

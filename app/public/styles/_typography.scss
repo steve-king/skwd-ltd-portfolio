@@ -17,9 +17,9 @@ p {
 
 }
 
-a, a:visited {
+a, a:visited, a:hover {
   color: $textColour;
-  text-decoration:underline;
+  text-decoration:none;
 }
 
 h1, h2, h3, h4, h5, h6,
@@ -48,4 +48,5 @@ h1, h2, h3, h4, h5, h6,
   font-family: $bebas;
   font-weight:normal;
   font-size:1.8rem;
+  line-height:1;
 }

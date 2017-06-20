@@ -62,6 +62,7 @@
     "postcss-loader": "^2.0.6",
     "sass-loader": "^6.0.6",
     "sinon": "^2.3.4",
+    "svg-fill-loader": "0.0.8",
     "url-loader": "^0.5.9"
   }
 }

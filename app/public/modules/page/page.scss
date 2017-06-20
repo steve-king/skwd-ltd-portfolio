@@ -1,7 +1,6 @@
-.page {
+.template {
+  width: 100vw;
   height:100vh;
-
-  &__template {
-    padding:$gutter;
-  }
+  position:relative;
+  padding:$gutter;
 }

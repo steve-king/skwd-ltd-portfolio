@@ -45,14 +45,14 @@ module.exports = {
       //   resourceQuery: /^\?raw/,
       //   loaders: ['raw-loader']
       // },
-      // {
-      //   test: /\.svg$/,
-      //   resourceQuery: /^\?fill=/,
-      //   use: ['url-loader', 'svg-fill-loader']
-      // }, 
       {
         test: /\.svg$/,
-        // resourceQuery: /^\?nofill/,
+        resourceQuery: /^\?fill=/,
+        use: ['url-loader', 'svg-fill-loader']
+      },
+      {
+        test: /\.svg$/,
+        resourceQuery: /^\?nofill/,
         loaders: ['url-loader']
       }
     ]
