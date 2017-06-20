@@ -1,4 +1,4 @@
-import styles from 'styles/main.scss';
+import styles from 'styles/index.scss';
 
 /* global document */
 import React from 'react';

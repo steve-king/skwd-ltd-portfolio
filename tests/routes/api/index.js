@@ -13,7 +13,7 @@ describe('api', () => {
 
   it('should respond with JSON', (done) => {
     chai.request(app.server)
-      .get('/api/about')
+      .get('/api/pages/home')
       .end((err, res) => {
         expect(err).to.equal(null);
         expect(res.status).to.equal(200);

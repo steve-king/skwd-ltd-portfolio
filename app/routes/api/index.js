@@ -9,8 +9,8 @@ router.use('/projects', require('./projects'));
 router.use('/auth', require('./auth'));
 
 // endpoint: api/about
-router.get('/about', (req, res) => {
-  const about = content.getFile('about.yaml');
+router.get('/pages/:slug', (req, res) => {
+  const about = content.getFile(`pages/${req.params.slug}.yaml`);
   res.json(about);
 });
 
@@ -19,19 +19,5 @@ router.use('*', (req, res) => {
     error: 'Resource not found'
   })
 });
-
-/**
- * Error handling
- * - Generic messages for common errors
- */
-// router.use((err, req, res, next) => {
-//   if (err.status === 404) {
-//     err.message = 'Resource not found';
-//   }
-//   if (err.status === 500) {
-//     err.message = 'Internal server error';
-//   }
-//   next(err);
-// });
 
 module.exports = router;

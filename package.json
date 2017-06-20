@@ -4,14 +4,14 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "clean": "rm -rf ./public/* && rm -rf ./logs/*",
+    "clean": "rm -rf ./_www/* && rm -rf ./logs/*",
     "testDev": "NODE_PATH=./ NODE_ENV=test mocha ./tests --recursive --watch",
     "test": "NODE_PATH=./ NODE_ENV=test mocha ./tests --recursive",
     "serverDev": "NODE_ENV=development NODE_PATH=./ nodemon app/index.js > logs/server.log",
     "serverBuild": "NODE_PATH=./ node ./app/index.js",
     "webpackDev": "webpack --watch > logs/webpack.log",
     "browsersync": "browser-sync start --proxy --open false \"localhost:5000\" --files \"app/**/*\"",
-    "start": "npm run clean && npm run webpackDev | npm run serverDev | npm run browsersync",
+    "start": "npm run clean && npm run webpackDev | npm run serverDev",
     "build": "npm run clean && webpack -p && npm run serverBuild"
   },
   "repository": {
@@ -49,15 +49,19 @@
     "browser-sync": "^2.18.12",
     "chai": "^4.0.2",
     "chai-http": "^3.0.0",
+    "classnames": "^2.2.5",
+    "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.28.4",
     "dotenv": "^4.0.0",
     "extract-text-webpack-plugin": "^2.1.2",
     "file-loader": "^0.11.2",
+    "imagemin-webpack-plugin": "^1.4.4",
     "mocha": "^3.4.2",
     "node-sass": "^4.5.3",
     "nodemon": "^1.11.0",
     "postcss-loader": "^2.0.6",
     "sass-loader": "^6.0.6",
-    "sinon": "^2.3.4"
+    "sinon": "^2.3.4",
+    "url-loader": "^0.5.9"
   }
 }

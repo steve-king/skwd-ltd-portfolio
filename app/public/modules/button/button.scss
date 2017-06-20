@@ -1,0 +1,18 @@
+.button {
+  @extend .icon;
+  @extend .icon-hex-fill;
+
+  width: $tablet / 6;
+  height: $tablet / 6;
+
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: $gutter / 2;
+
+  &__text {
+    @extend .buttonText;
+    color:#fff;
+  }
+}

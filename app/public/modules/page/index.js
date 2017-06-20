@@ -17,10 +17,16 @@ class Page extends React.Component {
   }
 
   render(){
+    const { page } = this.props;
+
+    if (!page.loaded) {
+      return (<div>loading...</div>);
+    }
+
     return (
       <div className="page">
-        <Route exact path="/" render={() => <Home {...this.props.page} />} />
-        <Route path="/about" render={() => <About {...this.props.page} />} />
+        <Route exact path="/" render={() => <Home {...page} />} />
+        <Route path="/about" render={() => <About {...page} />} />
       </div>
     );
   }

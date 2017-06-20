@@ -1,6 +1,7 @@
-var path = require('path');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-// var CopyWebpackPlugin = require('copy-webpack-plugin');
+const path = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const ImageminPlugin = require('imagemin-webpack-plugin').default;
 
 var srcDir = __dirname + '/app/public';
 var publicDir = path.join(__dirname, '_www');
@@ -15,12 +16,15 @@ module.exports = {
   module: {
     loaders: [
       {
+        // JS
         test: [
           /\.js$/, /\.jsx$/
         ],
         exclude: /node_modules/,
         loaders: ['babel-loader']
-      }, {
+      },
+      {
+        // CSS
         test: /\.scss$/,
         use: ExtractTextPlugin.extract({
           use: [
@@ -32,38 +36,42 @@ module.exports = {
         })
       },
       {
-        test: [
-          /\.woff/, /\.woff2/, /\.eot/, /\.ttf/
-        ],
-        loader: 'file-loader',
-        query: {
-          // context: './src/',
-          name: 'assets/fonts/[name].[ext]'
-        }
+        // FONTS
+        test: [/\.woff/, /\.woff2/, /\.eot/, /\.ttf/],
+        loader: 'url-loader'
       },
       // {
       //   test: /\.svg$/,
       //   resourceQuery: /^\?raw/,
       //   loaders: ['raw-loader']
-      // }, {
+      // },
+      // {
       //   test: /\.svg$/,
       //   resourceQuery: /^\?fill=/,
       //   use: ['url-loader', 'svg-fill-loader']
-      // }, {
-      //   test: /\.svg$/,
-      //   resourceQuery: /^\?nofill/,
-      //   loaders: ['url-loader']
-      // }
+      // }, 
+      {
+        test: /\.svg$/,
+        // resourceQuery: /^\?nofill/,
+        loaders: ['url-loader']
+      }
     ]
   },
   plugins: [
     new ExtractTextPlugin({filename: 'assets/css/style.css', allChunks: true}),
-    // new CopyWebpackPlugin([
-    //   {
-    //     from: './resources/assets/data',
-    //     to: 'assets/data'
-    //   },
-    // ])
+    new CopyWebpackPlugin([{
+      from: path.join(srcDir, 'assets/img'),
+      to: path.join(publicDir, 'assets/img'),
+    }]),
+    new ImageminPlugin({
+      //disable: process.env.NODE_ENV !== 'production', // Disable during development
+      jpegtran: {
+        progressive: true
+      },
+      pngquant: {
+        quality: '95-100'
+      }
+    })
   ],
   devtool: 'source-map',
   resolve: {

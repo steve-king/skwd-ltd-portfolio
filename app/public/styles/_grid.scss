@@ -1,0 +1,28 @@
+$gutter: 18px;
+$tablet: 768px;
+$desktop: 1024px;
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+img {
+  max-width:100%;
+  height:auto;
+}
+
+.container {
+  width:100%;
+  margin:0 auto;
+  
+  @media (min-width:$tablet) {
+    max-width:$tablet - ($gutter * 2);
+  }
+
+  @media (min-width:$desktop) {
+    max-width:$desktop - ($gutter * 2);
+  }
+}

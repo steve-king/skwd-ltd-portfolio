@@ -1,0 +1,30 @@
+.template--home {
+
+  &__main {
+    position:relative;
+  }
+
+  &__content {
+    .icon-logo {
+      margin-right: 5px;
+      margin-top:4px;
+    }
+
+    @media (orientation: portrait){
+      max-width:220px;
+
+      .subtitle {
+        max-width:162px;
+      }
+    }
+
+    @media (orientation: landscape){
+      padding-top:70px;
+      display:flex;
+    }
+  }
+
+  &__nav {
+
+  }
+}

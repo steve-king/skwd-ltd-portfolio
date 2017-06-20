@@ -1,3 +1,51 @@
+$sans: "Helvetica Neue", sans-serif;
+$bebas: "BebasNeue", sans-serif;
+$bebasBook: "BebasNeueBook", sans-serif;
+
+html {
+  font-size: 62.5%; // 1.4rem = 14px
+}
+
 body {
-  font-family: "Helvetica Neue", sans-serif;
+  font-family: $sans;
+  font-size: 1.4rem;
+  line-height:1.3;
+  color: $textColour;
+}
+
+p {
+
+}
+
+a, a:visited {
+  color: $textColour;
+  text-decoration:underline;
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h1, .h3, .h4, .h5, .h6,
+.title {
+  font-family: $bebas;
+  font-weight:normal;
+}
+
+.title--large {
+  font-family: $bebasBook;
+  font-size: 8.2rem;
+  margin:0;
+  line-height:0.88;
+}
+
+.subtitle {
+  font-family: $sans;
+  margin-top:0;
+  @media (min-width:$tablet) {
+    font-size:1.7rem;
+  }
+}
+
+.buttonText {
+  font-family: $bebas;
+  font-weight:normal;
+  font-size:1.8rem;
 }

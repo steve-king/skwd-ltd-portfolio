@@ -1,0 +1,29 @@
+.icon {
+  display: inline-block;
+  vertical-align: middle;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 24px;
+  height: 24px;
+  overflow: hidden;
+  // text-indent: -1000em;
+  // font-size:0;
+  background-color:transparent;
+  border:none;
+  outline:none;
+
+  &--large {
+    width:62px;
+    height:62px;
+  }
+}
+
+.icon-hex-logo {
+  @extend .icon;
+  background-image:url(../assets/svg/hex-logo.svg);
+}
+
+.icon-hex-fill {
+  @extend .icon;
+  background-image:url(../assets/svg/hex-fill.svg);
+}

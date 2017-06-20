@@ -7,8 +7,8 @@ import Page from 'modules/page';
 const App = () => (
   <BrowserRouter>
     <div>
-      <Route exact path="/" render={() => <Page />} />
-      <Route path="/about" render={() => <Page apiUrl="/api/about" />} />
+      <Route exact path="/" render={() => <Page apiUrl="/api/pages/home" />} />
+      <Route path="/about" render={() => <Page apiUrl="/api/pages/about" />} />
     </div>
   </BrowserRouter>
 );
