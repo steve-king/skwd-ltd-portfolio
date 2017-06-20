@@ -1,5 +1,7 @@
 const app = require('express')();
 
+console.log('hello');
+
 // Setup
 app.use(require('morgan')('dev'));
 app.use(require('body-parser').json());

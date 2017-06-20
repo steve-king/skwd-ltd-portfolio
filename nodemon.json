@@ -1,5 +1,5 @@
 {
   "watch": "./app",
   "ext": "js,html,yaml",
-  "ignore": ["resources"]
+  "ignore": ["public"]
 }

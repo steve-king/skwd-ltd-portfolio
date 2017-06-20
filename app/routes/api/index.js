@@ -14,6 +14,12 @@ router.get('/about', (req, res) => {
   res.json(about);
 });
 
+router.use('*', (req, res) => {
+  res.status(404).json({
+    error: 'Resource not found'
+  })
+});
+
 /**
  * Error handling
  * - Generic messages for common errors

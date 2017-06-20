@@ -4,15 +4,15 @@
     <meta charset="utf-8">
     <title><%=meta.title%></title>
     <meta name="description" content="<%=meta.desc%>">
+    <link href="/_www/assets/css/style.css" rel="stylesheet">
   </head>
   <body>
-    <%=meta.title%>
-    <%=meta.desc%>
+    <div id="app"></div>
+    <script type="text/javascript" src="/_www/assets/js/bundle.js"></script>
+    <script id="__bs_script__">
+      //<![CDATA[
+        document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.js?v=2.18.12'><\/script>".replace("HOST", location.hostname));
+      //]]>
+    </script>
   </body>
-  <script type="text/javascript" src="/public/js/bundle.js"></script>
-  <script id="__bs_script__">
-    //<![CDATA[
-      document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.js?v=2.18.12'><\/script>".replace("HOST", location.hostname));
-    //]]>
-  </script>
 </html>
