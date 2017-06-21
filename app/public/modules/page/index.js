@@ -20,10 +20,6 @@ class Page extends React.Component {
   render(){
     const { page } = this.props;
 
-    if (!page.loaded) {
-      return (<div>loading...</div>);
-    }
-
     return (
       <Switch>
         <Route exact path="/" render={() => <Home {...page} />} />

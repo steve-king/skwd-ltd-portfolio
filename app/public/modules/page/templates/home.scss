@@ -36,15 +36,25 @@
 
   &__btn--about {
     position:absolute;
-    bottom:$gutter * 2;
+    bottom:$gutter;
     left:50%;
     transform:translate(-50%, 0);
   }
 
   &__btn--projects {
     position:absolute;
-    right:$gutter * 2;
+    right:$gutter;
     top:50%;
     transform:translate(0, -50%);
+  }
+
+  &__image {
+    .image__bg {
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    }
   }
 }

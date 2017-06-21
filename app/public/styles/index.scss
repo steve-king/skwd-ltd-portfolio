@@ -10,12 +10,12 @@
 @import './typography';
 
 // Pages
-@import '../modules/page/page';
+@import '../modules/page/templates/template';
 @import '../modules/page/templates/home';
 
 // Modules
 @import '../modules/button/button';
 @import '../modules/hexagons/hexagons';
-@import '../modules/slideshow/slideshow';
+@import '../modules/image/image';
 
 // Components

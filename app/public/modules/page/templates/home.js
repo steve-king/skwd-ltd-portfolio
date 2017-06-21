@@ -1,19 +1,40 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-
 import Button from 'modules/button';
 import Hexagons from 'modules/hexagons';
-import Slideshow from 'modules/slideshow';
+import Image from 'modules/image';
 
 class Home extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      ready: false
+    };
+  }
+
+  onReady(ready) {
+    this.setState({ ready });
+  }
+
+  imagesLoaded() {
+    this.onReady(true);
+  }
+
   render() {
     const { content } = this.props;
+    const { ready } = this.state;
     return (
       <div className="template template--home">
-        <Slideshow content={content.images} />
-        <Hexagons />
+        {content &&
+          <Image
+            background
+            className="template--home__image" content={content.images}
+            onload={() => this.imagesLoaded()}
+          />
+        }
+        <Hexagons ready={ready} />
         <main className="container template--home__main">
           <div className="template--home__content">
             <span className="icon--large icon-hex-logo"/>

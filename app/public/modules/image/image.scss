@@ -1,0 +1,25 @@
+.image {
+  .image__bg, .image__img {
+    transition: 1s transform ease-out, 1s opacity;
+    opacity:0;
+    transform: translate3d(0, 30px, 0) scale(1.1);
+  }
+
+  &--loaded {
+    .image__bg, .image__img {
+      opacity:1;
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+  }
+
+  &__bg {
+    background-size:cover;
+    background-position:center center;
+    background-repeat:no-repeat;
+  }
+
+  &__img {
+    padding:0;
+    margin:0;
+  }
+}
