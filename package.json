@@ -1,7 +1,7 @@
 {
   "author": "Stephen King",
   "name": "skwd-ltd-portfolio",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "main": "index.js",
   "scripts": {
     "clean": "rm -rf ./_www/* && rm -rf ./logs/*",
