@@ -18,6 +18,10 @@
     "type": "git",
     "url": "git+https://github.com/steve-king/skwd-ltd-portfolio.git"
   },
+  "engines": {
+    "node": "8.1.1",
+    "npm": "3.9.6"
+  },
   "dependencies": {
     "axios": "^0.16.2",
     "body-parser": "^1.17.2",
