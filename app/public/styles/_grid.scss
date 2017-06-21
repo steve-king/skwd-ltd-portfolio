@@ -10,7 +10,7 @@ html {
 }
 
 body {
-  // background:#000;
+
 }
 
 img {
@@ -29,4 +29,18 @@ img {
   @media (min-width:$desktop) {
     max-width:$desktop - ($gutter * 2);
   }
+}
+
+.viewport-full {
+  position:relative;
+  width:100vw;
+  height:100vh;
+}
+
+.element-full {
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
 }

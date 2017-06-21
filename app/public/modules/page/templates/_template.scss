@@ -1,7 +1,5 @@
 .template {
-  width: 100vw;
-  height:100vh;
-  position:relative;
+  @extend .viewport-full;
   padding:$gutter;
   overflow:hidden;
 }

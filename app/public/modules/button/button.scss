@@ -1,9 +1,4 @@
 .button {
-  @extend .icon;
-  @extend .icon-hex-fill;
-  // mix-blend-mode: overlay;
-  opacity:0.85;
-
   width: $tablet / 6;
   height: $tablet / 6;
 
@@ -12,6 +7,16 @@
   align-items: center;
 
   padding: $gutter;
+
+  &__bg,
+  // &__bg:after,
+  {
+    @extend .icon;
+    @extend .icon-hex-fill;
+    @extend .element-full;
+    mix-blend-mode: normal;
+    opacity:0.85;
+  }
 
   &__text {
     @extend .buttonText;
@@ -24,6 +29,7 @@
     position:absolute;
     transition:all 0.2s ease-out;
     opacity:0;
+    isolate:isolate;
 
     &--down {
       bottom: $gutter;
@@ -38,9 +44,15 @@
     }
   }
 
-  &:hover, &:active {
-    @extend .icon-hex-fill--white;
+  &:hover,
+  &:active,
+  a:active &,
+  button:active & {
     text-decoration: none;
+
+    .button__bg {
+      @extend .icon-hex-fill--white;
+    }
 
     .button__text {
       color:$black;
