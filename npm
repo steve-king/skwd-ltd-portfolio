@@ -1,4 +1,0 @@
-
-> skwd-ltd-portfolio@1.0.0 serverDev /Users/Steve/Projects/Personal/portfolio/skwd-ltd-portfolio
-> NODE_ENV=development NODE_PATH=./ nodemon app/index.js >> logs/server.log "run" "browsersync"
-
