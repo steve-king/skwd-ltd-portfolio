@@ -12,7 +12,7 @@
     "webpackDev": "webpack --watch > logs/webpack.log",
     "browsersync": "browser-sync start --proxy --open false \"localhost:5000\" --files \"app/**/*\"",
     "start": "npm run clean && npm run webpackDev | npm run serverDev",
-    "build": "npm rebuild node-sass && npm run clean && npm dedupe && webpack -p && npm run serverBuild"
+    "build": "npm run clean && webpack -p && npm run serverBuild"
   },
   "repository": {
     "type": "git",
