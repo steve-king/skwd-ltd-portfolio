@@ -1,5 +1,5 @@
 const path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+// const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
 
@@ -26,14 +26,14 @@ module.exports = {
       {
         // CSS
         test: /\.scss$/,
-        use: ExtractTextPlugin.extract({
+        // use: ExtractTextPlugin.extract({
           use: [
             { loader: 'css-loader' },
             { loader: 'postcss-loader' },
             // { loader: 'svg-fill-loader/encodeSharp' },
             { loader: 'sass-loader', },
           ]
-        })
+        // })
       },
       {
         // FONTS
