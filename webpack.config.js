@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -7,12 +8,20 @@ var srcDir = __dirname + '/app/public';
 var publicDir = path.join(__dirname, '_www');
 
 module.exports = {
-  entry: [path.join(srcDir, 'index.js')],
-  output: {
-    path: publicDir,
-    publicPath: '/',
-    filename: 'assets/js/bundle.js'
+  entry: {
+    main: path.join(srcDir, 'index.js')
   },
+  // output: {
+  //   path: publicDir,
+  //   publicPath: '/',
+  //   filename: 'assets/js/bundle.js'
+  // },
+  output: {
+    publicPath: '/',
+    path: publicDir,
+    filename: 'assets/js/[name].js',
+  },
+
   module: {
     loaders: [
       {
@@ -58,6 +67,12 @@ module.exports = {
     ]
   },
   plugins: [
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      minChunks: function (module) {
+        return module.context && module.context.indexOf('node_modules') !== -1;
+      }
+    }),
     new ExtractTextPlugin({filename: 'assets/css/style.css', allChunks: true}),
     new CopyWebpackPlugin([{
       from: path.join(srcDir, 'assets/img'),

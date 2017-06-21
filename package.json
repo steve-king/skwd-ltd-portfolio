@@ -7,20 +7,19 @@
     "clean": "rm -rf ./_www/* && rm -rf ./logs/*",
     "testDev": "NODE_PATH=./ NODE_ENV=test mocha ./tests --recursive --watch",
     "test": "NODE_PATH=./ NODE_ENV=test mocha ./tests --recursive",
-    "serverDev": "NODE_ENV=development NODE_PATH=./ nodemon app/index.js > logs/server.log",
-    "serverBuild": "NODE_PATH=./ node ./app/index.js",
-    "webpackDev": "webpack --watch > logs/webpack.log",
+    "devServer": "NODE_ENV=development NODE_PATH=./ nodemon app/index.js > logs/server.log",
+    "buildServer": "NODE_PATH=./ node ./app/index.js",
+    "webpackDev": "webpack-dev-server --config webpack-dev-server.config.js",
     "browsersync": "browser-sync start --proxy --open false \"localhost:5000\" --files \"app/**/*\"",
-    "start": "npm run clean && npm run webpackDev | npm run serverDev",
-    "build": "npm run clean && webpack -p && npm run serverBuild"
+    "start": "npm run clean && npm run devServer | webpack -w",
+    "build": "npm run clean && webpack -p && npm run buildServer"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/steve-king/skwd-ltd-portfolio.git"
   },
   "engines": {
-    "node": "8.1.1",
-    "npm": "3.9.6"
+    "node": "8.1.1"
   },
   "dependencies": {
     "axios": "^0.16.2",
@@ -66,5 +65,7 @@
     "url-loader": "^0.5.9",
     "webpack": "^2.6.1"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "webpack-dev-server": "^2.5.0"
+  }
 }
