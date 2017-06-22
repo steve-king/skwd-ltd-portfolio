@@ -1,21 +1,4 @@
-.template--home {
-  padding:0;
-
-  .parallax-scene {
-    // isolation: isolate;
-    @extend .element-full;
-    &__item {
-      @extend .element-full;
-      &__inner {
-        @extend .element-full;
-        transform:scale(1.1);
-      }
-    }
-  }
-
-  &__image {
-    @extend .element-full;
-  }
+.template--about {
 
   &__main {
     @extend .element-full;
@@ -26,23 +9,6 @@
     transition:0.6s 0.8s all ease-out;
     opacity:1;
     transform: translate3d(0, 0, 0);
-
-    .icon-logo {
-      margin-right: 5px;
-      margin-top:8px;
-    }
-
-    @media (orientation: portrait){
-      max-width:220px;
-      .subtitle {
-        max-width:162px;
-      }
-    }
-
-    @media (orientation: landscape){
-      display:flex;
-      .subtitle { text-align: center;}
-    }
 
     @media(min-width: $tablet) {
       padding-top:70px;
@@ -65,12 +31,6 @@
     position:absolute;
     transition:all 0.6s ease-out;
 
-    &--about {
-      bottom:$gutter / 2;
-      left:50%;
-      transform:translate(-50%, 0);
-    }
-
     &--projects {
       position:absolute;
       right:0;
@@ -85,7 +45,6 @@
   }
 
   &.loading .nav__btn {
-    &--about { transform:translate(-50%, 250px); }
     &--projects { transform:translate(250px, -50%); }
   }
 }

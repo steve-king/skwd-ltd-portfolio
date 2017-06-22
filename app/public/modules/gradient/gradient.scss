@@ -1,0 +1,12 @@
+.gradient {
+  @extend .viewport-full;
+  transition:background 2s;
+
+  &--blueToPink {
+    background-image: linear-gradient(to bottom, #a7dce6, #ffe9fe);
+  }
+
+  &--yellowToBlue {
+    background-image: linear-gradient(to bottom, #c3f7ff, #edf7cd);
+  }
+}

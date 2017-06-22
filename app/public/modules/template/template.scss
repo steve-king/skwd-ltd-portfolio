@@ -2,4 +2,9 @@
   @extend .viewport-full;
   padding:$gutter;
   overflow:hidden;
+
+  &__main {
+    @extend .element-full;
+    padding: $gutter;
+  }
 }

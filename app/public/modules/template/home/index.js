@@ -9,24 +9,19 @@ import Image from 'modules/image';
 
 class Home extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      ready: false
-    };
+  state = {
+    dataLoaded: false,
+    imagesLoaded: false,
   }
 
   componentDidMount() {
-
+    this.props.getData()
+    .then(() => this.setState({ dataLoaded: true }));
   }
 
-  onReady(ready) {
-    this.setState({ ready });
+  onImagesLoaded() {
+    this.setState({ imagesLoaded: true });
     this.doParallax();
-  }
-
-  imagesLoaded() {
-    this.onReady(true);
   }
 
   doParallax() {
@@ -35,26 +30,22 @@ class Home extends React.Component {
   }
 
   render() {
-    const { content } = this.props;
-    const { ready } = this.state;
-    const loading = !ready;
+    const { data } = this.props;
+    const { imagesLoaded, dataLoaded } = this.state;
     return (
-      <div className={classNames('template template--home', loading ? 'loading' : '')}>
+      <div className={classNames('template template--home', !imagesLoaded ? 'loading' : '')}>
         <div className="parallax-scene" ref="scene">
-          {content &&
-            <div className="parallax-scene__item layer" data-depth="0.5">
-              <div className="parallax-scene__item__inner">
-                <Image
-                  background
-                  className="template--home__image" content={content.images}
-                  onload={() => this.imagesLoaded()}
-                />
-              </div>
+          <div className="parallax-scene__item layer" data-depth="0.5">
+            <div className="parallax-scene__item__inner">
+              {dataLoaded &&
+                <Image background className="template--home__image"
+                       content={data.images} onload={() => this.onImagesLoaded()} />
+              }
             </div>
-          }
-          <Hexagons ready={!loading} />
+          </div>
+          <Hexagons ready={imagesLoaded} />
         </div>
-        <main className="template--home__main">
+        <main className="template__main">
           <div className="grid-container">
             <div className="content">
               <span className="icon--large icon-hex-logo"/>
@@ -77,7 +68,6 @@ class Home extends React.Component {
             </Link>
           </nav>
         </main>
-
       </div>
     );
   }

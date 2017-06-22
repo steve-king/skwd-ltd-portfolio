@@ -1,7 +1,6 @@
 // Vendor
 @import '../../../node_modules/normalize.css';
 
-
 // Base
 @import './colours';
 @import './icons';
@@ -10,12 +9,14 @@
 @import './typography';
 
 // Pages
-@import '../modules/page/templates/template';
-@import '../modules/page/templates/home';
+@import '../modules/template/template';
+@import '../modules/template/home/home';
+@import '../modules/template/about/about';
 
 // Modules
 @import '../modules/button/button';
 @import '../modules/hexagons/hexagons';
 @import '../modules/image/image';
+@import '../modules/gradient/gradient';
 
 // Components

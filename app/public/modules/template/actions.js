@@ -1,20 +1,20 @@
 export const loaded = (content, apiUrl) => ({
-  type: 'CONTENT_LOADED',
+  type: 'TEMPLATE_DATA_LOADED',
   content,
   apiUrl,
 });
 
 export const error = (error) => ({
-  type: 'CONTENT_ERROR',
+  type: 'TEMPLATE_DATA_ERROR',
   error
 });
 
 export const reset = () => ({
-  type: 'CONTENT_RESET'
+  type: 'TEMPLATE_DATA_RESET'
 });
 
 
-export const fetchContent = (url) => {
+export const fetchData = (url) => {
   return function(dispatch) {
     return fetch(url)
       .then(

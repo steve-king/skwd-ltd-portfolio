@@ -1,27 +1,27 @@
 const initialState = {
   loaded: false,
-  content: null,
+  data: null,
   apiUrl: null,
   error: null,
 };
 
-const page = (state = initialState, action) => {
+const templateData = (state = initialState, action) => {
   switch(action.type) {
-    case 'CONTENT_LOADED':
+    case 'TEMPLATE_DATA_LOADED':
       return Object.assign({}, state, {
         loaded: true,
         apiUrl: action.apiUrl,
-        content: action.content,
+        data: action.content,
         error: null,
       });
-    case 'CONTENT_ERROR':
+    case 'TEMPLATE_DATA_ERROR':
       return Object.assign({}, state, {
         error: action.error,
       });
-    case 'CONTENT_RESET':
+    case 'TEMPLATE_DATA_RESET':
       return initialState;
   }
   return state;
 };
 
-export default page;
+export default templateData;

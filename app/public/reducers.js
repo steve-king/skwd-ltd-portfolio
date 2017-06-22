@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux';
 
-import page from 'modules/page/reducer';
+import templateData from 'modules/template/reducer';
+import viewport from 'modules/viewport/reducer';
 
 const reducers = combineReducers({
-  page,
+  templateData,
+  viewport,
 });
 
 export default reducers;
