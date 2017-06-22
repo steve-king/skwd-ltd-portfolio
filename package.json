@@ -48,7 +48,6 @@
     "mysql2": "^1.3.5",
     "node-sass": "^4.5.3",
     "normalize.css": "^7.0.0",
-    "parallax-js": "git+https://github.com/wagerfield/parallax.git",
     "postcss-loader": "^2.0.6",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",

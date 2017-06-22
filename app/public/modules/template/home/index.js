@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Parallax from 'parallax-js';
+import Parallax from 'vendor/parallax-js';
 import classNames from 'classnames';
 
 import Button from 'modules/button';
