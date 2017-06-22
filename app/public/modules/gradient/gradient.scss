@@ -1,5 +1,5 @@
 .gradient {
-  @extend .viewport-full;
+  @extend .element-full;
   transition:background 2s;
 
   &--blueToPink {
