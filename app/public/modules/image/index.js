@@ -23,7 +23,6 @@ class Image extends React.Component {
     // preload
     helpers.preloadImage(imageUrl)
       .then(() => {
-        console.log('LOADED ', imageUrl);
         this.setState({ imgSrc: imageUrl });
         this.props.onload();
       });
