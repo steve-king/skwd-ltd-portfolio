@@ -12,7 +12,7 @@
     "webpackDev": "webpack-dev-server --config webpack-dev-server.config.js",
     "browsersync": "browser-sync start --proxy --open false \"localhost:5000\" --files \"app/**/*\"",
     "start": "npm run clean && npm run devServer | webpack -w",
-    "build": "npm run clean && webpack -p && npm run buildServer"
+    "build": "npm cache clean --force && npm run clean && webpack -p && npm run buildServer"
   },
   "repository": {
     "type": "git",
