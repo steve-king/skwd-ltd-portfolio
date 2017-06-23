@@ -8,15 +8,18 @@
 @import './fonts';
 @import './typography';
 
-// Pages
-@import '../modules/template/template';
-@import '../modules/template/home/home';
-@import '../modules/template/about/about';
-
 // Modules
 @import '../modules/button/button';
 @import '../modules/hexagons/hexagons';
 @import '../modules/image/image';
+@import '../modules/spinner/spinner';
 @import '../modules/gradient/gradient';
+@import '../modules/header/header';
+
+// Pages
+@import '../modules/template/template';
+@import '../modules/template/home/home';
+@import '../modules/template/about/about';
+@import '../modules/template/project/project';
 
 // Components

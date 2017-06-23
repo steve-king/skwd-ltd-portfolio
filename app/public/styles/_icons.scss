@@ -17,21 +17,27 @@
   }
 }
 
-.icon-hex-logo {
+.icon--hex--logo {
   @extend .icon;
   background-image:url('../assets/svg/hex-logo.svg?nofill');
+
+  &--white {
+    @extend .icon;
+    background-image:url('../assets/svg/hex-logo.svg?fill=white');
+  }
 }
 
-.icon-hex-fill {
+.icon--hex--fill {
   @extend .icon;
   background-image:url('../assets/svg/hex-fill.svg?nofill');
 
   &--white {
+    @extend .icon;
     background-image:url('../assets/svg/hex-fill.svg?fill=white');
   }
 }
 
-.icon-chevron {
+.icon--chevron {
   @extend .icon;
   background-image:url('../assets/svg/chevron-down.svg?nofill');
   width:18px;
@@ -47,5 +53,9 @@
 
   &--right {
     transform: rotate(270deg);
+  }
+
+  &--left {
+    transform: rotate(90deg);
   }
 }

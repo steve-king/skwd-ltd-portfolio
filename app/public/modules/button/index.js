@@ -1,17 +1,18 @@
 import React from 'react';
 import classNames from 'classnames';
 
-export const Button = ({ text, className, chevron, direction }) => {
+export const Button = ({ type, colour, text, className, icon, direction }) => {
+  const buttonClass = 'button--' + type;
+  const iconClass = buttonClass + '__icon';
   return (
-    <span className={classNames('button', className)}>
-      <span className="button__bg" />
-      <span className="button__text">{text}</span>
-      {chevron &&
-        <span className={classNames('button__icon', 'button__icon--' + direction)}>
+    <span className={classNames(buttonClass, className)}>
+      <span className={buttonClass + '__bg'} />
+      <span className={buttonClass + '__text'}>{text}</span>
+      {icon &&
+        <span className={classNames(iconClass, iconClass + '--' + direction)}>
           <span className={classNames(
-            'icon-chevron',
-            'icon-chevron--white',
-            'icon-chevron--' + direction
+            `icon--${icon}`,
+            direction ? `icon--${icon}--${direction}` : '',
           )}/>
         </span>
       }

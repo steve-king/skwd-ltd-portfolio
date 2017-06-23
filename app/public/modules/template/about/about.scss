@@ -1,8 +1,9 @@
 .template--about {
 
   &__main {
-    @extend .element-full;
+    @extend .absolute--fill;
     padding: $gutter;
+    padding-top: $headerDepth + $gutter;
   }
 
   .content {

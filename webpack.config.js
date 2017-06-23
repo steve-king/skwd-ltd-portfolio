@@ -30,7 +30,10 @@ module.exports = {
           /\.js$/, /\.jsx$/
         ],
         exclude: /node_modules/,
-        loaders: ['babel-loader']
+        loaders: [
+          'babel-loader',
+          // 'eslint-loader' // Move to dev config
+        ]
       },
       {
         // CSS

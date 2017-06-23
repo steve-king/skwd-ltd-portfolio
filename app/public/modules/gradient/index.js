@@ -8,9 +8,7 @@ class Gradient extends React.Component {
       'gradient--' + this.props.name,
     ];
     return (
-      <div className={classNames(classes)}>
-        {this.props.children}
-      </div>
+      <div className={classNames(classes)} />
     );
   }
 }

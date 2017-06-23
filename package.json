@@ -62,7 +62,10 @@
     "sinon": "^2.3.4",
     "svg-fill-loader": "0.0.8",
     "url-loader": "^0.5.9",
-    "webpack": "^2.6.1"
+    "webpack": "^2.6.1",
+    "eslint": "^4.0.0",
+    "eslint-loader": "^1.8.0",
+    "eslint-plugin-react": "^7.1.0"
   },
   "devDependencies": {
     "nodemon": "^1.11.0",

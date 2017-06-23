@@ -2,53 +2,57 @@ import React from 'react';
 import classNames from 'classnames';
 
 import * as helpers from 'modules/helpers';
+import Spinner from 'modules/spinner';
 
 class Image extends React.Component {
 
-  constructor(props){
-    super(props);
-    this.state = {
-      imageSrc: null,
-    }
+  state = {
+    loaded: false,
+    finished: false,
   }
 
   componentDidMount() {
-    setTimeout(() => this.loadImage(this.props.content));
+    setTimeout(() => this.preLoad(this.props.src));
   }
 
-  loadImage(images) {
-    // select random image
-    const imageUrl = helpers.getRandomItem(images).url;
-
+  preLoad(src) {
     // preload
-    helpers.preloadImage(imageUrl)
+    helpers.preloadImage(src)
       .then(() => {
-        this.setState({ imgSrc: imageUrl });
+        this.setState({ loaded: true });
         this.props.onload();
       });
   }
 
+  checkLoaded = () => {
+    console.log('checkLoaded called in Image');
+    if (this.state.loaded) {
+      this.setState({ finished: true });
+      this.props.onFinish();
+    }
+  }
+
   render() {
-    const { imgSrc } = this.state;
-    const { background, className } = this.props;
+    const { src, className, background } = this.props;
+    const { loaded, finished } = this.state;
     const classes = [
       'image',
       className,
       background ? 'image--background' : 'image--img',
-      !imgSrc ? 'image--loading' : 'image--loaded'
+      !loaded ? 'image--loading' : 'image--loaded'
     ];
 
     return (
       <div className={classNames(classes)}>
-          {background &&
-            <div className="image__bg"
-                 style={{ backgroundImage: imgSrc ? `url(${imgSrc})` : 'none' }} />
-          }
-          {!background &&
-            <img className="image__img"
-                 src={imgSrc ? imgSrc : null }
-                 alt={this.props.alt} />
-          }
+        {background &&
+          <div className="image__bg" style={{ backgroundImage: `url(${src})`}} />
+        }
+        {!background &&
+          <img className="image__img" src={src} alt={this.props.alt} />
+        }
+        {!finished &&
+          <Spinner animate onLoop={this.checkLoaded} />
+        }
       </div>
     );
   }

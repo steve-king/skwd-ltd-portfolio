@@ -1,4 +1,4 @@
-.button {
+.button--hexFill {
   width: $tablet / 6;
   height: $tablet / 6;
 
@@ -9,13 +9,11 @@
   padding: $gutter;
   position:relative;
 
-  &__bg,
-  // &__bg:after,
-  {
+  &__bg {
     @extend .icon;
-    @extend .icon-hex-fill;
-    @extend .element-full;
-    mix-blend-mode: normal;
+    @extend .icon--hex--fill;
+    @extend .absolute--fill;
+    // mix-blend-mode: overlay;
     opacity:0.85;
   }
 
@@ -30,7 +28,6 @@
     position:absolute;
     transition:all 0.2s ease-out;
     opacity:0;
-    isolate:isolate;
 
     &--down {
       bottom: $gutter;
@@ -51,15 +48,16 @@
   button:active & {
     text-decoration: none;
 
-    .button__bg {
-      @extend .icon-hex-fill--white;
+    .button--hexFill__bg {
+      @extend .absolute--fill;
+      @extend .icon--hex--fill--white;
     }
 
-    .button__text {
+    .button--hexFill__text {
       color:$black;
     }
 
-    .button__icon {
+    .button--hexFill__icon {
       opacity: 1;
       &--down {
         bottom:-($gutter);
@@ -67,6 +65,67 @@
 
       &--right {
         right:-($gutter / 1.5);
+      }
+    }
+  }
+}
+
+.button--hexLogo {
+  width:48px;
+  height:48px;
+
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+
+  // padding: $gutter;
+  position:relative;
+
+  &__bg {
+    @extend .icon;
+    @extend .icon--hex--logo;
+    @extend .absolute--fill;
+    overflow:visible;
+    // mix-blend-mode: normal;
+    // opacity:0.85;
+  }
+
+  &__icon {
+    position:absolute;
+    transition:all 0.2s ease-out;
+    opacity:1;
+
+    &--up {
+      top:-17px;
+      left: 50%;
+      transform:translate(-50%, 0);
+
+      @media (min-width:$phablet) {
+        // top: -14px;
+      }
+    }
+
+    &--left {
+      top:50%;
+      left: -17px;
+      transform:translate(0, -50%);
+
+      @media (min-width:$phablet) {
+        // top: -14px;
+      }
+    }
+  }
+
+  &:hover,
+  &:active,
+  a:active &,
+  button:active & {
+    text-decoration: none;
+
+    .button--hexFill__icon {
+      opacity: 1;
+      &--up {
+        top:0;
       }
     }
   }

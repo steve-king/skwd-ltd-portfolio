@@ -1,10 +1,10 @@
 .template {
-  @extend .element-full;
-  padding:$gutter;
+  @extend .absolute--fill;
+  // padding:$gutter;
   overflow:hidden;
 
   &__main {
-    @extend .element-full;
+    @extend .absolute--fill;
     padding: $gutter;
   }
 }

@@ -1,6 +1,11 @@
-export const loaded = (content, apiUrl) => ({
+export const loading = (apiUrl) => ({
+  type: 'TEMPLATE_DATA_LOADING',
+  apiUrl,
+});
+
+export const loaded = (templateData, apiUrl) => ({
   type: 'TEMPLATE_DATA_LOADED',
-  content,
+  templateData,
   apiUrl,
 });
 
@@ -9,18 +14,19 @@ export const error = (error) => ({
   error
 });
 
-export const reset = () => ({
+export const resetData = () => ({
   type: 'TEMPLATE_DATA_RESET'
 });
 
 
 export const fetchData = (url) => {
   return function(dispatch) {
+    dispatch(loading(url));
     return fetch(url)
       .then(
         response => response.json(),
         err => dispatch(error(err))
       )
-      .then(content => dispatch(loaded(content, url)));
+      .then(templateData => dispatch(loaded(templateData, url)));
   };
 };

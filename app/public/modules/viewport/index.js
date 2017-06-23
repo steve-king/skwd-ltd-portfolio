@@ -13,7 +13,7 @@ class Viewport extends React.Component {
   render = () => {
     const { children, viewport, dispatch } = this.props;
     return (
-      <div className="viewport" style={{ height: viewport.height || 'auto' }}>
+      <div style={{ height: viewport.height || 'auto' }}>
         {children}
       </div>
     );
