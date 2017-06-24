@@ -1,7 +1,7 @@
 {
   "author": "Stephen King",
   "name": "skwd-ltd-portfolio",
-  "version": "1.3.12",
+  "version": "1.3.13",
   "scripts": {
     "clean": "rm -rf ./_www/* && rm -rf ./logs/*",
     "testDev": "NODE_PATH=./ NODE_ENV=test mocha ./tests --recursive --watch",
