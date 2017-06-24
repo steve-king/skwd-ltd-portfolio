@@ -3,25 +3,25 @@ import { connect } from 'react-redux';
 
 import * as actions from './actions';
 
-export default function TemplateWrapper(Template){
+export default function withData(Template){
   class TemplateContainer extends React.Component {
     componentDidMount = () => this.props.getData()
-    componentWillUnmount = () => this.props.resetData()
+    // componentWillUnmount = () => this.props.resetData()
     render () {
-      const { apiUrl,templateData } = this.props;
+      const { data, children } = this.props;
       return (
-        <Template {...templateData} apiUrl={templateData.apiUrl} />
+        <Template {...data} children={children} />
       );
     }
   }
 
   return connect(
     state => ({
-      templateData: state.templateData
+      data: state.pageData
     }),
     (dispatch, ownProps) => ({
-      getData: () => dispatch(actions.fetchData(ownProps.apiUrl)),
-      resetData: () => dispatch(actions.resetData()),
+      getData: () => dispatch(actions.fetchData(ownProps.dataType, ownProps.apiUrl)),
+      resetData: () => dispatch(actions.resetData(ownProps.dataType)),
     })
   )
   (TemplateContainer);

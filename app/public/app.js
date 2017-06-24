@@ -8,6 +8,7 @@ import Template from 'modules/template';
 
 import Home from 'modules/template/home';
 import About from 'modules/template/about';
+import Projects from 'modules/template/projects';
 import Project from 'modules/template/project';
 
 const App = (props) => {
@@ -15,13 +16,17 @@ const App = (props) => {
     <Viewport>
       <Switch>
         <Route exact path="/" render={() =>
-          <Home apiUrl="/api/pages/home" />
+          <Home dataType="page" apiUrl="/api/pages/home" />
         } />
         <Route exact path="/about" render={() =>
-          <About apiUrl="/api/pages/about" />
+          <About dataType="page" apiUrl="/api/pages/about" />
         } />
-        <Route exact path="/projects" render={() =>
-          <Project apiUrl="/api/projects" />
+        <Route path="/projects" render={() =>
+          <Projects dataType="page" apiUrl="/api/projects">
+            <Route path="projects/:slug" render={props =>  
+              <Project dataType="project" apiUrl={'/api/projects/' + props.match.params.slug} />
+            } />
+          </Projects>
         } />
       </Switch>
     </Viewport>

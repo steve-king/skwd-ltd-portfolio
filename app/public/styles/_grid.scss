@@ -69,7 +69,7 @@ img {
 
 @mixin gridCol($numCols) {
   width: colWidth($numCols) * 1%;
-  padding: $gutter;
+  // padding: $gutter;
 }
 
 

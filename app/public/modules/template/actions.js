@@ -1,32 +1,31 @@
-export const loading = (apiUrl) => ({
-  type: 'TEMPLATE_DATA_LOADING',
+export const loading = (dataType, apiUrl) => ({
+  type: dataType + '_DATA_LOADING',
   apiUrl,
 });
 
-export const loaded = (templateData, apiUrl) => ({
-  type: 'TEMPLATE_DATA_LOADED',
-  templateData,
-  apiUrl,
+export const loaded = (dataType, content) => ({
+  type: dataType + '_DATA_LOADED',
+  content,
 });
 
-export const error = (error) => ({
-  type: 'TEMPLATE_DATA_ERROR',
+export const error = (dataType, error) => ({
+  type: dataType + '_DATA_ERROR',
   error
 });
 
-export const resetData = () => ({
-  type: 'TEMPLATE_DATA_RESET'
+export const resetData = (dataType) => ({
+  type: dataType + '_DATA_RESET'
 });
 
 
-export const fetchData = (url) => {
+export const fetchData = (dataType, url) => {
   return function(dispatch) {
-    dispatch(loading(url));
+    dispatch(loading(dataType, url));
     return fetch(url)
       .then(
         response => response.json(),
-        err => dispatch(error(err))
+        err => dispatch(error(dataType, err))
       )
-      .then(templateData => dispatch(loaded(templateData, url)));
+      .then(content => dispatch(loaded(dataType, content)));
   };
 };

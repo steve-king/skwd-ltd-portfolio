@@ -1,34 +1,61 @@
 const initialState = {
   loaded: false,
-  data: null,
+  content: null,
   apiUrl: null,
   error: null,
 };
 
-const templateData = (state = initialState, action) => {
-  switch(action.type) {
-    case 'TEMPLATE_DATA_LOADING':
+// const templateData = (state = initialState, action) => {
+//   switch(action.type) {
+//     case 'DATA_LOADING':
+//       return Object.assign({}, state, {
+//         loaded: false,
+//         apiUrl: action.apiUrl,
+//         content: initialState.data,
+//         error: null,
+//       });
+//     case 'DATA_LOADED':
+//       return Object.assign({}, state, {
+//         loaded: true,
+//         apiUrl: action.apiUrl,
+//         content: action.content,
+//         error: null,
+//       });
+//     case 'DATA_ERROR':
+//       return Object.assign({}, state, {
+//         error: action.error,
+//       });
+//     // case 'DATA_RESET':
+//     //   return initialState;
+//   }
+//   return state;
+// };
+
+const dataReducer = (dataType) => {
+  return (state = initialState, action) => {
+    switch(action.type) {
+    case dataType + '_DATA_LOADING':
       return Object.assign({}, state, {
         loaded: false,
         apiUrl: action.apiUrl,
-        data: initialState.data,
+        content: initialState.data,
         error: null,
       });
-    case 'TEMPLATE_DATA_LOADED':
+    case dataType + '_DATA_LOADED':
       return Object.assign({}, state, {
         loaded: true,
-        apiUrl: action.apiUrl,
-        data: action.templateData,
+        content: action.content,
         error: null,
       });
-    case 'TEMPLATE_DATA_ERROR':
+    case dataType + '_DATA_ERROR':
       return Object.assign({}, state, {
         error: action.error,
       });
-    // case 'TEMPLATE_DATA_RESET':
+    // case dataType + 'DATA_RESET':
     //   return initialState;
   }
   return state;
-};
+  }
+}
 
-export default templateData;
+export default dataReducer;

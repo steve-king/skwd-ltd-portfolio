@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Parallax from 'vendor/parallax-js';
 import classNames from 'classnames';
 
-import template from 'modules/template';
+import withData from 'modules/template';
 
 import { getRandomItem } from 'modules/helpers';
 import Button from 'modules/button';
@@ -19,9 +19,9 @@ class Home extends React.Component {
   }
 
   componentWillUpdate(newProps) {
-    if (!this.props.loaded && newProps.loaded && newProps.data.images) {
+    if (!this.props.loaded && newProps.loaded && newProps.content.images) {
       this.setState({
-        imageUrl: getRandomItem(newProps.data.images).url
+        imageUrl: getRandomItem(newProps.content.images).url
       });
     }
   }
@@ -42,7 +42,7 @@ class Home extends React.Component {
   }
 
   render() {
-    const { data, loaded } = this.props;
+    const { content, loaded } = this.props;
     const { imageUrl, imageLoaded, imageFinished } = this.state;
     return (
       <div className={classNames('template template--home', !imageLoaded ? 'loading' : '', 'transition-item')}>
@@ -65,9 +65,9 @@ class Home extends React.Component {
             <div className="template--home__content">
               <span className="icon--large icon-hex-logo"/>
               <div>
-                <h1 className="title title--large">{data.title}</h1>
+                <h1 className="title title--large">{content.title}</h1>
                 <p className="subtitle">
-                  <span>{data.body}</span>
+                  <span>{content.body}</span>
                 </p>
               </div>
             </div>
@@ -86,4 +86,4 @@ class Home extends React.Component {
   }
 };
 
-export default template(Home);
+export default withData(Home);

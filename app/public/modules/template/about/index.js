@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 
-import template from 'modules/template';
+import withData from 'modules/template';
 
 import Gradient from 'modules/gradient';
 import Button from 'modules/button';
@@ -11,23 +11,27 @@ import Header from 'modules/header';
 
 class About extends React.Component {
   render() {
-    const { data, loaded } = this.props;
+    const { content, loaded } = this.props;
     return (
       <div className={classNames('template template--about', !loaded ? 'loading' : '')}>
         {loaded && <Gradient name="blueToPink" /> }
         <Hexagons ready={loaded} />
-        <Header className="top">
-          <Link to="/" className="header__link--fill">
+        <Header 
+          position="top" 
+          href="/"
+          button={<Button type="hexLogo" icon="chevron" direction="up" />}
+        />
+          {/*<Link to="/" className="header__link--fill">
             <Button type="hexLogo" icon="chevron" direction="up" />
           </Link>
-        </Header>
+        </Header>*/}
         <main className="template__main template--about__main">
           {/*<div className="grid-container">*/}
             {loaded &&
               <div className="template--about__content">
                 <div>
-                  <h1 className="title">{data.title}</h1>
-                  {data.body}
+                  <h1 className="title">{content.title}</h1>
+                  {content.body}
                 </div>
               </div>
             }
@@ -44,4 +48,4 @@ class About extends React.Component {
   }
 };
 
-export default template(About);
+export default withData(About);

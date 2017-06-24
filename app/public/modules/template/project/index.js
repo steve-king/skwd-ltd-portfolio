@@ -1,8 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router';
+import { Link, Route } from 'react-router-dom';
 import classNames from 'classnames';
 
-import template from 'modules/template';
+import withData from 'modules/template';
 
 import Button from 'modules/button';
 import Gradient from 'modules/gradient';
@@ -11,33 +12,24 @@ import Header from 'modules/header';
 
 class Project extends React.Component {
   render() { 
-    const { data, loaded } = this.props;
+    const { content, loaded, children } = this.props;
     return(
       <div className={classNames('template template--project', !loaded ? 'loading' : '')}>
-        {loaded && <Gradient name="yellowToBlue" /> }
-        <Hexagons ready={loaded} />
-        <Header className="left">
-          <Link to="/" className="header__link--fill">
-            <Button type="hexLogo" icon="chevron" direction="left" />
-          </Link>
+        <Header 
+          href="/projects"
+          button={<Button type="hexLogo" icon="chevron" direction="left" />}
+          title={content.title} 
+          position="left"
+        >
         </Header>
         <main className="template--project__main">
-          <div className="grid-container">
-            {loaded && data.projects &&
-              <nav className="template--project__nav">
-                
-                {data.projects.map((project, i) => (
-                  <Link key={i} to={`/projects/${project.slug}`} className="template--project__nav__btn">
-                    <Button type="hexFill" colour="white" size="xl" text={project.title} icon="chevron" direction="right" />
-                  </Link>
-                ))}
-              </nav>
-            }
-          </div>
+          {loaded && 
+            <p>{content.body}</p>
+          }
         </main>
       </div>
     );
   }
 }
 
-export default template(Project);
+export default withData(Project);

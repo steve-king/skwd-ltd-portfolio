@@ -1,0 +1,78 @@
+.template--projects {
+
+    @media (max-width: $phablet - 1) {
+      flex-direction: column;
+    }
+
+  &__main {
+    flex:1;
+    overflow-y:scroll;
+    padding:$gutter;
+
+    @media (min-width: $phablet) {
+      display: flex;
+      align-items: stretch;
+
+       > .grid-container {
+        display:flex;
+        align-items: flex-start;
+      } 
+    }
+
+   
+  }
+
+  &__nav {
+    @include gridCol(12);
+    @media (min-width: $phablet) {
+      @include gridCol(6);
+      padding-bottom:115px;
+      align-self: center;
+    }
+
+    text-align:center;
+    padding-bottom:115px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content: space-around;
+    align-items: flex-start;
+
+    &__btn {
+      @extend .button__container--xl;
+      display:inline-block;
+      position:relative;
+      // margin:0 auto;
+      
+      flex-shrink: 0;
+
+      margin:20px;
+      margin-bottom:-150px;
+
+      @media (min-width:$phablet) {
+        margin:0;
+        margin-bottom:-115px;
+      }
+
+      &:nth-child(odd) {
+        // transform:translate(-32%, 0);
+        // float:left;
+        text-align:left;
+      }
+
+      &:nth-child(even) {
+        // transform:translate(32%, 0);
+        // float:right;
+        text-align:right;
+        .button--hexFill__text {
+          margin-left:auto;
+        }
+        align-self: flex-end;
+      }
+
+      &:hover {
+        z-index:10;
+      }
+    }
+  }
+}
