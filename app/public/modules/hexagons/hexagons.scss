@@ -10,7 +10,7 @@
 .hexagons .hex {
   visibility:hidden;
   position:absolute;
-  background-image:url('../assets/svg/hex-logo.svg?nofill');
+  background-image:url('../assets/svg/hex-logo.svg');
   mix-blend-mode: overlay;
   background-size:contain;
   background-repeat:no-repeat;
@@ -26,7 +26,7 @@
 // }
 
 .hexagons--white .hex {
-  background-image:url('../assets/svg/hex-logo.svg?fill=white');
+  // background-image:url('../assets/svg/hex-logo.svg?fill=white');
   mix-blend-mode:initial;
   opacity:0.2;
 }
