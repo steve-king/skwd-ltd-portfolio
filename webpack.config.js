@@ -50,7 +50,7 @@ module.exports = {
       {
         // FONTS
         test: [/\.woff/, /\.woff2/, /\.eot/, /\.ttf/],
-        loader: 'url-loader'
+        loader: 'file-loader'
       },
       {
         test: [
