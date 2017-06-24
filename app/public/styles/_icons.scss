@@ -23,7 +23,7 @@
 
   &--white {
     @extend .icon;
-    background-image:url('../assets/svg/hex-logo.svg?fill=#FFFFFF');
+    background-image:url('../assets/svg/hex-logo.svg?fill=#{'#FFFFFF'}');
   }
 }
 
@@ -33,7 +33,7 @@
 
   &--white {
     @extend .icon;
-    background-image:url('../assets/svg/hex-fill.svg?fill=#FFFFFF');
+    background-image:url('../assets/svg/hex-fill.svg?fill=#{'#FFFFFF'}');
   }
 }
 
@@ -44,7 +44,7 @@
   height:9px;
 
   &--white {
-    background-image:url("../assets/svg/chevron-down.svg?fill=#FFFFFF");
+    background-image:url("../assets/svg/chevron-down.svg??fill=#{'#FFFFFF'}");
   }
 
   &--up {
