@@ -23,7 +23,7 @@
 
   &--white {
     @extend .icon;
-    background-image:url('../assets/svg/hex-logo.svg?fill=white');
+    background-image:url('../assets/svg/hex-logo.svg?fill=#FFFFFF');
   }
 }
 
@@ -44,7 +44,7 @@
   height:9px;
 
   &--white {
-    background-image:url("../assets/svg/chevron-down.svg?fill=white");
+    background-image:url("../assets/svg/chevron-down.svg?fill=#FFFFFF");
   }
 
   &--up {
