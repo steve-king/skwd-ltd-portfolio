@@ -50,7 +50,11 @@ module.exports = {
       {
         // FONTS
         test: [/\.woff/, /\.woff2/, /\.eot/, /\.ttf/],
-        loader: 'file-loader'
+        loader: 'file-loader',
+        query: {
+          context: './src/',
+          name: 'assets/fonts/[name].[ext]'
+        }
       },
       {
         test: [
@@ -87,10 +91,12 @@ module.exports = {
       }
     }),
     new ExtractTextPlugin({filename: 'assets/css/style.css', allChunks: true}),
-    new CopyWebpackPlugin([{
-      from: path.join(srcDir, 'assets/img'),
-      to: path.join(publicDir, 'assets/img'),
-    }]),
+    new CopyWebpackPlugin([
+      { from: path.join(srcDir, 'assets/img'),
+      to: path.join(publicDir, 'assets/img') },
+      { from: path.join(srcDir, 'assets/svg'),
+        to: path.join(publicDir, 'assets/svg') },
+    ]),
     new ImageminPlugin({
       //disable: process.env.NODE_ENV !== 'production', // Disable during development
       jpegtran: {
