@@ -74,12 +74,12 @@ module.exports = {
       {
         test: /\.svg$/,
         resourceQuery: /^\?fill=/,
-        use: ['url-loader', 'svg-fill-loader']
+        use: ['file-loader', 'svg-fill-loader']
       },
       {
         test: /\.svg$/,
         resourceQuery: /^\?nofill/,
-        loaders: ['url-loader']
+        loaders: ['file-loader']
       }
     ]
   },
