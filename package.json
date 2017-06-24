@@ -65,9 +65,7 @@
     "sinon": "^2.3.4",
     "svg-fill-loader": "0.0.8",
     "url-loader": "^0.5.9",
-    "webpack": "^2.6.1"
-  },
-  "devDependencies": {
+    "webpack": "^2.6.1",
     "nodemon": "^1.11.0",
     "webpack-dev-server": "^2.5.0"
   }
