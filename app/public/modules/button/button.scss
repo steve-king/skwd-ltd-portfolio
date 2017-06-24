@@ -1,6 +1,24 @@
 .button__container {
   position:relative;
+  width:48px;
+  height:48px;
 
+  // &--l {
+  //   position:relative;
+  //   width:96px;
+  //   height:82px;
+  // }
+
+  &--xl {
+    position:relative;
+    width:170px;
+    height:200px;
+  }
+
+  .button--hexFill {
+    @extend .absolute--fill;
+    display:flex;
+  }
 }
 
 .button--hexFill {

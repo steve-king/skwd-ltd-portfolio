@@ -60,28 +60,26 @@ class Home extends React.Component {
             <div className="template--home__hex" />
           </div>
         </div>
-        <main className="template__main">
-          <div className="grid-container">
-            {loaded && imageFinished &&
-              <div className="content">
-                <span className="icon--large icon-hex-logo"/>
-                <div>
-                  <h1 className="title title--large">{data.title}</h1>
-                  <p className="subtitle">
-                    <span>{data.body}</span>
-                  </p>
-                </div>
+        <main className="template--home__main">
+          {loaded &&
+            <div className="template--home__content">
+              <span className="icon--large icon-hex-logo"/>
+              <div>
+                <h1 className="title title--large">{data.title}</h1>
+                <p className="subtitle">
+                  <span>{data.body}</span>
+                </p>
               </div>
-            }
-            <nav className="template--home__nav">
-              <Link to="/about" className="template--home__nav__btn--about">
-                <Button type="hexFill" colour="white" text="About me" icon="chevron" direction="down" />
-              </Link>
-              <Link to="/projects" className="template--home__nav__btn--projects">
-                <Button type="hexFill" colour="white" text="Projects" icon="chevron" direction="right" />
-              </Link>
-            </nav>
-          </div>
+            </div>
+          }
+          <nav className="template--home__nav">
+            <Link to="/about" className="template--home__nav__btn--about">
+              <Button type="hexFill" colour="white" size="xl" text="About me" icon="chevron" direction="down" />
+            </Link>
+            <Link to="/projects" className="template--home__nav__btn--projects">
+              <Button type="hexFill" colour="white" size="xl" text="Projects" icon="chevron" direction="right" />
+            </Link>
+          </nav>
         </main>
       </div>
     );

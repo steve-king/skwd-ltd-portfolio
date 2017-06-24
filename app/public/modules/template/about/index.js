@@ -22,9 +22,9 @@ class About extends React.Component {
           </Link>
         </Header>
         <main className="template__main template--about__main">
-          <div className="grid-container">
+          {/*<div className="grid-container">*/}
             {loaded &&
-              <div className="content">
+              <div className="template--about__content">
                 <div>
                   <h1 className="title">{data.title}</h1>
                   {data.body}
@@ -33,10 +33,10 @@ class About extends React.Component {
             }
             <nav className="template--about__nav">
               <Link to="/projects" className="template--about__nav__btn--projects">
-                <Button type="hexFill" colour="white" text="Projects" icon="chevron" direction="right" />
+                <Button type="hexFill" colour="white" size="xl" text="Projects" icon="chevron" direction="right" />
               </Link>
             </nav>
-          </div>
+          {/*</div>*/}
 
         </main>
       </div>

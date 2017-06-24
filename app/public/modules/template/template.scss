@@ -2,11 +2,13 @@
   @extend .absolute--fill;
   // padding:$gutter;
   overflow:hidden;
+  display:flex;
+  flex-wrap:wrap;
 
-  &__main {
-    @extend .absolute--fill;
-    padding: $gutter;
-    display:flex;
-    // flex-direction:column;
-  }
+  // &__main {
+  //   @extend .absolute--fill;
+  //   padding: $gutter;
+  //   display:flex;
+  //   // flex-direction:column;
+  // }
 }

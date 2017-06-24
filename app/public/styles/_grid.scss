@@ -20,7 +20,7 @@ img {
   height:auto;
 }
 
-.grid-container {
+@mixin gridContainer {
   width:100%;
   margin:0 auto;
   position:relative;
@@ -38,6 +38,39 @@ img {
   }
 }
 
+.grid-container {
+  // width:100%;
+  // margin:0 auto;
+  // position:relative;
+
+  // @media (min-width:$tablet) {
+  //   max-width:640px + ($gutter * 4);
+  // }
+
+  // @media (min-width:$desktop) {
+  //   max-width:$tablet + ($gutter * 4);
+  // }
+
+  // @media (min-width:$desktopXL) {
+  //   max-width:$desktop + ($gutter * 2);
+  // }
+  @include gridContainer;
+}
+
+.grid-container {
+  @extend .grid-container;
+}
+
+
+
+@function colWidth($numCols) {
+  @return (100 / 12) * $numCols;
+}
+
+@mixin gridCol($numCols) {
+  width: colWidth($numCols) * 1%;
+  padding: $gutter;
+}
 
 
 .absolute--center {

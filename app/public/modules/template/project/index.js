@@ -10,7 +10,7 @@ import Hexagons from 'modules/hexagons';
 import Header from 'modules/header';
 
 class Project extends React.Component {
-  render() {
+  render() { 
     const { data, loaded } = this.props;
     return(
       <div className={classNames('template template--project', !loaded ? 'loading' : '')}>
@@ -21,18 +21,19 @@ class Project extends React.Component {
             <Button type="hexLogo" icon="chevron" direction="left" />
           </Link>
         </Header>
-        <main className="template__main template--project__main">
-          {loaded && data.projects &&
-            <nav className="template--project__nav">
-              <div className="grid-container">
-              {data.projects.map((project, i) => (
-                <Link key={i} to={`/projects/${project.slug}`} className="template--project__nav__btn">
-                  <Button type="hexFill" colour="white" text={project.title} icon="chevron" direction="right" />
-                </Link>
-              ))}
-              </div>
-            </nav>
-          }
+        <main className="template--project__main">
+          <div className="grid-container">
+            {loaded && data.projects &&
+              <nav className="template--project__nav">
+                
+                {data.projects.map((project, i) => (
+                  <Link key={i} to={`/projects/${project.slug}`} className="template--project__nav__btn">
+                    <Button type="hexFill" colour="white" size="xl" text={project.title} icon="chevron" direction="right" />
+                  </Link>
+                ))}
+              </nav>
+            }
+          </div>
         </main>
       </div>
     );

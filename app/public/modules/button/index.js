@@ -1,12 +1,13 @@
 import React from 'react';
 import classNames from 'classnames';
 
-export const Button = ({ type, colour, text, className, icon, direction }) => {
+export const Button = ({ type, colour, size, text, className, icon, direction }) => {
   const buttonClass = 'button--' + type;
+  const sizeClass = 'button__container--' + size || '';
   const colourClass = 'button--' + colour;
   const iconClass = buttonClass + '__icon';
   return (
-    <div className="button__container">
+    <div className={classNames('button__container', sizeClass)}>
       <span className={classNames(buttonClass, colourClass, className)}>
         <span className={buttonClass + '__bg'} />
         <span className={buttonClass + '__text'}>{text}</span>
