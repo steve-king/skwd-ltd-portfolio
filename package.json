@@ -7,13 +7,11 @@
     "testDev": "NODE_PATH=./ NODE_ENV=test mocha ./tests --recursive --watch",
     "test": "NODE_PATH=./ NODE_ENV=test mocha ./tests --recursive",
     "devServer": "NODE_ENV=development NODE_PATH=./ nodemon app/index.js > logs/server.log",
-    "buildServer": "NODE_PATH=./ node ./app/index.js",
     "webpackDev": "webpack-dev-server --config webpack-dev-server.config.js",
-    "browsersync": "browser-sync start --proxy --open false \"localhost:5000\" --files \"app/**/*\"",
     "start": "npm run clean && npm run devServer | webpack -w",
-    "build": "npm run clean && webpack -p && npm run buildServer",
-    "serve": "npm run buildServer",
-    "heroku-postbuild": "webpack -p --progress"
+    "build": "npm run clean && webpack -p && npm run serve",
+    "heroku-postbuild": "webpack -p --progress",
+    "serve": "NODE_PATH=./ node ./app/index.js"
   },
   "repository": {
     "type": "git",
