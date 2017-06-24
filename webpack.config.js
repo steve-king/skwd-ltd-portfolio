@@ -36,7 +36,7 @@ module.exports = {
           use: [
             { loader: 'css-loader' },
             { loader: 'postcss-loader' },
-            { loader: 'svg-fill-loader/encodeSharp' },
+            // { loader: 'svg-fill-loader/encodeSharp' },
             { loader: 'sass-loader' },
           ]
         })
@@ -49,7 +49,7 @@ module.exports = {
         test: /\.svg$/,
         use: [
           'url-loader',
-          'svg-fill-loader'
+          // 'svg-fill-loader'
         ],
       },
     ]
