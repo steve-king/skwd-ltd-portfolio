@@ -19,7 +19,7 @@
 
 .icon--hex--logo {
   @extend .icon;
-  background-image:url('../assets/svg/hex-logo.svg?nofill');
+  background-image:url('../assets/svg/hex-logo.svg');
 
   &--white {
     @extend .icon;
@@ -29,17 +29,17 @@
 
 .icon--hex--fill {
   @extend .icon;
-  background-image:url('../assets/svg/hex-fill.svg?nofill');
+  background-image:url('../assets/svg/hex-fill.svg');
 
   &--white {
     @extend .icon;
-    background-image:url('../assets/svg/hex-fill.svg?fill=white');
+    background-image:url('../assets/svg/hex-fill.svg?fill=#FFFFFF');
   }
 }
 
 .icon--chevron {
   @extend .icon;
-  background-image:url('../assets/svg/chevron-down.svg?nofill');
+  background-image:url('../assets/svg/chevron-down.svg');
   width:18px;
   height:9px;
 

@@ -11,17 +11,11 @@ module.exports = {
   entry: {
     main: path.join(srcDir, 'index.js')
   },
-  // output: {
-  //   path: publicDir,
-  //   publicPath: '/',
-  //   filename: 'assets/js/bundle.js'
-  // },
   output: {
     publicPath: '/',
     path: publicDir,
     filename: 'assets/js/[name].js',
   },
-
   module: {
     loaders: [
       {
@@ -42,45 +36,19 @@ module.exports = {
           use: [
             { loader: 'css-loader' },
             { loader: 'postcss-loader' },
-            // { loader: 'svg-fill-loader/encodeSharp' },
-            { loader: 'sass-loader', },
+            { loader: 'svg-fill-loader/encodeSharp' },
+            { loader: 'sass-loader' },
           ]
         })
       },
       {
-        // FONTS
-        test: [/\.woff/, /\.woff2/, /\.eot/, /\.ttf/],
-        loader: 'file-loader',
-        query: {
-          context: './src/',
-          name: 'assets/fonts/[name].[ext]'
-        }
-      },
-      {
-        test: [
-          /\.png$/, /\.jpg$/, /\.gif$/
-        ],
-        loader: 'file-loader',
-        // query: {
-        //   context: srcDir,
-        //   // name: 'assets/img/[name].[ext]'
-        // }
-      },
-      // {
-      //   test: /\.svg$/,
-      //   resourceQuery: /^\?raw/,
-      //   loaders: ['raw-loader']
-      // },
-      {
-        test: /\.svg$/,
-        resourceQuery: /^\?fill=/,
-        use: ['file-loader', 'svg-fill-loader']
+        test: [/\.png$/, /\.jpg$/, /\.gif$/],
+        use: ['file-loader']
       },
       {
         test: /\.svg$/,
-        resourceQuery: /^\?nofill/,
-        loaders: ['file-loader']
-      }
+        use: ['url-loader', 'svg-fill-loader'],
+      },
     ]
   },
   plugins: [
@@ -94,8 +62,8 @@ module.exports = {
     new CopyWebpackPlugin([
       { from: path.join(srcDir, 'assets/img'),
       to: path.join(publicDir, 'assets/img') },
-      { from: path.join(srcDir, 'assets/svg'),
-        to: path.join(publicDir, 'assets/svg') },
+      { from: path.join(srcDir, 'assets/fonts'),
+      to: path.join(publicDir, 'assets/fonts') }
     ]),
     new ImageminPlugin({
       //disable: process.env.NODE_ENV !== 'production', // Disable during development
