@@ -6,5 +6,7 @@
   &__main {
     @extend .absolute--fill;
     padding: $gutter;
+    display:flex;
+    // flex-direction:column;
   }
 }

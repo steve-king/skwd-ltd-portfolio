@@ -1,0 +1,56 @@
+.template--project {
+
+  &__main {
+    display:flex;
+
+    @media (max-width: $phablet - 1) {
+      padding-top:$gutter + $headerDepth;
+    }
+
+    @media (min-width: $phablet) {
+      padding-left:$gutter + $headerDepth;
+    }
+  }
+
+  &__nav {
+    flex-basis:100%;
+
+    @media (min-width: $phablet) {
+      flex-basis:50%;
+      // align-self: center;
+      display:flex;
+      align-items: center;
+
+      > .grid-container {
+        margin-top:-184px;
+      }
+    }
+
+    &__btn {
+      display:block;
+      // width:60%;
+      height:0;
+      // padding-top:60%;
+      position:relative;
+      margin-bottom:-36%;
+
+      .button__container {
+        width:60%;
+        padding-top:60%;
+      }
+
+      .button--hexFill {
+        @extend .absolute--fill;
+        display:flex;
+      }
+
+      &:nth-child(even) {
+        margin-left:auto;
+      }
+
+      &:hover {
+        z-index:10;
+      }
+    }
+  }
+}

@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import Parallax from 'vendor/parallax-js';
 import classNames from 'classnames';
 
+import template from 'modules/template';
+
 import { getRandomItem } from 'modules/helpers';
 import Button from 'modules/button';
 import Hexagons from 'modules/hexagons';
@@ -11,11 +13,10 @@ import Image from 'modules/image';
 class Home extends React.Component {
 
   state = {
-    imagesLoaded: false,
     imageUrl: null,
+    imageLoaded: false,
+    imageFinished: false,
   }
-
-  componentDidMount = () => this.props.getData()
 
   componentWillUpdate(newProps) {
     if (!this.props.loaded && newProps.loaded && newProps.data.images) {
@@ -27,59 +28,64 @@ class Home extends React.Component {
 
   onImageLoaded = () => {
     this.setState({ imageLoaded: true });
+    // this.doParallax();
+  }
+
+  onImageFinished = () => {
+    this.setState({ imageFinished: true });
     this.doParallax();
   }
 
   doParallax() {
     const scene = this.refs.scene;
     const parallax = new Parallax(scene);
-  } 
+  }
 
   render() {
     const { data, loaded } = this.props;
-    const { imageUrl, imageLoaded } = this.state;
+    const { imageUrl, imageLoaded, imageFinished } = this.state;
     return (
-      <div className={classNames('template template--home', !imageLoaded ? 'loading' : '')}>
+      <div className={classNames('template template--home', !imageLoaded ? 'loading' : '', 'transition-item')}>
         <div className="parallax-scene" ref="scene">
           <div className="parallax-scene__item layer" data-depth="0.5">
             <div className="parallax-scene__item__inner">
               {loaded && imageUrl &&
                 <Image background className="template--home__image"
-                       src={imageUrl} onFinish={this.onImageLoaded} />
+                       src={imageUrl} onLoad={this.onImageLoaded} onFinish={this.onImageFinished} />
               }
             </div>
           </div>
-          <Hexagons ready={imageLoaded} />
+          <Hexagons type="overlay" ready={imageLoaded} />
           <div className="parallax-scene__item layer layer--hex" data-depth="1.5">
             <div className="template--home__hex" />
           </div>
         </div>
         <main className="template__main">
           <div className="grid-container">
-            <div className="content">
-              <span className="icon--large icon-hex-logo"/>
-              <div>
-                <h1 className="title title--large">
-                  Stephen King
-                </h1>
-                <p className="subtitle">
-                  <span>Javascript App Developer | London</span>
-                </p>
+            {loaded && imageFinished &&
+              <div className="content">
+                <span className="icon--large icon-hex-logo"/>
+                <div>
+                  <h1 className="title title--large">{data.title}</h1>
+                  <p className="subtitle">
+                    <span>{data.body}</span>
+                  </p>
+                </div>
               </div>
-            </div>
+            }
+            <nav className="template--home__nav">
+              <Link to="/about" className="template--home__nav__btn--about">
+                <Button type="hexFill" colour="white" text="About me" icon="chevron" direction="down" />
+              </Link>
+              <Link to="/projects" className="template--home__nav__btn--projects">
+                <Button type="hexFill" colour="white" text="Projects" icon="chevron" direction="right" />
+              </Link>
+            </nav>
           </div>
-          <nav className="nav">
-            <Link to="/about" className="nav__btn nav__btn--about">
-              <Button type="hexFill" text="About me" icon="chevron" direction="down" />
-            </Link>
-            <Link to="/projects" className="nav__btn nav__btn--projects">
-              <Button type="hexFill" text="Projects" icon="chevron" direction="right" />
-            </Link>
-          </nav>
         </main>
       </div>
     );
   }
 };
 
-export default Home;
+export default template(Home);

@@ -1,12 +1,23 @@
 .gradient {
   @extend .absolute--fill;
-  transition:background 2s;
+  // transition:background 2s;
+  opacity:0;
+  animation: fadeIn forwards 1s;
 
   &--blueToPink {
-    background-image: linear-gradient(to bottom, #a7dce6, #ffe9fe);
+    background-image: linear-gradient(to right, #a7dce6, #ffe9fe);
   }
 
   &--yellowToBlue {
-    background-image: linear-gradient(to bottom, #c3f7ff, #edf7cd);
+    background-image: linear-gradient(to right, #edf7cd, #c3f7ff);
+  }
+
+  &:after {
+    content:"";
+    @extend .absolute--fill;
+    background-image:url('/_www/assets/img/outlets.png');
+    // z-index:1;
+    opacity:0.4;
+    // mix-blend-mode:overlay;
   }
 }

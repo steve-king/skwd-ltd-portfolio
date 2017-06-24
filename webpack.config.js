@@ -52,6 +52,16 @@ module.exports = {
         test: [/\.woff/, /\.woff2/, /\.eot/, /\.ttf/],
         loader: 'url-loader'
       },
+      {
+        test: [
+          /\.png$/, /\.jpg$/, /\.gif$/
+        ],
+        loader: 'file-loader',
+        // query: {
+        //   context: srcDir,
+        //   // name: 'assets/img/[name].[ext]'
+        // }
+      },
       // {
       //   test: /\.svg$/,
       //   resourceQuery: /^\?raw/,

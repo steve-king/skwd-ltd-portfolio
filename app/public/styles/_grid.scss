@@ -23,6 +23,7 @@ img {
 .grid-container {
   width:100%;
   margin:0 auto;
+  position:relative;
 
   @media (min-width:$tablet) {
     max-width:640px + ($gutter * 4);

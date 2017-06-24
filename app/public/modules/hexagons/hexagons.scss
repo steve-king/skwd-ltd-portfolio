@@ -10,14 +10,25 @@
 .hexagons .hex {
   visibility:hidden;
   position:absolute;
-  background-image:url('../assets/svg/hex-logo.svg?fill=black');
+  background-image:url('../assets/svg/hex-logo.svg?nofill');
   mix-blend-mode: overlay;
   background-size:contain;
   background-repeat:no-repeat;
   width:450px;
   height:450px;
-
   transition:all 0.6s ease-out;
+  // opacity:0.3;
+}
+
+// .hexagons--overlay .hex {
+//   background-image:url('../assets/svg/hex-logo.svg?nofill');
+//   mix-blend-mode: overlay;
+// }
+
+.hexagons--white .hex {
+  background-image:url('../assets/svg/hex-logo.svg?fill=white');
+  mix-blend-mode:initial;
+  opacity:0.2;
 }
 
 .hexagons .hex:after {

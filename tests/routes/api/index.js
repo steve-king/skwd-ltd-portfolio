@@ -11,6 +11,15 @@ describe('api', () => {
       done();
   });
 
+  it('404', (done) => {
+    chai.request(app.server)
+      .get('/api/doesnotexist')
+      .end((err, res) => {
+        expect(res.status).to.equal(404);
+        done();
+      });
+  });
+
   it('should respond with JSON', (done) => {
     chai.request(app.server)
       .get('/api/pages/home')

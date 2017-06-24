@@ -5,6 +5,12 @@ const content = require('app/content/parse');
 router.use('/_www', express.static(process.cwd() + '/_www'));
 router.use('/api', require('./api'));
 
+// router.use((req, res) => {
+//   res.status(404).json({
+//     error: 'Resource not found'
+//   })
+// });
+
 /**
  * Index route
  * -----------

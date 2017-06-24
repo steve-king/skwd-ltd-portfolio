@@ -20,15 +20,18 @@ class Image extends React.Component {
     helpers.preloadImage(src)
       .then(() => {
         this.setState({ loaded: true });
-        this.props.onload();
+        if (typeof this.props.onLoad === 'function'){
+          this.props.onLoad();
+        }
       });
   }
 
   checkLoaded = () => {
-    console.log('checkLoaded called in Image');
     if (this.state.loaded) {
       this.setState({ finished: true });
-      this.props.onFinish();
+      if (typeof this.props.onFinish === 'function'){
+        this.props.onFinish();
+      }
     }
   }
 
@@ -44,14 +47,14 @@ class Image extends React.Component {
 
     return (
       <div className={classNames(classes)}>
+        {!finished &&
+          <Spinner animate onLoop={this.checkLoaded} />
+        }
         {background &&
           <div className="image__bg" style={{ backgroundImage: `url(${src})`}} />
         }
         {!background &&
           <img className="image__img" src={src} alt={this.props.alt} />
-        }
-        {!finished &&
-          <Spinner animate onLoop={this.checkLoaded} />
         }
       </div>
     );

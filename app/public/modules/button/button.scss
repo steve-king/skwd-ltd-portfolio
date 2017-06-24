@@ -1,6 +1,12 @@
+.button__container {
+  position:relative;
+
+}
+
 .button--hexFill {
-  width: $tablet / 6;
-  height: $tablet / 6;
+  // width: $tablet / 6;
+  // height: $tablet / 6;
+  @extend .absolute--fill;
 
   display:flex;
   justify-content: space-between;
@@ -10,7 +16,6 @@
   position:relative;
 
   &__bg {
-    @extend .icon;
     @extend .icon--hex--fill;
     @extend .absolute--fill;
     // mix-blend-mode: overlay;
@@ -19,9 +24,22 @@
 
   &__text {
     @extend .buttonText;
-    color:#fff;
+    color:$white;
     position:relative;
     top:2px;
+    max-width:50%;
+  }
+
+  &.button--white {
+    .button--hexFill__bg {
+      @extend .icon--hex--fill--white;
+      @extend .absolute--fill;
+      opacity:0.5;
+    }
+
+    .button--hexFill__text {
+      color:$black;
+    }
   }
 
   &__icon {
@@ -40,6 +58,12 @@
       right: $gutter / 1.5;
       transform:translate(0, -50%);
     }
+
+    &--left {
+      top: 50%;
+      left: $gutter / 1.5;
+      transform:translate(0, -50%);
+    }
   }
 
   &:hover,
@@ -51,6 +75,7 @@
     .button--hexFill__bg {
       @extend .absolute--fill;
       @extend .icon--hex--fill--white;
+      opacity:0.8;
     }
 
     .button--hexFill__text {

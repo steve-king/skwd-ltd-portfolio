@@ -21,16 +21,23 @@
     transform:translate3d(0, 2px, 0);
   }
 
-  .nav {
+  &__nav {
     // mix-blend-mode:overlay;
     // position:absolute;
     // top:0;
     // left:0;
+
+    .button__container {
+      width:170px;
+      height:200px;
+    }
   }
 
-  .nav__btn {
+  &__nav__btn {
     position:absolute;
     transition:all 0.6s ease-out;
+
+
 
     &--projects {
       position:absolute;

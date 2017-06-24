@@ -39,11 +39,11 @@
   }
 
   .content {
-    transition:0.6s all ease-out;
+    transition:.6s .6s all $easeOutQuad;
     opacity:1;
     transform: translate3d(0, 0, 0);
 
-    .icon-logo {
+    .icon--hex--logo {
       margin-right: 5px;
       margin-top:8px;
     }
@@ -65,33 +65,49 @@
     }
   }
 
-  &.loading .content {
-    opacity:0;
-    transform:translate3d(0, 2px, 0);
-  }
+  // &.loading .content {
+  //   opacity:0;
+  //   transform:translate3d(0, 20px, 0);
+  // }
 
-  .nav {
+  &__nav {
     // mix-blend-mode:overlay;
     // position:absolute;
     // top:0;
     // left:0;
+    // @extend .absolute--fill;
+
+    .button__container {
+      width:170px;
+      height:200px;
+    }
   }
 
-  .nav__btn {
-    position:absolute;
-    transition:all 0.6s ease-out;
+  &__nav__btn {
+
+    .button__container {
+      width:170px;
+      height:200px;
+    }
+
+    &--about,
+    &--projects {
+      position:absolute;
+      transition:all 2s .6s $easeOutExpo;
+    }
 
     &--about {
       bottom:$gutter / 2;
       left:50%;
-      transform:translate(-50%, 0);
+      transform:translate(-50%, 0) scale(1);
     }
 
     &--projects {
       position:absolute;
       right:0;
       top:50%;
-      transform:translate(0, -50%);
+      transform:translate(0, -50%) scale(1);
+      opacity:1;
 
       @media (max-width: $tablet) and (orientation: portrait) {
         top:auto;
@@ -100,8 +116,16 @@
     }
   }
 
-  &.loading .nav__btn {
-    &--about { transform:translate(-50%, 250px); }
-    &--projects { transform:translate(250px, -50%); }
+  &.loading &__nav__btn {
+    &--about {
+      // transform:translate(-50%, 250px);
+      transform: translate(-50%, 0) scale(0.9);
+      opacity:0;
+    }
+    &--projects {
+      // transform:translate(250px, -50%);
+      transform:translate(0, -50%) scale(0.9);
+      opacity:0;
+    }
   }
 }

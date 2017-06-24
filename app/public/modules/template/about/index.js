@@ -2,16 +2,19 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 
+import template from 'modules/template';
+
+import Gradient from 'modules/gradient';
 import Button from 'modules/button';
 import Hexagons from 'modules/hexagons';
 import Header from 'modules/header';
 
 class About extends React.Component {
-  componentDidMount = () => this.props.getData()
   render() {
     const { data, loaded } = this.props;
     return (
       <div className={classNames('template template--about', !loaded ? 'loading' : '')}>
+        {loaded && <Gradient name="blueToPink" /> }
         <Hexagons ready={loaded} />
         <Header className="top">
           <Link to="/" className="header__link--fill">
@@ -28,16 +31,17 @@ class About extends React.Component {
                 </div>
               </div>
             }
+            <nav className="template--about__nav">
+              <Link to="/projects" className="template--about__nav__btn--projects">
+                <Button type="hexFill" colour="white" text="Projects" icon="chevron" direction="right" />
+              </Link>
+            </nav>
           </div>
-          <nav className="nav">
-            <Link to="/projects" className="nav__btn nav__btn--projects">
-              <Button type="hexFill" text="Projects" icon="chevron" direction="right" />
-            </Link>
-          </nav>
+
         </main>
       </div>
     );
   }
 };
 
-export default About;
+export default template(About);

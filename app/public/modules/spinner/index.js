@@ -14,7 +14,7 @@ class Spinner extends React.Component {
   }
 
   render() {
-    const animateClass = this.props.animate ? 'spinner--animate' : '';
+    const animateClass = this.props.animate ? 'spinner--pulse' : '';
     return (
       <div className={classNames('spinner', animateClass)} ref="spinner" />
     );

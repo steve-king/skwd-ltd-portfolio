@@ -3,29 +3,40 @@
   @extend .absolute--center;
   width:48px;
   height:48px;
-  animation: fadeIn 0.6s forwards;
 
-  &--animate {
-    animation: spinnerLoop 1.8s infinite linear;
+  &--pulse {
+    animation: spinnerPulse 1.2s infinite linear;
+    transform: transformZ(0);
+    transform-origin: center;
+  }
+
+  &--static {
+    animation: spinnerPulse 1.2s infinite linear;
     transform: transformZ(0);
     transform-origin: center;
   }
 }
 
-body > .spinner {
-  width:40px;
-  height:40px;
+// body >
+.spinner {
+  width:36px;
+  height:36px;
 }
 
-@keyframes fadeIn {
-  0% { opacity:0 }
-  100% { opacity: 1 }
-}
+@keyframes spinnerPulse {
+  // 0% { opacity:0 }
+  // 25% { opacity:1 }
+  // 50% { opacity:1 }
+  // 75% { opacity:0 }
+  // 100% { opacity:0 }
 
-@keyframes spinnerLoop {
   0% { opacity:0 }
-  7% { opacity:1 }
-  45% { opacity:1 }
-  70% { opacity:0 }
+  50% { opacity:1 }
   100% { opacity:0 }
+}
+
+@keyframes spinnerPulseLight {
+  0% { opacity:0.2 }
+  50% { opacity:1 }
+  100% { opacity:0.2 }
 }

@@ -42,6 +42,7 @@ $animationInitial: $headerDepthDesktop - $collapsedDepth;
 
       &:before {
         transform: translate3d(0, -($animationInitial), 0);
+        opacity:0.8;
       }
 
       &:hover {
@@ -62,16 +63,22 @@ $animationInitial: $headerDepthDesktop - $collapsedDepth;
       align-items: center;
     }
 
+    .button--hexLogo {
+      top:3px;
+    }
+
     @media (min-width:$phablet) {
       width:$headerDepthDesktop;
       height:100vh;
 
       &:before {
-        transform: translate3d( -($animationInitial), 0 0);
+        transform: translate3d(-($animationInitial), 0, 0);
+        // transform: translate3d( -($animationInitial), 0 0);
       }
 
       &:hover:before {
-        width: $headerDepthDesktop;
+        // width: $headerDepthDesktop;
+        transform: translate3d(0, 0, 0);
       }
 
     }
@@ -90,5 +97,9 @@ $animationInitial: $headerDepthDesktop - $collapsedDepth;
     display:flex;
     align-items: flex-start;
     justify-content:center;
+
+    &:hover {
+      
+    }
   }
 }
