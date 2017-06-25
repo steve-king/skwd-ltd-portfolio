@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 import Parallax from 'vendor/parallax-js';
 import classNames from 'classnames';
 
-import withData from 'modules/template';
-
 import { getRandomItem } from 'modules/helpers';
 import Button from 'modules/button';
 import Hexagons from 'modules/hexagons';
@@ -19,7 +17,7 @@ class Home extends React.Component {
   }
 
   componentWillUpdate(newProps) {
-    if (!this.props.loaded && newProps.loaded && newProps.content.images) {
+    if (!this.props.loaded && newProps.content) {
       this.setState({
         imageUrl: getRandomItem(newProps.content.images).url
       });
@@ -61,7 +59,7 @@ class Home extends React.Component {
           </div>
         </div>
         <main className="template--home__main">
-          {loaded &&
+          {loaded && content &&
             <div className="template--home__content">
               <span className="icon--large icon-hex-logo"/>
               <div>
@@ -86,4 +84,4 @@ class Home extends React.Component {
   }
 };
 
-export default withData(Home);
+export default Home;

@@ -67,7 +67,7 @@ router.get('/:slug',
       catch (err) { return res.status(401).send({ error: err.message }); }
     }
 
-    res.json({ project });
+    res.json(project);
   }
 );
 

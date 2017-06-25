@@ -1,17 +1,21 @@
 .template--projects {
 
-    @media (max-width: $phablet - 1) {
-      flex-direction: column;
+  @media (max-width: $phablet - 1) {
+      // flex-direction: column;
     }
 
   &__main {
-    flex:1;
-    overflow-y:scroll;
-    padding:$gutter;
+
+    display:flex;
+    // flex:1;
+    // overflow-y:scroll;
+    // padding:$gutter;
 
     @media (min-width: $phablet) {
       display: flex;
       align-items: stretch;
+      // padding:0;
+      // padding-left:$gutter;
 
        > .grid-container {
         display:flex;
@@ -24,10 +28,21 @@
 
   &__nav {
     @include gridCol(12);
+    padding:$gutter;
+    align-self:stretch;
+    flex:1 0 100%;
+
+    &.hiddenMobile {
+      @media (max-width:$phablet - 1) {
+        display:none;
+      }
+    }
+    
     @media (min-width: $phablet) {
       @include gridCol(6);
       padding-bottom:115px;
       align-self: center;
+      flex-basis:250px;
     }
 
     text-align:center;

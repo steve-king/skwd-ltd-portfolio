@@ -3,77 +3,72 @@ $headerDepthDesktop: 74px;
 $collapsedDepth: 6px;
 $animationInitial: $headerDepthDesktop - $collapsedDepth;
 
+@mixin headerFill {
+  content:"";
+  z-index:0;
+  background: $white;
+  opacity: 0.5;
+
+  position:absolute;
+  width: 100%;
+  height:100%;
+
+  -webkit-backface-visibility:hidden;
+  transform: translate3d(0, 0, 0);
+  transition:all .4s ease-out; 
+}
+
 .header {
   position: relative;
   width:100%;
   z-index:1;
   height: $headerDepth;
 
-  &:before {
-    content:"";
+  @media (max-width: $phablet - 1){
+    &:before {
+      @include headerFill;
+    }
+  }
+
+  &__title {
     @extend .absolute--fill;
-    z-index:0;
-    background: $white;
-    opacity: 0.5;
+    text-align:center;
+    white-space: nowrap;
+    // overflow-x:scroll;
+    margin:0;
+    display:flex;
+    align-items: center;
+    justify-content: center;
 
-    -webkit-backface-visibility:hidden;
-    transform: translate3d(0, 0, 0);
-    transition:all .4s ease-out; 
-  }
-
-  &:hover {
-    &:before {
-      transform: translate3d(0, 0, 0);
+    @media (min-width:$phablet) {
+      // position:absolute;
+      // left:$headerDepth + $gutter;
     }
   }
 
-  @media (min-width:$phablet) {
+  &__btn {
+    position:relative;
+    display:inline-block;
+    z-index:1;
+    width:$headerDepth;
+    height:$headerDepth;
+    display:flex;
+    align-items: center;
+    justify-content: center;
 
-    &:before {
-      transform: translate3d(0, -($animationInitial), 0);
-    }
-
-    &:hover {
-      &:before {
-        transform: translate3d(0, 0, 0);
-      }
-    }
-
-    &--left {
-      width: $headerDepth;
+    // Header with no title
+    &:last-child {
+      width:100%;
       height:100%;
-
-      &:before {
-        transform: translate3d(-($animationInitial), 0, 0);
-      }
-
-      &:hover:before {
-        transform: translate3d(0, 0, 0);
-      }
-
-      .header__title {
-        height: $headerDepth;
-        position:absolute;
-        left: $headerDepth + $gutter + $gutter;
-      }
-
-      .header__link {
-        height:100%;
-      }
     }
-  }
-}
-  @media (min-width:$phablet) {
-    &--top {
-      height: $headerDepthDesktop;
 
-      .button--hexLogo {
-        top:20px;
+    @media (min-width:$phablet) {
+      &:before {
+        @include headerFill;
       }
 
       &:before {
         transform: translate3d(0, -($animationInitial), 0);
-        opacity:0.8;
       }
 
       &:hover {
@@ -84,42 +79,43 @@ $animationInitial: $headerDepthDesktop - $collapsedDepth;
     }
   }
 
-.header__title {
-  @extend .absolute--fill;
-  text-align:center;
-  white-space: nowrap;
-  // overflow-x:scroll;
-  margin:0;
-  display:flex;
-  align-items: center;
-  justify-content: center;
+  @media (min-width: $phablet) {
+    &--left {
+      width: $headerDepth;
+      height:100%;
 
-  @media (min-width:$phablet) {
-    // position:absolute;
-    // left:$headerDepth + $gutter;
+      .header__btn {
+        height:100%;
+        &:before {
+          transform: translate3d(-($animationInitial), 0, 0);
+        }
+
+        &:hover:before {
+          transform: translate3d(0, 0, 0);
+        }
+      }
+
+      .header__title {
+        height: $headerDepth;
+        position:absolute;
+        left: $headerDepth + $gutter + $gutter;
+      }
+    }
+  }
+
+  &--hideButtonDesktop {
+    @media (min-width: $phablet) {
+      .header__btn {
+        display:none;
+      }
+    }
+  }
+
+  &--hideTitleDesktop {
+    @media (min-width: $phablet) {
+      .header__title {
+        display:none;
+      }
+    }
   }
 }
-
-.header__link {
-  position:relative;
-  display:inline-block;
-  z-index:1;
-  width:$headerDepth;
-  height:$headerDepth;
-  display:flex;
-  align-items: center;
-  justify-content: center;
-
-  // Header with no title
-  &:last-child {
-    margin:0 auto;
-  }
-}
-
-// .header:after {
-//   content:"";
-//   display:inline-block;
-//   width:$headerDepth;
-//   height:$headerDepth;
-//   flex:0 0 $headerDepth;
-// }

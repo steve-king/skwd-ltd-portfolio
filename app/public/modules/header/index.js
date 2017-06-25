@@ -2,13 +2,19 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 
-const Header = ({ href, button, title, position }) => {
+const Header = ({ href, button, children, titleLoaded, position, hideButtonDesktop, hideTitleDesktop }) => {
+  const classes = [
+    'header', 
+    'header--' + position,
+    hideButtonDesktop ? 'header--hideButtonDesktop' : '',
+    hideTitleDesktop ? 'header--hideTitleDesktop' : '',
+  ];
   return (
-    <header className={classNames('header', 'header--' + position)}>
-      <Link to={href} className="header__link">
+    <header className={classNames(classes)}>
+      <Link to={href} className="header__btn">
         {button}
       </Link>
-      {title && <h1 className="header__title">Projects</h1>}
+      {children && <h1 className="header__title">{children}</h1>}
     </header>
   );
 }

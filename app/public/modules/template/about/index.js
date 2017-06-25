@@ -2,8 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 
-import withData from 'modules/template';
-
 import Gradient from 'modules/gradient';
 import Button from 'modules/button';
 import Hexagons from 'modules/hexagons';
@@ -48,4 +46,4 @@ class About extends React.Component {
   }
 };
 
-export default withData(About);
+export default About;

@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
 
-import dataReducer from 'modules/template/reducer';
+import resource from 'modules/api-resource/reducer';
 import viewport from 'modules/viewport/reducer';
 
 const reducers = combineReducers({
-  pageData: dataReducer('page'),
-  projectData: dataReducer('project'),
+  page: resource('page'),
+  project: resource('project'),
   viewport,
 });
 

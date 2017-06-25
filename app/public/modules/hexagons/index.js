@@ -2,6 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 
 class FlyingHexagons extends React.Component {
+
   render() {
     const { ready, overlay, type } = this.props;
     const classes = [

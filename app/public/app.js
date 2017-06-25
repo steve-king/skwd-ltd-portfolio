@@ -3,9 +3,8 @@ import { Route, withRouter } from 'react-router';
 import { Switch } from 'react-router-dom';
 
 import Viewport from 'modules/viewport';
-import * as actions from 'modules/template/actions';
-import Template from 'modules/template';
 
+import Resource from 'modules/api-resource';
 import Home from 'modules/template/home';
 import About from 'modules/template/about';
 import Projects from 'modules/template/projects';
@@ -15,19 +14,17 @@ const App = (props) => {
   return (
     <Viewport>
       <Switch>
-        <Route exact path="/" render={() =>
-          <Home dataType="page" apiUrl="/api/pages/home" />
+        <Route exact path="/" component={props =>
+          <Resource type="page" url="/api/pages/home" {...props}>
+            <Home />
+          </Resource>
         } />
-        <Route exact path="/about" render={() =>
-          <About dataType="page" apiUrl="/api/pages/about" />
+        <Route exact path="/about" component={props =>
+          <Resource type="page" url="/api/pages/about" {...props}>
+            <About />
+          </Resource>
         } />
-        <Route path="/projects" render={() =>
-          <Projects dataType="page" apiUrl="/api/projects">
-            <Route path="projects/:slug" render={props =>  
-              <Project dataType="project" apiUrl={'/api/projects/' + props.match.params.slug} />
-            } />
-          </Projects>
-        } />
+        <Route path="/projects" component={Projects} />
       </Switch>
     </Viewport>
   );
