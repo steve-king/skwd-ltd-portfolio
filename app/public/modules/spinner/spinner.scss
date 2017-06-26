@@ -1,6 +1,7 @@
 .spinner {
-  @extend .icon--hex--logo;
-  @extend .absolute--center;
+  @extend .icon;
+  @extend .icon--hexLogo;
+  @include absoluteCenter;
   width:48px;
   height:48px;
 
