@@ -1,31 +1,31 @@
-export const loading = (type, url) => ({
-  type: type + '_RESOURCE_LOADING',
+export const loading = (resourceType, url) => ({
+  type: resourceType + '_RESOURCE_LOADING',
   url,
 });
 
-export const loaded = (type, content) => ({
-  type: type + '_RESOURCE_LOADED',
+export const loaded = (resourceType, content) => ({
+  type: resourceType + '_RESOURCE_LOADED',
   content,
 });
 
-export const error = (type, error) => ({
-  type: type + '_RESOURCE_ERROR',
+export const error = (resourceType, error) => ({
+  type: resourceType + '_RESOURCE_ERROR',
   error
 });
 
-export const resetData = (type) => ({
-  type: type + '_RESOURCE_RESET'
+export const resetData = (resourceType) => ({
+  type: resourceType + '_RESOURCE_RESET'
 });
 
 
-export const fetchData = (type, url) => {
+export const fetchData = (resourceType, url) => {
   return function(dispatch) {
-    dispatch(loading(type, url));
+    dispatch(loading(resourceType, url));
     return fetch(url)
       .then(
         response => response.json(),
-        err => dispatch(error(type, err))
+        err => dispatch(error(resourceType, err))
       )
-      .then(content => dispatch(loaded(type, content)));
+      .then(content => dispatch(loaded(resourceType, content)));
   };
 };

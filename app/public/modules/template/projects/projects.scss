@@ -1,93 +1,34 @@
-.template--projects {
+.project {
 
-  @media (max-width: $phablet - 1) {
-      // flex-direction: column;
+  &__list {
+    justify-content: flex-start;
+
+    &__nav {
+      max-width:320px;
+      width:100%;
+
+      @media (min-width:$phablet){
+        flex: 0 1 320px;
+        width:auto;
+        margin:0;
+      }
+
+      align-self: center;
+
+      &.hiddenMobile {
+        @media (max-width:$phablet - 1) {
+          display:none;
+        }
+      }
     }
+  }
 
-  &__main {
+  &__single {
 
-    display:flex;
-    // flex:1;
-    // overflow-y:scroll;
-    // padding:$gutter;
-
-    @media (min-width: $phablet) {
-      display: flex;
-      align-items: stretch;
-      // padding:0;
-      // padding-left:$gutter;
-
-       > .grid-container {
-        display:flex;
-        align-items: flex-start;
-      } 
-    }
-
-   
   }
 
   &__nav {
-    @include gridCol(12);
-    padding:$gutter;
-    align-self:stretch;
-    flex:1 0 100%;
 
-    &.hiddenMobile {
-      @media (max-width:$phablet - 1) {
-        display:none;
-      }
-    }
     
-    @media (min-width: $phablet) {
-      @include gridCol(6);
-      padding-bottom:115px;
-      align-self: center;
-      flex-basis:250px;
-    }
-
-    text-align:center;
-    padding-bottom:115px;
-
-    display:flex;
-    flex-direction:column;
-    justify-content: space-around;
-    align-items: flex-start;
-
-    &__btn {
-      @extend .button__container--xl;
-      display:inline-block;
-      position:relative;
-      // margin:0 auto;
-      
-      flex-shrink: 0;
-
-      margin:20px;
-      margin-bottom:-150px;
-
-      @media (min-width:$phablet) {
-        margin:0;
-        margin-bottom:-115px;
-      }
-
-      &:nth-child(odd) {
-        // transform:translate(-32%, 0);
-        // float:left;
-        text-align:left;
-      }
-
-      &:nth-child(even) {
-        // transform:translate(32%, 0);
-        // float:right;
-        text-align:right;
-        .button--hexFill__text {
-          margin-left:auto;
-        }
-        align-self: flex-end;
-      }
-
-      &:hover {
-        z-index:10;
-      }
-    }
   }
 }

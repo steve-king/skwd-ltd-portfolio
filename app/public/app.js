@@ -8,7 +8,6 @@ import Resource from 'modules/api-resource';
 import Home from 'modules/template/home';
 import About from 'modules/template/about';
 import Projects from 'modules/template/projects';
-import Project from 'modules/template/project';
 
 const App = (props) => {
   return (

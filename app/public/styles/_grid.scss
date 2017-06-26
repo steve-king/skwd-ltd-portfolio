@@ -11,10 +11,6 @@ html {
   box-sizing: inherit;
 }
 
-body {
-  overflow-y: scroll;
-}
-
 img {
   max-width:100%;
   height:auto;
@@ -38,40 +34,13 @@ img {
   }
 }
 
-.grid-container {
-  // width:100%;
-  // margin:0 auto;
-  // position:relative;
-
-  // @media (min-width:$tablet) {
-  //   max-width:640px + ($gutter * 4);
-  // }
-
-  // @media (min-width:$desktop) {
-  //   max-width:$tablet + ($gutter * 4);
-  // }
-
-  // @media (min-width:$desktopXL) {
-  //   max-width:$desktop + ($gutter * 2);
-  // }
-  @include gridContainer;
-}
-
-.grid-container {
-  @extend .grid-container;
-}
-
-
-
 @function colWidth($numCols) {
   @return (100 / 12) * $numCols;
 }
 
 @mixin gridCol($numCols) {
   width: colWidth($numCols) * 1%;
-  // padding: $gutter;
 }
-
 
 .absolute--center {
   display:block;
@@ -90,15 +59,77 @@ img {
   height:100%;
 }
 
+@mixin absoluteFill {
+  display:block;
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+}
+
+@mixin absoluteCenter {
+  display:block;
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+}
+
 #app {
   background:#fff;
   position:relative;
   @extend .absolute--fill;
 }
 
-// .absolute--fill--viewport {
-//   position:relative;
-//   width:100vw;
-//   height:100vh;
-//   overflow:hidden;
-// }
+@mixin grid {
+  display:flex;
+  align-items: stretch;
+  flex:1;
+}
+
+.grid {
+  @include grid;
+
+  &--fill {
+    @extend .absolute--fill;
+    @include grid;
+    overflow:hidden;
+  }
+  
+  &--container {
+    @include gridContainer;
+  }
+
+  &--padding {
+    padding:$gutter;
+  }
+
+  &--row {
+    @include grid;
+    flex-direction:row;
+
+    &--desktop {
+      @media (min-width:$phablet){
+        @include grid;
+        flex-direction:row!important;
+      }
+    }
+  }
+
+  &--col {
+    @include grid;
+    flex-direction:column;
+
+    @media(max-width: $phablet - 1){
+      flex:1 0 100%;
+    }
+    
+    &--desktop {
+      @media (min-width:$phablet){
+        @include grid;
+        flex-direction:column!important;
+      }
+    }
+  }
+}

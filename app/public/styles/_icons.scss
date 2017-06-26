@@ -1,61 +1,85 @@
 .icon {
   display: inline-block;
   vertical-align: middle;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position:center center;
-  width: 24px;
-  height: 24px;
   position:relative;
-  background-color:transparent;
   border:none;
   outline:none;
 
-  &--large {
-    width:62px;
-    height:62px;
+  width: 24px;
+  height: 24px;
+  
+  &:before {
+    content:"";
+    @include absoluteFill;
+    background-color:transparent;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position:center center;
   }
 }
 
-.icon--hex--logo {
-  @extend .icon;
-  background-image:url('../assets/svg/hex-logo.svg');
+.icon--hexLogo {
 
+  &:before {
+    background-image:url('../assets/svg/hex-logo.svg');
+  }
+  
   &--white {
-    @extend .icon;
-    background-image:url('../assets/svg/hex-logo.svg?fill=#FFFFFF');
+    &:before {
+      background-image:url('../assets/svg/hex-logo.svg?fill=#FFFFFF');
+    }
   }
 }
 
-.icon--hex--fill {
-  @extend .icon;
-  background-image:url('../assets/svg/hex-fill.svg');
+.icon--hexFill {
+  &:before {
+    background-image:url('../assets/svg/hex-fill.svg');
+  }
 
   &--white {
-    @extend .icon;
-    background-image:url('../assets/svg/hex-fill.svg?fill=#FFFFFF');
+    &:before {
+      background-image:url('../assets/svg/hex-fill.svg?fill=#FFFFFF');
+    }
   }
 }
 
 .icon--chevron {
-  @extend .icon;
-  background-image:url('../assets/svg/chevron-down.svg');
   width:18px;
-  height:9px;
+  height:8px;
+  
+  &:before {
+    background-image:url('../assets/svg/chevron-down.svg');
+  }
 
   &--white {
-    background-image:url("../assets/svg/chevron-down.svg?fill=#FFFFFF");
+    @extend .icon--chevron;
+    &:before {
+      background-image:url("../assets/svg/chevron-down.svg?fill=#FFFFFF");
+    }
+  }
+
+  &--down {
+    @extend .icon--chevron;
   }
 
   &--up {
-    transform: rotate(180deg);
+    @extend .icon--chevron;
+    &:before {
+      transform: rotate(180deg);
+    }
   }
 
   &--right {
-    transform: rotate(270deg);
+    @extend .icon--chevron;
+    &:before {
+      transform: rotate(270deg);
+    }
   }
 
   &--left {
-    transform: rotate(90deg);
+    @extend .icon--chevron;
+    &:before {
+      transform: rotate(90deg);
+    }
   }
 }

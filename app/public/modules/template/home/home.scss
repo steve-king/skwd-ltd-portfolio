@@ -1,9 +1,8 @@
-.template--home {
-  padding:0;
+.home {
 
-  .template--home__hex {
+  &__hex {
     @extend .icon;
-    @extend .icon--hex--fill--white;
+    @extend .icon--hexFill--white;
     position:absolute;
     top: -1110px;
     left: -1140px;
@@ -37,12 +36,10 @@
     @extend .absolute--fill;
   }
 
-  &__main {
-    @extend .grid-container; 
-  }
-
   &__content {
     @include gridCol(12);
+    padding:$gutter;
+
     transition:.6s .6s all $easeOutQuad;
     opacity:1;
     transform: translate3d(0, 0, 0);

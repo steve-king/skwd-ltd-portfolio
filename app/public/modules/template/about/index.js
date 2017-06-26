@@ -3,44 +3,43 @@ import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 
 import Gradient from 'modules/gradient';
-import Button from 'modules/button';
+// import Button from 'modules/button';
+import { IconButton, HexButton } from 'modules/button-hex';
 import Hexagons from 'modules/hexagons';
 import Header from 'modules/header';
+
+const onClick = () => {
+  console.log('hey');
+}
 
 class About extends React.Component {
   render() {
     const { content, loaded } = this.props;
     return (
-      <div className={classNames('template template--about', !loaded ? 'loading' : '')}>
+      <div className={classNames('grid--fill about', !loaded ? 'loading' : '')}>
         {loaded && <Gradient name="blueToPink" /> }
         <Hexagons ready={loaded} />
-        <Header 
-          position="top" 
-          href="/"
-          button={<Button type="hexLogo" icon="chevron" direction="up" />}
-        />
-          {/*<Link to="/" className="header__link--fill">
-            <Button type="hexLogo" icon="chevron" direction="up" />
-          </Link>
-        </Header>*/}
-        <main className="template__main template--about__main">
-          {/*<div className="grid-container">*/}
-            {loaded &&
-              <div className="template--about__content">
-                <div>
-                  <h1 className="title">{content.title}</h1>
-                  {content.body}
+        <div className="grid--col">
+          <Header 
+            position="top" 
+            button={<IconButton action="/" text="back" icon="hexLogo" direction="up" />}
+          />
+          <main className="about__main grid--row--desktop grid--container grid--padding">
+              {loaded &&
+                <div className="about__content">
+                  <div>
+                    <h1 className="title">{content.title}</h1>
+                    {content.body}
+                  </div>
                 </div>
-              </div>
-            }
-            <nav className="template--about__nav">
-              <Link to="/projects" className="template--about__nav__btn--projects">
-                <Button type="hexFill" colour="white" size="xl" text="Projects" icon="chevron" direction="right" />
-              </Link>
-            </nav>
-          {/*</div>*/}
-
-        </main>
+              }
+              <nav className="about__nav">
+                <HexButton className="about__btn" action="/projects" large text="Projects" />
+                {/*<HexButton className="about__btn" action="/" large text="Projects" direction="down" />*/}
+                {/*<HexButton className="about__btn" action={onClick} text="Projects" icon="icon--hex--logo" />*/}
+              </nav>
+          </main>
+        </div>
       </div>
     );
   }

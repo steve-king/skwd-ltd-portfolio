@@ -4,7 +4,7 @@ import Parallax from 'vendor/parallax-js';
 import classNames from 'classnames';
 
 import { getRandomItem } from 'modules/helpers';
-import Button from 'modules/button';
+import { IconButton, HexButton } from 'modules/button-hex';
 import Hexagons from 'modules/hexagons';
 import Image from 'modules/image';
 
@@ -43,24 +43,24 @@ class Home extends React.Component {
     const { content, loaded } = this.props;
     const { imageUrl, imageLoaded, imageFinished } = this.state;
     return (
-      <div className={classNames('template template--home', !imageLoaded ? 'loading' : '', 'transition-item')}>
+      <div className={classNames('grid--fill', 'home', !imageLoaded ? 'loading' : '')}>
         <div className="parallax-scene" ref="scene">
           <div className="parallax-scene__item layer" data-depth="0.5">
             <div className="parallax-scene__item__inner">
               {loaded && imageUrl &&
-                <Image background className="template--home__image"
+                <Image background className="home__image"
                        src={imageUrl} onLoad={this.onImageLoaded} onFinish={this.onImageFinished} />
               }
             </div>
           </div>
           <Hexagons type="overlay" ready={imageLoaded} />
           <div className="parallax-scene__item layer layer--hex" data-depth="1.5">
-            <div className="template--home__hex" />
+            <div className="home__hex" />
           </div>
         </div>
-        <main className="template--home__main">
+        <main className="grid--col grid--container home__main">
           {loaded && content &&
-            <div className="template--home__content">
+            <div className="home__content">
               <span className="icon--large icon-hex-logo"/>
               <div>
                 <h1 className="title title--large">{content.title}</h1>
@@ -70,13 +70,19 @@ class Home extends React.Component {
               </div>
             </div>
           }
-          <nav className="template--home__nav">
-            <Link to="/about" className="template--home__nav__btn--about">
-              <Button type="hexFill" colour="white" size="xl" text="About me" icon="chevron" direction="down" />
-            </Link>
-            <Link to="/projects" className="template--home__nav__btn--projects">
-              <Button type="hexFill" colour="white" size="xl" text="Projects" icon="chevron" direction="right" />
-            </Link>
+          <nav className="home__nav">
+            <HexButton action="/about" 
+              className="home__nav__btn--about" 
+              large 
+              text="About me" 
+              direction="down" 
+            />
+            <HexButton action="/projects" 
+              className="home__nav__btn--projects" 
+              large 
+              text="Projects" 
+              direction="right" 
+            />
           </nav>
         </main>
       </div>

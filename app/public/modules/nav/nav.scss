@@ -1,0 +1,30 @@
+.nav {
+  display:flex;
+  flex-direction:column;
+  padding-bottom:120px + $gutter;
+
+  &__btn {
+    margin-bottom:-120px;
+    z-index:2;
+
+    &:nth-child(odd) {
+      align-self: flex-start;
+      text-align:left;
+    }
+
+    &:nth-child(even) {
+      align-self: flex-end;
+      text-align:right;
+
+      .button--hexFill__text {
+        margin-left:auto;
+      }
+    }
+    &.active {
+      z-index:1!important;
+    }
+    &:hover {
+      z-index:3;
+    }
+  }
+}

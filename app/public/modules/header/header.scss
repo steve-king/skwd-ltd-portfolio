@@ -1,7 +1,6 @@
-$headerDepth: 74px;
-$headerDepthDesktop: 74px;
-$collapsedDepth: 6px;
-$animationInitial: $headerDepthDesktop - $collapsedDepth;
+$headerDepth: 68px;
+$collapsedDepth: 14px;
+$animationInitial: $headerDepth - $collapsedDepth;
 
 @mixin headerFill {
   content:"";
@@ -10,7 +9,7 @@ $animationInitial: $headerDepthDesktop - $collapsedDepth;
   opacity: 0.5;
 
   position:absolute;
-  width: 100%;
+  width:100%;
   height:100%;
 
   -webkit-backface-visibility:hidden;
@@ -23,6 +22,8 @@ $animationInitial: $headerDepthDesktop - $collapsedDepth;
   width:100%;
   z-index:1;
   height: $headerDepth;
+  display:flex;
+  align-items:center;
 
   @media (max-width: $phablet - 1){
     &:before {
@@ -31,22 +32,24 @@ $animationInitial: $headerDepthDesktop - $collapsedDepth;
   }
 
   &__title {
-    @extend .absolute--fill;
+    // @extend .absolute--fill;
     text-align:center;
-    white-space: nowrap;
+    // white-space: nowrap;
     // overflow-x:scroll;
     margin:0;
-    display:flex;
-    align-items: center;
-    justify-content: center;
+    flex:1;
+    // display:flex;
+    // align-items: center;
+    // justify-content: center;
 
     @media (min-width:$phablet) {
-      // position:absolute;
-      // left:$headerDepth + $gutter;
+      text-align:left;
+      // justify-content: flex-start;
+      padding-left:$gutter;
     }
   }
 
-  &__btn {
+  .button {
     position:relative;
     display:inline-block;
     z-index:1;
@@ -55,6 +58,12 @@ $animationInitial: $headerDepthDesktop - $collapsedDepth;
     display:flex;
     align-items: center;
     justify-content: center;
+    align-self: flex-start;
+
+    .iconButton {
+      // flex:0 0;
+      @include absoluteCenter;
+    }
 
     // Header with no title
     &:last-child {
@@ -84,7 +93,7 @@ $animationInitial: $headerDepthDesktop - $collapsedDepth;
       width: $headerDepth;
       height:100%;
 
-      .header__btn {
+      .button {
         height:100%;
         &:before {
           transform: translate3d(-($animationInitial), 0, 0);
@@ -105,7 +114,7 @@ $animationInitial: $headerDepthDesktop - $collapsedDepth;
 
   &--hideButtonDesktop {
     @media (min-width: $phablet) {
-      .header__btn {
+      .button, .button:before, .button .iconButton {
         display:none;
       }
     }

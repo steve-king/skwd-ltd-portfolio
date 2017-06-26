@@ -10,7 +10,7 @@ class Resource extends React.Component {
 }
 
 export default connect(
-  (state, ownProps) => Object.assign({}, state[ownProps.type]),
+  (state, ownProps) => Object.assign({}, state[ownProps.type], ownProps),
   (dispatch, ownProps) => ({
     getData: (url) => dispatch(actions.fetchData(ownProps.type, url || ownProps.url)),
     resetData: () => dispatch(actions.resetData(ownProps.type)),

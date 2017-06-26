@@ -4,24 +4,25 @@
 // Base
 @import './colours';
 @import './animations';
-@import './icons';
 @import './grid';
+@import './icons';
 @import './fonts';
 @import './typography';
 
 // Modules
-@import '../modules/button/button';
+@import '../modules/button-hex/button-hex';
+// @import '../modules/button/button';
 @import '../modules/hexagons/hexagons';
 @import '../modules/image/image';
 @import '../modules/spinner/spinner';
 @import '../modules/gradient/gradient';
 @import '../modules/header/header';
+@import '../modules/nav/nav';
 
 // Pages
-@import '../modules/template/template';
+// @import '../modules/template/template';
 @import '../modules/template/home/home';
 @import '../modules/template/about/about';
 @import '../modules/template/projects/projects';
-@import '../modules/template/project/project';
 
 // Components
