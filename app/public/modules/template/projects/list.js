@@ -4,14 +4,14 @@ import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 
 import Header from 'modules/header';
-import { HexButton, IconButton } from 'modules/button-hex';
+import { HexButton, IconButton } from 'modules/button';
 
 class ProjectList extends React.Component {
   render() { 
     const { content, loaded, hiddenMobile, location } = this.props;
     const classes = [
-      'grid--col',
-      'grid--row--desktop',
+      'flex__item',
+      'flex--v',
       'project__list',
       hiddenMobile ? 'hiddenMobile' : '',
       !loaded ? 'loading' : ''
@@ -20,13 +20,15 @@ class ProjectList extends React.Component {
       <section className={classNames(classes)}>
         <Header 
           href="/"
-          button={<IconButton action="/" text="back" icon="hexLogo" direction="left" />}
+          button={<IconButton className="header__btn" action="/" text="back" icon="hexLogo" direction="left" />}
           position="left"
-          hideTitleDesktop>
+          hideTitleDesktop
+          hideButtonDesktop>
           <span>Projects</span>
         </Header>
+        <div className="flex__item flex--h grid--padding">
           {loaded && content.projects &&
-            <nav className="grid--col grid--padding nav project__list__nav">
+            <nav className="nav project__list__nav">
               {content.projects.map((project, i) => (
                 <HexButton key={i} className="nav__btn"
                   action={`/projects/${project.slug}`}
@@ -36,6 +38,7 @@ class ProjectList extends React.Component {
               ))}
             </nav>
           }
+        </div>
       </section>
     );
   }

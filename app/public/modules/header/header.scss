@@ -20,8 +20,8 @@ $animationInitial: $headerDepth - $collapsedDepth;
 .header {
   position: relative;
   width:100%;
-  z-index:1;
   height: $headerDepth;
+  // z-index:1;
   display:flex;
   align-items:center;
 
@@ -32,89 +32,70 @@ $animationInitial: $headerDepth - $collapsedDepth;
   }
 
   &__title {
-    // @extend .absolute--fill;
+    // position:relative;
+    @include absoluteFill;
+    display:flex;
+    align-items: center;
+    justify-content: center;
     text-align:center;
-    // white-space: nowrap;
-    // overflow-x:scroll;
     margin:0;
     flex:1;
-    // display:flex;
-    // align-items: center;
-    // justify-content: center;
+    padding:0 70px;
 
     @media (min-width:$phablet) {
       text-align:left;
-      // justify-content: flex-start;
+      justify-content: flex-start;
       padding-left:$gutter;
     }
   }
 
-  .button {
-    position:relative;
-    display:inline-block;
+  &__btn {
+    flex-shrink:0;
     z-index:1;
-    width:$headerDepth;
-    height:$headerDepth;
-    display:flex;
-    align-items: center;
-    justify-content: center;
-    align-self: flex-start;
-
-    .iconButton {
-      // flex:0 0;
-      @include absoluteCenter;
-    }
-
-    // Header with no title
-    &:last-child {
-      width:100%;
-      height:100%;
-    }
-
-    @media (min-width:$phablet) {
-      &:before {
-        @include headerFill;
-      }
-
-      &:before {
-        transform: translate3d(0, -($animationInitial), 0);
-      }
-
-      &:hover {
-        &:before {
-          transform: translate3d(0, 0, 0);
-        }
-      }
-    }
   }
 
-  @media (min-width: $phablet) {
-    &--left {
-      width: $headerDepth;
-      height:100%;
+  // .button {
+  //   position:relative;
+  //   display:inline-block;
+  //   z-index:1;
+  //   width:$headerDepth;
+  //   height:$headerDepth;
+  //   display:flex;
+  //   align-items: center;
+  //   justify-content: center;
+  //   align-self: flex-start;
 
-      .button {
-        height:100%;
-        &:before {
-          transform: translate3d(-($animationInitial), 0, 0);
-        }
+  //   .iconButton {
+  //     // flex:0 0;
+  //     @include absoluteCenter;
+  //   }
 
-        &:hover:before {
-          transform: translate3d(0, 0, 0);
-        }
-      }
+  //   // Header with no title
+  //   &:last-child {
+  //     width:100%;
+  //     height:100%;
+  //   }
 
-      .header__title {
-        height: $headerDepth;
-        position:absolute;
-        left: $headerDepth + $gutter + $gutter;
-      }
-    }
-  }
+  //   @media (min-width:$phablet) {
+  //     &:before {
+  //       @include headerFill;
+  //     }
+
+  //     &:before {
+  //       transform: translate3d(0, -($animationInitial), 0);
+  //     }
+
+  //     &:hover {
+  //       &:before {
+  //         transform: translate3d(0, 0, 0);
+  //       }
+  //     }
+  //   }
+  // }
 
   &--hideButtonDesktop {
     @media (min-width: $phablet) {
-      .button, .button:before, .button .iconButton {
+      .button {
         display:none;
       }
     }

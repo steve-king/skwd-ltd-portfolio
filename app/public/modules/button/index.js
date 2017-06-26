@@ -60,7 +60,7 @@ HexButton.propTypes = {
 const IconButton = ({action, icon, text, direction, className}) => {
   const buttonClass = 'iconButton';
   return (
-    <ButtonWrapper classname={className} action={action}>
+    <ButtonWrapper className={className} action={action}>
       <span className={classNames(buttonClass)}>
         <span className={`${buttonClass}__icon icon--${icon}`}>{text}</span>
         {direction && 

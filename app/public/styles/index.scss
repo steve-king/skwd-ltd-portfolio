@@ -10,13 +10,14 @@
 @import './typography';
 
 // Modules
-@import '../modules/button-hex/button-hex';
-// @import '../modules/button/button';
+@import '../modules/header/header';
+@import '../modules/button/button';
+@import '../modules/button-tab/button-tab';
 @import '../modules/hexagons/hexagons';
 @import '../modules/image/image';
 @import '../modules/spinner/spinner';
 @import '../modules/gradient/gradient';
-@import '../modules/header/header';
+
 @import '../modules/nav/nav';
 
 // Pages

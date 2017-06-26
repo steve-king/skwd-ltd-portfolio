@@ -11,6 +11,12 @@ html {
   box-sizing: inherit;
 }
 
+#app {
+  background:#fff;
+  position:relative;
+  @extend .absolute--fill;
+}
+
 img {
   max-width:100%;
   height:auto;
@@ -76,60 +82,44 @@ img {
   transform:translate(-50%, -50%);
 }
 
-#app {
-  background:#fff;
-  position:relative;
-  @extend .absolute--fill;
-}
-
-@mixin grid {
-  display:flex;
-  align-items: stretch;
-  flex:1;
-}
 
 .grid {
-  @include grid;
-
   &--fill {
-    @extend .absolute--fill;
-    @include grid;
-    overflow:hidden;
+    @include absoluteFill;
   }
   
   &--container {
     @include gridContainer;
+    padding:$gutter;
   }
 
   &--padding {
     padding:$gutter;
   }
+}
 
-  &--row {
-    @include grid;
+
+.flex {
+  display:flex;
+  align-items: stretch;
+  flex:1;
+
+  &--h {
+    // horizontal grid;
+    @extend .flex;
     flex-direction:row;
-
-    &--desktop {
-      @media (min-width:$phablet){
-        @include grid;
-        flex-direction:row!important;
-      }
-    }
   }
 
-  &--col {
-    @include grid;
+  &--v {
+    // vertical grid
+    @extend .flex;
     flex-direction:column;
+  }
 
-    @media(max-width: $phablet - 1){
-      flex:1 0 100%;
-    }
-    
-    &--desktop {
-      @media (min-width:$phablet){
-        @include grid;
-        flex-direction:column!important;
-      }
-    }
+  &__item {
+    // flex item
+    flex:1;
   }
 }
+
+

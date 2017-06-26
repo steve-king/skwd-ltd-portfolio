@@ -7,6 +7,7 @@ import classNames from 'classnames';
 import Resource from 'modules/api-resource';
 import Project from './project';
 import List from './list';
+import ButtonTab from 'modules/button-tab';
 
 import Gradient from 'modules/gradient';
 import Hexagons from 'modules/hexagons';
@@ -18,19 +19,21 @@ class Projects extends React.Component {
       <div className={classNames('grid--fill project')}>
         <Gradient name="yellowToBlue" />
         <Hexagons ready={loaded} />
-        <div className="grid--fill">
-          <Route path="/projects" render={props => 
-            <Resource type="page" url={'/api/projects/'}>
-              <List hiddenMobile={!match.isExact} />
-            </Resource>
-          } />
-
-          <Route path="/projects/:slug" component={props =>
-            <Resource type="project" url={'/api/projects/' + props.match.params.slug}>
-              <Project {...props} />
-            </Resource>
-          } />
-        </div>
+        <div className="grid--fill flex--h ">
+          <ButtonTab hide="mobile" position="left" action="/" text="back" icon="hexLogo" direction="left" />
+          <div className="flex__item flex--h">
+            <Route path="/projects" render={props => 
+              <Resource type="page" url={'/api/projects/'}>
+                <List hiddenMobile={!match.isExact} />
+              </Resource>
+            } />
+            <Route path="/projects/:slug" component={props =>
+              <Resource type="project" url={'/api/projects/' + props.match.params.slug}>
+                <Project {...props} />
+              </Resource>
+            } />
+          </div>
+        </div>  
       </div>
     );
   }

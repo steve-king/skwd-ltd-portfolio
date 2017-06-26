@@ -21,6 +21,10 @@
     mix-blend-mode: overlay;
   }
 
+  &__bg {
+    overflow:hidden;
+  }
+
   .parallax-scene {
     @extend .absolute--fill;
     &__item {
@@ -37,9 +41,6 @@
   }
 
   &__content {
-    @include gridCol(12);
-    padding:$gutter;
-
     transition:.6s .6s all $easeOutQuad;
     opacity:1;
     transform: translate3d(0, 0, 0);
@@ -69,10 +70,6 @@
   &.loading &__content {
     opacity:0;
     transform:translate3d(5px, 0, 0);
-  }
-
-  &__nav {
-    @include gridCol(12);
   }
 
   &__nav__btn {

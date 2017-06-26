@@ -1,0 +1,49 @@
+.buttonTab {
+  position:relative;
+  width:100%;
+  height:$headerDepth;
+
+  &:before {
+    content:"";
+    @include headerFill;
+  }
+
+  .button {
+    @include absoluteCenter;
+  }
+
+  &--left {
+    width:$headerDepth;
+    height:100%;
+  }
+
+  &--hide-mobile {
+    @media (max-width:$phablet - 1){
+      display:none;
+    }
+  }
+}
+
+// @media (min-width: $phablet) {
+//   &--left {
+//     width: $headerDepth;
+//     height:100%;
+
+//     .button {
+//       height:100%;
+//       &:before {
+//         transform: translate3d(-($animationInitial), 0, 0);
+//       }
+
+//       &:hover:before {
+//         transform: translate3d(0, 0, 0);
+//       }
+//     }
+
+//     .header__title {
+//       height: $headerDepth;
+//       position:absolute;
+//       left: $headerDepth + $gutter + $gutter;
+//     }
+//   }
+// }
