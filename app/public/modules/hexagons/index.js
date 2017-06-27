@@ -10,6 +10,8 @@ class FlyingHexagons extends React.Component {
       ready ? 'idle' : 'start-position',
       type ? `hexagons--${type}` : ''
     ];
+
+    // console.log('hexagons ready', ready);
     return (
       <div className={classNames(classes)}>
         <div className="hex hex__01" />

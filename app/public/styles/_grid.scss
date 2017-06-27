@@ -19,9 +19,12 @@ html, body {
 }
 
 #app {
-  // background:#fff;
+  background:#fff;
+  background:#000;
   position:relative;
   @extend .absolute--fill;
+  transform-style: preserve-3d;
+  transform: translateZ(0);
 }
 
 img {

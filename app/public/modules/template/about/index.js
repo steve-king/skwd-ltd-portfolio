@@ -8,17 +8,22 @@ import { IconButton, HexButton } from 'modules/button';
 import Hexagons from 'modules/hexagons';
 import Header from 'modules/header';
 
-const onClick = () => {
-  console.log('hey');
-}
+import withResource from 'modules/resource';
+
 
 class About extends React.Component {
   render() {
     const { content, loaded } = this.props;
+    const classes = [
+      'about', 
+      'grid--fill', 
+      !loaded ? 'loading' : '',
+      'transition--slideBottom'
+    ];
     return (
-      <div className={classNames('grid--fill', !loaded ? 'loading' : '')}>
-        {loaded && <Gradient name="blueToPink" /> }
-        <Hexagons ready={loaded} />
+      <div className={classNames(classes)}>
+        <Gradient name="blueToPink" />
+        <Hexagons ready={true} />
         {/*<div className="grid--col">*/}
           <ButtonTab position="top" action="/" text="back" icon="hexLogo" direction="up" />
           <main className="about__main grid--container">
@@ -33,7 +38,6 @@ class About extends React.Component {
               <nav className="about__nav">
                 <HexButton className="about__btn" action="/projects" large text="Projects" />
                 {/*<HexButton className="about__btn" action="/" large text="Projects" direction="down" />*/}
-                {/*<HexButton className="about__btn" action={onClick} text="Projects" icon="icon--hex--logo" />*/}
               </nav>
           </main>
         {/*</div>*/}
@@ -42,4 +46,4 @@ class About extends React.Component {
   }
 };
 
-export default About;
+export default withResource(About);

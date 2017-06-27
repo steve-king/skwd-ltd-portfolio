@@ -12,7 +12,7 @@ const resource = (resourceType) => {
         return Object.assign({}, state, {
           loaded: false,
           url: action.url,
-          content: initialState.data,
+          content: initialState.content,
           error: null,
         });
       case resourceType + '_RESOURCE_LOADED':
@@ -26,10 +26,11 @@ const resource = (resourceType) => {
           error: action.error,
           loaded: false,
         });
-      case resourceType + 'RESOURCE_RESET':
+      case resourceType + '_RESOURCE_RESET':
         return Object.assign({}, state, {
-          loaded: false,
-          error: null,
+          loaded: initialState.loaded,
+          url: initialState.url,
+          error: initialState.error,
         });
     }
     return state;

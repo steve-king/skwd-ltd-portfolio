@@ -9,6 +9,8 @@ import Gradient from 'modules/gradient';
 import Hexagons from 'modules/hexagons';
 import Header from 'modules/header';
 
+import withResource from 'modules/resource';
+
 class Project extends React.Component {
   render() { 
     const { content, loaded, children } = this.props;
@@ -38,4 +40,4 @@ class Project extends React.Component {
   }
 }
 
-export default Project;
+export default withResource(Project);

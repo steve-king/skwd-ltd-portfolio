@@ -12,25 +12,25 @@ import ButtonTab from 'modules/button-tab';
 import Gradient from 'modules/gradient';
 import Hexagons from 'modules/hexagons';
 
+import withResource from 'modules/resource';
+
+
 class Projects extends React.Component {
   render() { 
-    const { match, loaded } = this.props;
+    const { match, loaded, location } = this.props;
+    // console.log('projects loaded', loaded);
     return(
       <div className={classNames('grid--fill project')}>
         <Gradient name="yellowToBlue" />
-        <Hexagons ready={loaded} />
+        <Hexagons ready={true} />
         <div className="grid--fill flex--h ">
           <ButtonTab hide="mobile" position="left" action="/" text="back" icon="hexLogo" direction="left" />
           <div className="flex__item flex--h">
             <Route path="/projects" render={props => 
-              <Resource type="page" url={'/api/projects/'}>
-                <List hiddenMobile={!match.isExact} />
-              </Resource>
+              <List hiddenMobile={!match.isExact} {...this.props} />
             } />
-            <Route path="/projects/:slug" component={props =>
-              <Resource type="project" url={'/api/projects/' + props.match.params.slug}>
-                <Project {...props} />
-              </Resource>
+            <Route key={location.key} path="/projects/:slug" render={props =>
+              <Project resourceUrl={'/api/projects/' + props.match.params.slug} {...props} />
             } />
           </div>
         </div>  
@@ -39,6 +39,12 @@ class Projects extends React.Component {
   }
 }
 
-export default connect(
-  state => (Object.assign({}, state.page))
-)(withRouter(Projects));
+// export default connect(
+//   state => ({
+//     loaded: state.page.loaded
+//   })
+// )(withRouter(Projects));
+
+// export default withRouter(Projects);
+// export default Projects;
+export default withResource(withRouter(Projects));

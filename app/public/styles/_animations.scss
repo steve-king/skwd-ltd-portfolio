@@ -1,32 +1,184 @@
 // EASING
 $easeInQuad: cubic-bezier(0.550, 0.085, 0.680, 0.530);
 $easeInCubic: cubic-bezier(0.550, 0.055, 0.675, 0.190);
-// $easeInQuart: cubic-bezier(0.895, 0.030, 0.685, 0.220);
-// $easeInQuint: cubic-bezier(0.755, 0.050, 0.855, 0.060);
-// $easeInSine: cubic-bezier(0.470, 0.000, 0.745, 0.715);
+$easeInQuart: cubic-bezier(0.895, 0.030, 0.685, 0.220);
+$easeInQuint: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+$easeInSine: cubic-bezier(0.470, 0.000, 0.745, 0.715);
 $easeInExpo: cubic-bezier(0.950, 0.050, 0.795, 0.035);
-// $easeInCirc: cubic-bezier(0.600, 0.040, 0.980, 0.335);
-// $easeInBack: cubic-bezier(0.600, -0.280, 0.735, 0.045);
+$easeInCirc: cubic-bezier(0.600, 0.040, 0.980, 0.335);
+$easeInBack: cubic-bezier(0.600, -0.280, 0.735, 0.045);
 
 $easeOutQuad: cubic-bezier(0.250, 0.460, 0.450, 0.940);
 $easeOutCubic: cubic-bezier(0.215, 0.610, 0.355, 1.000);
-// $easeOutQuart: cubic-bezier(0.165, 0.840, 0.440, 1.000);
-// $easeOutQuint: cubic-bezier(0.230, 1.000, 0.320, 1.000);
-// $easeOutSine: cubic-bezier(0.390, 0.575, 0.565, 1.000);
+$easeOutQuart: cubic-bezier(0.165, 0.840, 0.440, 1.000);
+$easeOutQuint: cubic-bezier(0.230, 1.000, 0.320, 1.000);
+$easeOutSine: cubic-bezier(0.390, 0.575, 0.565, 1.000);
 $easeOutExpo: cubic-bezier(0.190, 1.000, 0.220, 1.000);
-// $easeOutCirc: cubic-bezier(0.075, 0.820, 0.165, 1.000);
-// $easeOutBack: cubic-bezier(0.175, 0.885, 0.320, 1.275);
+$easeOutCirc: cubic-bezier(0.075, 0.820, 0.165, 1.000);
+$easeOutBack: cubic-bezier(0.175, 0.885, 0.320, 1.275);
 
 $easeInOutQuad: cubic-bezier(0.455, 0.030, 0.515, 0.955);
 $easeInOutCubic: cubic-bezier(0.645, 0.045, 0.355, 1.000);
-// $easeInOutQuart: cubic-bezier(0.770, 0.000, 0.175, 1.000);
-// $easeInOutQuint: cubic-bezier(0.860, 0.000, 0.070, 1.000);
-// $easeInOutSine: cubic-bezier(0.445, 0.050, 0.550, 0.950);
+$easeInOutQuart: cubic-bezier(0.770, 0.000, 0.175, 1.000);
+$easeInOutQuint: cubic-bezier(0.860, 0.000, 0.070, 1.000);
+$easeInOutSine: cubic-bezier(0.445, 0.050, 0.550, 0.950);
 $easeInOutExpo: cubic-bezier(1.000, 0.000, 0.000, 1.000);
-// $easeInOutCirc: cubic-bezier(0.785, 0.135, 0.150, 0.860);
-// $easeInOutBack: cubic-bezier(0.680, -0.550, 0.265, 1.550);
+$easeInOutCirc: cubic-bezier(0.785, 0.135, 0.150, 0.860);
+$easeInOutBack: cubic-bezier(0.680, -0.550, 0.265, 1.550);
 
 @keyframes fadeIn {
   0% { opacity:0 }
   100% { opacity: 1 }
+}
+
+.example-enter {
+  // z-index:1;
+  transform:translate3d(0, 100%, 1px);
+  transition: all 800ms $easeInOutQuad;
+}
+
+.example-enter.example-enter-active {
+  z-index:1;
+  transform:translate3d(0, 0, 1px);
+}
+
+.example-leave {
+  // position:relative;
+  // z-index:1;
+  opacity:1;
+  transform:translateZ(0) scale(1);
+  z-index:0;
+  transition: all 500ms ease-out;
+}
+
+.example-leave.example-leave-active {
+  opacity:0;
+  z-index:0;
+  transform:translateZ(0) scale(0.8);
+  // transform:scale(.1);
+  // transform:translate3d(0, 0, 0);
+  
+}
+
+// .page-enter.home {
+//   transform:translate3d(0, 0, 0) scale(0.8);
+//   opacity:0;
+//   transition: all 500ms 500ms $easeInOutQuad;
+// }
+
+// .page-enter.page-enter-active.home {
+//   opacity:1;
+//   transform:translateZ(0) scale(1);
+// }
+
+// .page-leave.home {
+//   opacity:1;
+//   transform:translate3d(0, 0, 0) scale(1);
+//   transition: all 500ms $easeInOutQuad;
+// }
+
+// .page-leave.page-leave-active.home {
+//   opacity:0;
+//   transform:translateZ(0) scale(0.8);
+// }
+
+// .page-enter.about {
+//   transform:translate3d(0, 100%, 1px);
+//   transition: all 600ms $easeInOutQuad;
+// }
+
+// .page-leave.about {
+//   transform:translate3d(0, 0, 1px);
+//   transition: all 500ms 300ms $easeInOutQuad;
+// }
+
+// .page-enter.page-enter-active.about {
+//   transform:translate3d(0, 0, 0);
+// }
+
+// .page-leave.page-leave-active.about {
+//   transform:translate3d(0, 100%, 1px);
+// }
+
+
+
+.transition--scale {
+  transition: all 500ms $easeInOutQuad;
+  
+  // Start position
+  &.page-enter {
+    transition-delay:500ms;
+    transform:translate3d(0, 0, 0) scale(0.8);
+    opacity:0;
+    
+    // End position
+    &.page-enter-active {
+      opacity:1;
+      transform:translate3d(0, 0, 0) scale(1);
+    }
+  }
+
+  &.page-leave {
+    // Start position
+    opacity:1;
+    transform:translate3d(0, 0, 0) scale(1);
+
+    &.page-leave-active {
+      // End position
+      transform:translate3d(0, 0, 0) scale(0.8);
+      opacity:0;
+    }
+  }
+}
+
+.transition--slideBottom {
+  transition: all 800ms $easeOutExpo;
+  // opacity:1;
+  
+  &.page-enter {
+    // Start position
+    transition-delay:600ms;
+    transform:translate3d(0, 100%, 1px);
+    // opacity:0;
+    
+    &.page-enter-active {
+      // End position
+      transform:translate3d(0, 0, 1px);
+      // opacity:1;
+    }
+  }
+
+  &.page-leave {
+    // Start position
+    transform:translate3d(0, 0, 1px);
+    transition-delay:200ms;
+    // transition-delay:300ms;
+    // transition-timing-function: $easeInOutCirc;
+    // transition-duration:400ms;
+    // opacity:1;
+
+    &.page-leave-active {
+      // End position
+      transform:translate3d(0, 100%, 1px);
+      // opacity:0;
+    }
+  }
+}
+
+.transition--slideRight {
+  &.page-enter {
+    // Start position
+    
+    &.page-enter-active {
+      // End position
+    }
+  }
+
+  &.page-leave {
+    // Start position
+
+    &.page-leave-active {
+      // End position
+    }
+  }
 }

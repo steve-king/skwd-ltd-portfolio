@@ -15,8 +15,15 @@ class Image extends React.Component {
     setTimeout(() => this.preLoad(this.props.src));
   }
 
+  componentWillUpdate(next) {
+    if (this.props.src !== next.src) {
+      this.preLoad(next.src);
+    }
+  }
+
   preLoad(src) {
-    // preload
+    if (src) {
+      // preload
     helpers.preloadImage(src)
       .then(() => {
         this.setState({ loaded: true });
@@ -24,6 +31,8 @@ class Image extends React.Component {
           this.props.onLoad();
         }
       });
+    }
+    
   }
 
   checkLoaded = () => {

@@ -4,7 +4,9 @@ import { connect } from 'react-redux';
 import * as actions from './actions';
 
 class Resource extends React.Component {
-  componentDidMount = () => this.props.getData()
+  componentDidMount = () => {
+    setTimeout(() => this.props.getData(), 1000);
+  }
   componentWillUnmount = () => this.props.resetData()
   render = () => React.cloneElement(this.props.children, this.props)
 }

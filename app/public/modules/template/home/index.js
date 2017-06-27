@@ -8,6 +8,8 @@ import { IconButton, HexButton } from 'modules/button';
 import Hexagons from 'modules/hexagons';
 import Image from 'modules/image';
 
+import withResource from 'modules/resource';
+
 class Home extends React.Component {
 
   state = {
@@ -42,16 +44,22 @@ class Home extends React.Component {
   render() {
     const { content, loaded } = this.props;
     const { imageUrl, imageLoaded, imageFinished } = this.state;
+    const classes = [
+      'transition--scale', 
+      'grid--fill', 
+      'home', 
+      !imageLoaded ? 'loading' : ''
+    ];
     return (
-      <div className={classNames('grid--fill', 'home', !imageLoaded ? 'loading' : '')}>
+      <div className={classNames(classes)}>
         <div className="grid--fill home__bg">
           <div className="parallax-scene" ref="scene">
             <div className="parallax-scene__item layer" data-depth="0.5">
               <div className="parallax-scene__item__inner">
-                {loaded && imageUrl &&
+                {/*{loaded && imageUrl &&*/}
                   <Image background className="home__image"
                         src={imageUrl} onLoad={this.onImageLoaded} onFinish={this.onImageFinished} />
-                }
+                {/*}*/}
               </div>
             </div>
             <Hexagons type="overlay" ready={imageLoaded} />
@@ -92,4 +100,4 @@ class Home extends React.Component {
   }
 };
 
-export default Home;
+export default withResource(Home);
