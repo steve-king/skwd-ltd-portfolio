@@ -32,9 +32,9 @@ $easeInOutBack: cubic-bezier(0.680, -0.550, 0.265, 1.550);
 }
 
 @mixin pageTransitions {
+  $enterDelay: 1000ms;
+  $leaveDelay: 500ms;
   $duration: 800ms;
-  $enterDelay: 400ms;
-  $leaveDelay: 0ms;
 
   /**
   * SCALE PAGE TRANSITION
@@ -45,21 +45,27 @@ $easeInOutBack: cubic-bezier(0.680, -0.550, 0.265, 1.550);
 
     transition: all $duration $easeOutExpo;
     backface-visibility: hidden;
+
+    animation: fadeIn 1200ms forwards;
     
     // Start position
-    &.page-enter {
+    &.page-enter, &.page-appear {
       transition-delay:$enterDelay;
       transform:$startPosition;
-      &.page-enter-active {
+      &.page-enter-active, &.page-appear-active {
         transform:$endPosition;
       }
+    }
+
+    &.page-appear {
+      transition-delay:0!important;
     }
 
     &.page-leave {
       transform:$endPosition;
       transition-delay: $leaveDelay;
       &.page-leave-active {
-        transform:$startPosition;
+        transform:#{$startPosition} !important;
       }
     }
   }
@@ -93,6 +99,10 @@ $easeInOutBack: cubic-bezier(0.680, -0.550, 0.265, 1.550);
           }
         }
 
+        &.page-appear {
+          transition-delay:0!important;
+        }
+
         &.page-leave {
           transform:translate3d(0, 0, 1px);
           transition-delay:$leaveDelay;
@@ -104,28 +114,32 @@ $easeInOutBack: cubic-bezier(0.680, -0.550, 0.265, 1.550);
     }
   }
   @include transitionSlide;
-
 }
 @include pageTransitions;
 
 @mixin elementTransitions {
   .transition--pop {
-    transition:all 2s $easeOutExpo;
+    transition:all 800ms $easeOutExpo;
     transform:scale(1);
     opacity:1;
 
     .loading & {
-      transform:scale(0.95);
+      transform:scale(4);
+      opacity:0;
+    }
+
+    .leaving & {
+      transform:scale(0.2);
       opacity:0;
     }
   }
 }
 @include elementTransitions;
 
-@mixin staggerDelay($className, $delay: 250ms) {
+@mixin staggerDelay($className, $delay: 0) {
 
-  @for $i from 1 through 10 {
-    &:nth-of-type(#{$i}) {
+  @for $i from 0 through 10 {
+    &:nth-of-type(#{$i + 1}) {
       .#{$className} {
         transition-delay: $delay * $i;
       }

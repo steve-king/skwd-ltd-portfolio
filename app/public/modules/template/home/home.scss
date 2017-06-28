@@ -1,5 +1,5 @@
 .home {
-  // background:#000;
+
   &__hex {
     @extend .icon;
     @extend .icon--hexFill--white;
@@ -14,6 +14,12 @@
     @media (orientation:landscape) {
       top: -1410px;
       left: -660px;
+    }
+  }
+
+  &.loading {
+    .home__hex {
+      opacity:0
     }
   }
 

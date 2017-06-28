@@ -36,3 +36,12 @@ export function preloadImages(imageArray) {
     );
   return allLoaded;
 }
+
+/**
+ * @param path {string} - expects a path with leading '/'
+ * @param segNum {number} - /segment-1/segment-2
+ * @return {string} - 'segment-1'
+ */
+export function pathSegment(path, segNum){
+  return path.split('/')[segNum];
+}

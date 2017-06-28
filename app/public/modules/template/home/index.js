@@ -19,9 +19,9 @@ class Home extends React.Component {
   }
 
   componentWillUpdate(newProps) {
-    if (!this.props.loaded && newProps.loaded) {
+    if (!this.props.dataLoaded && newProps.dataLoaded) {
       this.setState({
-        imageUrl: getRandomItem(newProps.content.images).url
+        imageUrl: getRandomItem(newProps.data.images).url
       });
     }
   }
@@ -42,13 +42,14 @@ class Home extends React.Component {
   }
 
   render() {
-    const { content, loaded } = this.props;
+    const { data, dataLoaded, dataRendered, routeWillChange } = this.props;
     const { imageUrl, imageLoaded, imageFinished } = this.state;
     const classes = [
-      'transition--scale', 
+      // 'transition--scale', 
       'grid--fill', 
       'home', 
-      !imageLoaded ? 'loading' : ''
+      !imageLoaded ? 'loading' : '',
+      routeWillChange ? 'leaving' : '',
     ];
     return (
       <div className={classNames(classes)}>
@@ -56,10 +57,8 @@ class Home extends React.Component {
           <div className="parallax-scene" ref="scene">
             <div className="parallax-scene__item layer" data-depth="0.5">
               <div className="parallax-scene__item__inner">
-                {/*{loaded && imageUrl &&*/}
-                  <Image background className="home__image"
-                        src={imageUrl} onLoad={this.onImageLoaded} onFinish={this.onImageFinished} />
-                {/*}*/}
+                <Image background className="home__image"
+                  src={imageUrl} onLoad={this.onImageLoaded} onFinish={this.onImageFinished} />
               </div>
             </div>
             <Hexagons type="overlay" ready={imageLoaded} />
@@ -69,17 +68,15 @@ class Home extends React.Component {
           </div>
         </div>
         <main className="grid--fill grid--container home__main">
-          {loaded && content &&
-            <div className="home__content">
-              <span className="icon--large icon-hex-logo"/>
-              <div>
-                <h1 className="title title--large">{content.title}</h1>
-                <p className="subtitle">
-                  <span>{content.body}</span>
-                </p>
-              </div>
+          <div className="home__content">
+            <span className="icon--large icon-hex-logo"/>
+            <div>
+              <h1 className="title title--large">{data.title}</h1>
+              <p className="subtitle">
+                <span>{data.body}</span>
+              </p>
             </div>
-          }
+          </div>
           <nav className="home__nav">
             <HexButton action="/about" 
               className="home__nav__btn--about" 

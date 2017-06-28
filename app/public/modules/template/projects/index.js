@@ -14,18 +14,19 @@ import Hexagons from 'modules/hexagons';
 
 import withResource from 'modules/resource';
 
-
 class Projects extends React.Component {
   render() { 
-    const { match, location } = this.props;
+    const { match, location, dataRendered, dataLoaded, routeWillChange } = this.props;
     const classes = [
       'project',
-      'transition--slideRight'   
+      // 'transition--slideRight',
+      !dataRendered ? 'loading' : '',
+      routeWillChange ? 'leaving' : '',
     ];
     return(
       <div className={classNames('grid--fill project transition--slideRight')}>
         <Gradient name="yellowToBlue" />
-        <Hexagons ready={true} />
+        <Hexagons ready={dataRendered} />
         <div className="grid--fill flex--h ">
           <ButtonTab hide="mobile" position="left" action="/" text="back" icon="hexLogo" direction="left" />
           <div className="flex__item flex--h">

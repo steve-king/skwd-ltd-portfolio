@@ -8,19 +8,27 @@ const withResource = (WrappedComponent) => {
   return class extends React.Component {
     
     static propTypes = {
-      resourceUrl: PropTypes.string.isRequired
+      resourceUrl: PropTypes.string.isRequired,
+      wait: PropTypes.number
     }
     
     state = {
-      loaded: false,
-      requested: false,
       error: false,
-      content: {},
+      data: {},
+      dataLoaded: false,
+      dataRendered: false,
+      routeWillChange: false,
     }
 
     componentDidMount = () => {
       this.mounted = true;
-      setTimeout(() => this.getData(this.props.resourceUrl), animationDelay);
+      // Delay allows us to wait for the page transition to complete (app.js)
+      setTimeout(() => this.getData(this.props.resourceUrl), this.props.wait);
+      
+    }
+
+    componentWillLeave = () => {
+      console.log('componentWillLeave');
     }
 
     componentWillUnmount = () => {
@@ -28,12 +36,22 @@ const withResource = (WrappedComponent) => {
     }
 
     componentDidUpdate = () => {
-      // Update loaded prop on next render 
-      // (allows 'unloaded' items to render before CSS transition starts)
-      
-      if (!isEmptyObject(this.state.content) && !this.state.loaded) {
-        console.log('update loaded');
-        setTimeout(() => this.setState({ loaded: true }));
+      // Update dataRendered prop
+      // (allows 'unloaded' data items to render before CSS transition starts)
+      if (this.state.dataLoaded && !this.state.dataRendered) {
+        setTimeout(() => this.setState({ dataRendered: true }), 50);
+      }
+
+      const { history, location } = this.props;
+      if (
+        // this.state.dataRendered && 
+        history.location.pathname !== location.pathname
+        && !this.state.routeWillChange
+      ) {
+        console.log('route will change');
+        this.setState({
+          routeWillChange: true
+        });
       }
     }
   
@@ -44,12 +62,14 @@ const withResource = (WrappedComponent) => {
         error => this.setState({ error })
       ).then(data => 
         this.mounted && 
-          this.setState({ content: data, loaded: true })
+          this.setState({ data, dataLoaded: true })
       );     
     }
 
     render = () => 
-      <WrappedComponent {...this.state}/>
+      <div className={'grid--fill ' + this.props.transition}>
+        <WrappedComponent {...this.state}/>
+      </div>
   }
 }
 

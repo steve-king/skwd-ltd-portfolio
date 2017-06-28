@@ -23,16 +23,14 @@ class Image extends React.Component {
 
   preLoad(src) {
     if (src) {
-      // preload
-    helpers.preloadImage(src)
-      .then(() => {
-        this.setState({ loaded: true });
-        if (typeof this.props.onLoad === 'function'){
-          this.props.onLoad();
-        }
-      });
+      helpers.preloadImage(src)
+        .then(() => {
+          this.setState({ loaded: true });
+          if (typeof this.props.onLoad === 'function'){
+            this.props.onLoad();
+          }
+        });
     }
-    
   }
 
   checkLoaded = () => {

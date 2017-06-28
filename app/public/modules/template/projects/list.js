@@ -8,16 +8,16 @@ import { HexButton, IconButton } from 'modules/button';
 
 class ProjectList extends React.Component {
   render() { 
-    const { content, loaded, hiddenMobile, location } = this.props;
+    const { data, dataLoaded, dataRendered, routeWillChange, hiddenMobile, location } = this.props;
     const classes = [
       'flex__item',
       'flex--v',
       'project__list',
       hiddenMobile ? 'hiddenMobile' : '',
-      !loaded ? 'loading' : ''
+      !dataLoaded ? 'noLoaded' : '',
+      !dataRendered ? 'loading' : '',
+      routeWillChange ? 'leaving' : '',
     ];
-
-    console.log('Render loaded: ', loaded);
     return(
       <section className={classNames(classes)}>
         <Header 
@@ -29,9 +29,9 @@ class ProjectList extends React.Component {
           <span>Projects</span>
         </Header>
         <div className="flex__item flex--h grid--padding">
-          {content.projects &&
+          {data.projects &&
             <nav className="nav project__list__nav">
-              {content.projects.map((project, i) => (
+              {data.projects.map((project, i) => (
                 <HexButton key={i} className="nav__btn"
                   action={`/projects/${project.slug}`}
                   text={project.title}

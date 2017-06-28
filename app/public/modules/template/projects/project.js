@@ -13,12 +13,12 @@ import withResource from 'modules/resource';
 
 class Project extends React.Component {
   render() { 
-    const { content, loaded, children } = this.props;
+    const { data, dataLoaded, dataRendered } = this.props;
     const classes = [
       'flex__item',
       'flex--v',
       'project__single', 
-      !loaded ? 'loading' : ''
+      !dataRendered ? 'loading' : ''
     ];
     return(
       <section className={classNames(classes)}>
@@ -26,14 +26,12 @@ class Project extends React.Component {
           href="/projects"
           button={<IconButton className="header__btn" action="/projects" text="back" icon="hexLogo" direction="left" />}
           hideButtonDesktop>
-          {loaded && content.title}
+          {data.title}
         </Header>
         <div className="flex__item grid--padding">
-          {loaded &&
-            <div className="project__content">
-              {content.body}
-            </div>
-          }
+          <div className="project__content">
+            {data.body}
+          </div>
         </div>
       </section>
     );
