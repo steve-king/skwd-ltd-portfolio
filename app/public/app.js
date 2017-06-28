@@ -17,8 +17,8 @@ const App = ({location}) => {
       <Route render={({location}) =>
         <CSSTransitionGroup
           transitionName="page"
-          transitionEnterTimeout={1500}
-          transitionLeaveTimeout={1500}>
+          transitionEnterTimeout={1200}
+          transitionLeaveTimeout={800}>
           <Switch key={location.key} location={location}>
             <Route exact path="/" render={props =>
               <Home resourceUrl="/api/pages/home" />

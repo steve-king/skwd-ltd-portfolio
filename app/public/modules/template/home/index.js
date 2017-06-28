@@ -19,7 +19,7 @@ class Home extends React.Component {
   }
 
   componentWillUpdate(newProps) {
-    if (!this.props.loaded && newProps.content) {
+    if (!this.props.loaded && newProps.loaded) {
       this.setState({
         imageUrl: getRandomItem(newProps.content.images).url
       });

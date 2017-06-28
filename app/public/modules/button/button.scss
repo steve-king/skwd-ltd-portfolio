@@ -7,16 +7,21 @@
   padding:0;
   outline:none;
   cursor:pointer;
+  @include staggerDelay(hexButton);
+
+  > .hexButton {
+    @extend .transition--pop;
+  }
 }
 
 .hexButton {
   @extend .icon;
   @extend .icon--hexFill--white;  
+  
   position:relative;
   width:100px;
   height:118px;
-  color:$black;
-
+  
   &--large {
     width:170px;
     height:196px;
@@ -34,6 +39,7 @@
     position:relative;
     @extend .buttonText;
     max-width:50%;
+    color:$black;
   }
 
   &__icon {
@@ -77,7 +83,10 @@
     
     &.hexButton {
       @extend .icon--hexFill;
-      color: $white;
+      
+      .hexButton__text {
+        color: $white;
+      }
 
       &:before {
         opacity:0.8;

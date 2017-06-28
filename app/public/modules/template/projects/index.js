@@ -17,10 +17,13 @@ import withResource from 'modules/resource';
 
 class Projects extends React.Component {
   render() { 
-    const { match, loaded, location } = this.props;
-    // console.log('projects loaded', loaded);
+    const { match, location } = this.props;
+    const classes = [
+      'project',
+      'transition--slideRight'   
+    ];
     return(
-      <div className={classNames('grid--fill project')}>
+      <div className={classNames('grid--fill project transition--slideRight')}>
         <Gradient name="yellowToBlue" />
         <Hexagons ready={true} />
         <div className="grid--fill flex--h ">

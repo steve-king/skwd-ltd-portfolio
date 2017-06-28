@@ -16,6 +16,8 @@ class ProjectList extends React.Component {
       hiddenMobile ? 'hiddenMobile' : '',
       !loaded ? 'loading' : ''
     ];
+
+    console.log('Render loaded: ', loaded);
     return(
       <section className={classNames(classes)}>
         <Header 
@@ -27,7 +29,7 @@ class ProjectList extends React.Component {
           <span>Projects</span>
         </Header>
         <div className="flex__item flex--h grid--padding">
-          {loaded && content.projects &&
+          {content.projects &&
             <nav className="nav project__list__nav">
               {content.projects.map((project, i) => (
                 <HexButton key={i} className="nav__btn"
