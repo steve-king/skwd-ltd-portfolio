@@ -6,8 +6,8 @@ class FlyingHexagons extends React.Component {
   render() {
     const { ready, overlay, type } = this.props;
     const classes = [
-      'hexagons',
-      ready ? 'idle' : 'start-position',
+      'hexagons', 
+      ready ? '' : 'start-position',
       type ? `hexagons--${type}` : ''
     ];
 

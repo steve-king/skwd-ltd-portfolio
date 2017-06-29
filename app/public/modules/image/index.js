@@ -54,15 +54,9 @@ class Image extends React.Component {
 
     return (
       <div className={classNames(classes)}>
-        {!finished &&
-          <Spinner animate onLoop={this.checkLoaded} />
-        }
-        {background &&
-          <div className="image__bg" style={{ backgroundImage: `url(${src})`}} />
-        }
-        {!background &&
-          <img className="image__img" src={src} alt={this.props.alt} />
-        }
+        {!finished && <Spinner animate onLoop={this.checkLoaded} />  }
+        {background && <div className="image__bg" style={{ backgroundImage: `url(${src})`}} />}
+        {!background && <img className="image__img" src={src} alt={this.props.alt} /> }
       </div>
     );
   }

@@ -3,22 +3,17 @@ import { withRouter } from 'react-router';
 import { Link, Route } from 'react-router-dom';
 import classNames from 'classnames';
 
-// import Button from 'modules/button';
 import { IconButton } from 'modules/button';
-import Gradient from 'modules/gradient';
-import Hexagons from 'modules/hexagons';
 import Header from 'modules/header';
-
 import withResource from 'modules/resource';
 
 class Project extends React.Component {
   render() { 
-    const { data, dataLoaded, dataRendered } = this.props;
+    const { data } = this.props;
     const classes = [
       'flex__item',
       'flex--v',
       'project__single', 
-      !dataRendered ? 'loading' : ''
     ];
     return(
       <section className={classNames(classes)}>

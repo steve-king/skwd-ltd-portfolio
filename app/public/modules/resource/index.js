@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import isEmptyObject from 'is-empty-object';
+import classNames from 'classnames';
 
 const animationDelay = 1200;
 
@@ -66,10 +67,19 @@ const withResource = (WrappedComponent) => {
       );     
     }
 
-    render = () => 
-      <div className={'grid--fill ' + this.props.transition}>
-        <WrappedComponent {...this.state}/>
-      </div>
+    render = () => {
+      const classes = [
+        'resource',
+        !this.state.dataRendered ? 'loading' : '',
+        this.state.routeWillChange ? 'leaving' : '',
+        'grid--fill',
+      ];
+      return (
+        <div className={classNames(classes)}>
+          <WrappedComponent {...this.state}/>
+        </div>
+      );
+    }
   }
 }
 

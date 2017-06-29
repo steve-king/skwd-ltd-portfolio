@@ -8,15 +8,12 @@ import { HexButton, IconButton } from 'modules/button';
 
 class ProjectList extends React.Component {
   render() { 
-    const { data, dataLoaded, dataRendered, routeWillChange, hiddenMobile, location } = this.props;
+    const { data, hiddenMobile, location } = this.props;
     const classes = [
       'flex__item',
       'flex--v',
       'project__list',
       hiddenMobile ? 'hiddenMobile' : '',
-      !dataLoaded ? 'noLoaded' : '',
-      !dataRendered ? 'loading' : '',
-      routeWillChange ? 'leaving' : '',
     ];
     return(
       <section className={classNames(classes)}>

@@ -1,0 +1,22 @@
+.background {
+  background:#fff;
+
+  &__image {
+    @extend .absolute--fill;
+  }
+}
+
+.parallax-scene {
+  @extend .absolute--fill;
+  &__item {
+    @extend .absolute--fill;
+
+    .image {
+       transform:scale(1.1);
+    }
+  }
+}    
+
+.layer--hex {
+  mix-blend-mode: overlay;
+}

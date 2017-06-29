@@ -8,7 +8,7 @@
 }
 
 .hexagons .hex {
-  visibility:hidden;
+  // visibility:hidden;
   position:absolute;
   background-image:url('../assets/svg/hex-logo.svg');
   mix-blend-mode: overlay;
@@ -30,8 +30,18 @@
   opacity:0.2;
 }
 
-.hexagons .hex:after {
+.hexagons .hex {
+  &__01 {
+    top:-334px;
+    right:-180px;
+    // transform:translate(0, 0);
+  }
 
+  &__02 {
+    bottom:-290px;
+    left:-150px;
+    // transform:translate(0, 0);
+  }
 }
 
 .hexagons.start-position .hex {
@@ -44,18 +54,4 @@
   }
 }
 
-.hexagons.idle .hex {
-  visibility: visible;
 
-  &__01 {
-    top:-334px;
-    right:-180px;
-    transform:translate(0, 0);
-  }
-
-  &__02 {
-    bottom:-290px;
-    left:-150px;
-    transform:translate(0, 0);
-  }
-}

@@ -5,28 +5,22 @@ import { Link, Route } from 'react-router-dom';
 import classNames from 'classnames';
 
 import Resource from 'modules/api-resource';
+import Background from 'modules/background';
 import Project from './project';
 import List from './list';
 import ButtonTab from 'modules/button-tab';
-
-import Gradient from 'modules/gradient';
-import Hexagons from 'modules/hexagons';
 
 import withResource from 'modules/resource';
 
 class Projects extends React.Component {
   render() { 
-    const { match, location, dataRendered, dataLoaded, routeWillChange } = this.props;
-    const classes = [
-      'project',
-      // 'transition--slideRight',
-      !dataRendered ? 'loading' : '',
-      routeWillChange ? 'leaving' : '',
-    ];
+    const { match, location, dataRendered, routeWillChange } = this.props;
     return(
-      <div className={classNames('grid--fill project transition--slideRight')}>
-        <Gradient name="yellowToBlue" />
-        <Hexagons ready={dataRendered} />
+      <div className="project">
+        <Background 
+          ready={dataRendered && !routeWillChange}
+          hexagons blend="overlay" 
+          gradient="yellowToBlue" />
         <div className="grid--fill flex--h ">
           <ButtonTab hide="mobile" position="left" action="/" text="back" icon="hexLogo" direction="left" />
           <div className="flex__item flex--h">
@@ -43,12 +37,4 @@ class Projects extends React.Component {
   }
 }
 
-// export default connect(
-//   state => ({
-//     loaded: state.page.loaded
-//   })
-// )(withRouter(Projects));
-
-// export default withRouter(Projects);
-// export default Projects;
 export default withResource(withRouter(Projects));

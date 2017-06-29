@@ -3,17 +3,15 @@ import { Link } from 'react-router-dom';
 import Parallax from 'vendor/parallax-js';
 import classNames from 'classnames';
 
-import { getRandomItem } from 'modules/helpers';
-import { IconButton, HexButton } from 'modules/button';
-import Hexagons from 'modules/hexagons';
-import Image from 'modules/image';
-
 import withResource from 'modules/resource';
+import { getRandomItem } from 'modules/helpers';
+import Background from 'modules/background';
+import { IconButton, HexButton } from 'modules/button';
 
 class Home extends React.Component {
 
   state = {
-    imageUrl: null,
+    imageSrc: null,
     imageLoaded: false,
     imageFinished: false,
   }
@@ -21,52 +19,24 @@ class Home extends React.Component {
   componentWillUpdate(newProps) {
     if (!this.props.dataLoaded && newProps.dataLoaded) {
       this.setState({
-        imageUrl: getRandomItem(newProps.data.images).url
+        imageSrc: getRandomItem(newProps.data.images).url
       });
     }
   }
 
   onImageLoaded = () => {
     this.setState({ imageLoaded: true });
-    // this.doParallax();
-  }
-
-  onImageFinished = () => {
-    this.setState({ imageFinished: true });
-    this.doParallax();
-  }
-
-  doParallax() {
-    const scene = this.refs.scene;
-    const parallax = new Parallax(scene);
   }
 
   render() {
-    const { data, dataLoaded, dataRendered, routeWillChange } = this.props;
-    const { imageUrl, imageLoaded, imageFinished } = this.state;
-    const classes = [
-      // 'transition--scale', 
-      'grid--fill', 
-      'home', 
-      !imageLoaded ? 'loading' : '',
-      routeWillChange ? 'leaving' : '',
-    ];
+    const { data, routeWillChange } = this.props;
+    const { imageSrc, imageLoaded } = this.state;
     return (
-      <div className={classNames(classes)}>
-        <div className="grid--fill home__bg">
-          <div className="parallax-scene" ref="scene">
-            <div className="parallax-scene__item layer" data-depth="0.5">
-              <div className="parallax-scene__item__inner">
-                <Image background className="home__image"
-                  src={imageUrl} onLoad={this.onImageLoaded} onFinish={this.onImageFinished} />
-              </div>
-            </div>
-            <Hexagons type="overlay" ready={imageLoaded} />
-            <div className="parallax-scene__item layer layer--hex" data-depth="1.5">
-              <div className="home__hex" />
-            </div>
-          </div>
-        </div>
+      <div className="grid--fill home">
+        <Background parallax ready={imageLoaded && !routeWillChange}
+          hexagons blend="overlay" 
+          image imageSrc={imageSrc} onLoad={this.onImageLoaded}
+          additions={<div className="home__hex" />} />
         <main className="grid--fill grid--container home__main">
           <div className="home__content">
             <span className="icon--large icon-hex-logo"/>

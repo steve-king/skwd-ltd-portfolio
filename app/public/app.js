@@ -37,25 +37,28 @@ const App = ({location}) => {
           }
           <Switch key={pathSegment(location.pathname, 1)} location={location}>
             <Route exact path="/" render={props =>
-              <Home 
-                resourceUrl="/api/pages/home" 
-                transition="transition--scale" 
-                wait={2000} 
-                {...props} />
+              <div className="transition--scale grid--fill">
+                <Home 
+                  resourceUrl="/api/pages/home" 
+                  wait={2000} 
+                  {...props} />
+              </div>
             } />
             <Route exact path="/about" render={props =>
-              <About 
-                resourceUrl="/api/pages/about" 
-                transition="transition--slideBottom" 
-                wait={wait} 
-                {...props} />
+              <div className="transition--slideBottom grid--fill">
+                <About 
+                  resourceUrl="/api/pages/about" 
+                  wait={wait} 
+                  {...props} />
+              </div>
             } />
             <Route path="/projects" render={props =>
-              <Projects 
-                resourceUrl="/api/projects/" 
-                transition="transition--slideRight" 
-                wait={wait} 
-                {...props} />
+              <div className="transition--slideRight grid--fill">
+                <Projects 
+                  resourceUrl="/api/projects/" 
+                  wait={wait} 
+                  {...props} />
+              </div>
             } />
           </Switch>
         </CSSTransitionGroup>

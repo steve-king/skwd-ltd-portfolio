@@ -17,34 +17,12 @@
     }
   }
 
-  &.loading {
+  .loading & {
     .home__hex {
-      opacity:0
+      opacity:0;
     }
   }
 
-  .layer--hex {
-    mix-blend-mode: overlay;
-  }
-
-  &__bg {
-    overflow:hidden;
-  }
-
-  .parallax-scene {
-    @extend .absolute--fill;
-    &__item {
-      @extend .absolute--fill;
-      &__inner {
-        @extend .absolute--fill;
-        transform:scale(1.1);
-      }
-    }
-  }
-
-  &__image {
-    @extend .absolute--fill;
-  }
 
   &__content {
     transition:.6s .6s all $easeOutQuad;
@@ -73,9 +51,11 @@
     }
   }
 
-  &.loading &__content {
-    opacity:0;
-    transform:translate3d(5px, 0, 0);
+  .loading & {
+    &__content {
+      opacity:0;
+      transform:translate3d(5px, 0, 0);
+    }
   }
 
   &__nav__btn {

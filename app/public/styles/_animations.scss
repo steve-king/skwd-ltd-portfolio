@@ -46,7 +46,7 @@ $easeInOutBack: cubic-bezier(0.680, -0.550, 0.265, 1.550);
     transition: all $duration $easeOutExpo;
     backface-visibility: hidden;
 
-    animation: fadeIn 1200ms forwards;
+    // animation: fadeIn 1200ms forwards;
     
     // Start position
     &.page-enter, &.page-appear {

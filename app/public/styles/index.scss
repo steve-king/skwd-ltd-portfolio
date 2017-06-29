@@ -10,13 +10,15 @@
 @import './typography';
 
 // Modules
+@import '../modules/background/gradient';
+@import '../modules/background/hexagons';
+@import '../modules/background/background';
+
 @import '../modules/header/header';
 @import '../modules/button/button';
 @import '../modules/button-tab/button-tab';
-@import '../modules/hexagons/hexagons';
 @import '../modules/image/image';
 @import '../modules/spinner/spinner';
-@import '../modules/gradient/gradient';
 
 @import '../modules/nav/nav';
 
