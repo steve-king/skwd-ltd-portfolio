@@ -1,5 +1,5 @@
 import React from 'react';
-import classNames from 'classNames';
+import classNames from 'classnames';
 import Parallax from 'vendor/parallax-js';
 
 import Image from 'modules/image';
