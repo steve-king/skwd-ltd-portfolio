@@ -1,10 +1,27 @@
 .about {
   
   &__content {
-
     transition:0.6s 0.8s all ease-out;
     opacity:1;
     transform: translate3d(0, 0, 0);
+    display:flex;
+    flex-wrap:wrap;
+
+    .title {
+      flex-basis:100%;
+      // margin-top:0;
+    }
+
+    .body {
+      @media (min-width: $phablet) {
+        flex:1 1 50%;
+        padding-right:$gutter * 2;
+      }
+      
+      p:first-child {
+        margin-top:0;
+      }
+    }
   }
 
   &.loading &__content {
@@ -12,19 +29,17 @@
     transform:translate3d(0, 2px, 0);
   }
 
-  &__nav__btn {
-    display:inline-block;
-    transition:all 0.6s ease-out;
+  &__nav {
+    width:160px;
+    flex:0 0 160px;
 
-    &--projects {
+    &__btn {
       display:inline-block;
-      right:$gutter;
-      top:50%;
+      transition:all 0.6s ease-out;
+    }
 
-      @media (max-width: $tablet) and (orientation: portrait) {
-        top:auto;
-        bottom:25vw;
-      }
+    @media (max-width:$phablet - 1){
+      margin-left:auto;
     }
   }
 
@@ -32,3 +47,40 @@
     &--projects { transform:translate(250px, -50%); }
   }
 }
+
+// @media (max-width:$phablet) and (orientation:landscape) {
+//   .about {
+//     &__content {
+//       .body p {
+//         padding-right:160px + $gutter;
+//       }
+//     }
+
+//     &__nav {
+//       position:absolute;
+//       top:50%;
+//       right:0;
+//       transform:translate(0, -50%);
+//     }
+//   }
+// }
+
+// @media (max-width:$phablet) and (orientation:portrait) {
+//   .about {
+//     &__content {
+//       .body p {
+//         &:nth-child(3),
+//         &:nth-child(4) {
+//           padding-right:160px + $gutter;
+//         }
+//       }
+//     }
+
+//     &__nav {
+//       margin-left:auto;
+//       margin-top:-280px;
+//     }
+//   }
+// }
+
+

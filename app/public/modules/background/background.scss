@@ -1,5 +1,6 @@
 .background {
   background:#fff;
+  overflow:hidden;
 
   &__image {
     @extend .absolute--fill;

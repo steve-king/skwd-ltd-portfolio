@@ -4,8 +4,8 @@
     @extend .icon;
     @extend .icon--hexFill--white;
     position:absolute;
-    top: -1110px;
-    left: -1140px;
+    top: -1240px;
+    left: -950px;
     width: 1700px;
     height: 1700px;
     opacity: 0.5;
@@ -13,7 +13,12 @@
 
     @media (orientation:landscape) {
       top: -1410px;
-      left: -660px;
+      left: -500px;
+    }
+
+    @media (min-width: $tablet) {
+      top: -1410px;
+      left: -500px;
     }
   }
 
@@ -29,25 +34,28 @@
     opacity:1;
     transform: translate3d(0, 0, 0);
 
-    .icon--hex--logo {
-      margin-right: 5px;
-      margin-top:8px;
+    display:flex;
+    flex-wrap:wrap;
+
+    .icon--hexLogo {
+      width:55px;
+      height:70px;
+      margin-right: 8px;
+      flex-shrink:0;
     }
 
     @media (orientation: portrait){
       max-width:220px;
-      .subtitle {
-        max-width:162px;
-      }
     }
 
     @media (orientation: landscape){
-      display:flex;
-      .subtitle { text-align: center;}
+      padding-top:$gutter;
+      padding-left:$gutter;
     }
 
     @media(min-width: $tablet) {
       padding-top:70px;
+      padding-left:0;
     }
   }
 

@@ -19,7 +19,6 @@
 }
 
 .icon--hexLogo {
-
   &:before {
     background-image:url('../assets/svg/hex-logo.svg');
   }
@@ -80,6 +79,42 @@
     @extend .icon--chevron;
     &:before {
       transform: rotate(90deg);
+    }
+  }
+}
+
+.icon--github {
+  &:before {
+    background-image:url('../assets/svg/github.svg');
+  }
+
+  &--white {
+    &:before {
+      background-image:url('../assets/svg/github.svg?fill=#FFFFFF');
+    }
+  }
+}
+
+.icon--linkedin {
+  &:before {
+    background-image:url('../assets/svg/linkedin.svg');
+  }
+
+  &--white {
+    &:before {
+      background-image:url('../assets/svg/linkedin.svg?fill=#FFFFFF');
+    }
+  }
+}
+
+.icon--email {
+  &:before {
+    background-image:url('../assets/svg/email.svg');
+  }
+
+  &--white {
+    &:before {
+      background-image:url('../assets/svg/email.svg?fill=#FFFFFF');
     }
   }
 }

@@ -20,11 +20,20 @@ const ButtonWrapper = ({action, className, children}) => {
     );
   }
   else if (typeof action === 'string') {
-    return (
-      <Link to={action} className={classes}>
-        {children}
-      </Link>
-    );
+    if (action.indexOf('http') === 0 || action.indexOf('mailto:') === 0) {
+      // External link
+      return (
+        <a href={action} className={classes} target="_blank">
+          {children}
+        </a>
+      );
+    } else {
+      return (
+        <Link to={action} className={classes}>
+          {children}
+        </Link>
+      );
+    }
   }
 }
 
@@ -40,8 +49,8 @@ const HexButton = ({ action, text, icon, active, large, direction, className }) 
         }
         {icon &&
           <span className={`${buttonClass}__icons`}>
-            <span className={`${buttonClass}__icon icon ${icon}`}>{text}</span>
-            <span className={`${buttonClass}__icon active icon ${icon}--white`}>{text}</span>
+            <span className={`${buttonClass}__icon icon icon--${icon}`}>{text}</span>
+            <span className={`${buttonClass}__icon active icon icon--${icon}--white`}>{text}</span>
           </span>
         }
         {direction && 

@@ -40,7 +40,7 @@ $easeInOutBack: cubic-bezier(0.680, -0.550, 0.265, 1.550);
   * SCALE PAGE TRANSITION
   */
   .transition--scale {
-    $startPosition: translate3d(0, 0, 0) scale(0.9);
+    $startPosition: translate3d(0, 0, 0) scale(0.8);
     $endPosition: translate3d(0, 0, 0) scale(1);
 
     transition: all $duration $easeOutExpo;

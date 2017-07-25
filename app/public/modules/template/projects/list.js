@@ -21,12 +21,13 @@ class ProjectList extends React.Component {
           href="/"
           button={<IconButton className="header__btn" action="/" text="back" icon="hexLogo" direction="left" />}
           position="left"
-          hideTitleDesktop
+          
           hideButtonDesktop>
           <span>Projects</span>
         </Header>
         <div className="flex__item flex--h grid--padding">
-          {data.projects &&
+          <p style={{ width: '100%' }}>Working on it...</p>
+          {/*{data.projects &&
             <nav className="nav project__list__nav">
               {data.projects.map((project, i) => (
                 <HexButton key={i} className="nav__btn"
@@ -36,7 +37,7 @@ class ProjectList extends React.Component {
                   large />
               ))}
             </nav>
-          }
+          }*/}
         </div>
       </section>
     );

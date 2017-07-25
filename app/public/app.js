@@ -4,8 +4,6 @@ import { Switch } from 'react-router-dom';
 import { CSSTransitionGroup } from 'react-transition-group';
 
 import Viewport from 'modules/viewport';
-import Resource from 'modules/api-resource';
-
 import Home from 'modules/template/home';
 import About from 'modules/template/about';
 import Projects from 'modules/template/projects';

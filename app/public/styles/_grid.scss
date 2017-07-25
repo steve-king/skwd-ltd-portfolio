@@ -25,6 +25,7 @@ html, body {
   @extend .absolute--fill;
   transform-style: preserve-3d;
   transform: translateZ(0);
+  // overflow:hidden;
 }
 
 img {
@@ -133,3 +134,8 @@ img {
 }
 
 
+.scroll--v {
+  overflow-y:scroll;
+  -webkit-overflow-scrolling: touch;
+  width:100%;
+}

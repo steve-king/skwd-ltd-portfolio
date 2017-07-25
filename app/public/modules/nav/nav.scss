@@ -7,6 +7,10 @@
     margin-bottom:-120px;
     z-index:2;
 
+    &--small {
+      margin-bottom:-80px;
+    }
+
     &:nth-child(odd) {
       align-self: flex-start;
       text-align:left;
@@ -25,6 +29,23 @@
     }
     &:hover {
       z-index:3;
+    }
+  }
+
+  &--horizontal {
+    flex-direction:row;
+
+    height:200px;
+    width:100%;
+
+    .nav__btn {
+      margin-right:-120px;
+      margin-top:0;
+
+      &--small {
+        margin-right:-20px;
+        margin-top:0;
+      }
     }
   }
 }

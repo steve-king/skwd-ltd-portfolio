@@ -4,7 +4,6 @@ import { withRouter } from 'react-router';
 import { Link, Route } from 'react-router-dom';
 import classNames from 'classnames';
 
-import Resource from 'modules/api-resource';
 import Background from 'modules/background';
 import Project from './project';
 import List from './list';

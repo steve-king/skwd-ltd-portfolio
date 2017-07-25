@@ -39,8 +39,8 @@ class Home extends React.Component {
           additions={<div className="home__hex" />} />
         <main className="grid--fill grid--container home__main">
           <div className="home__content">
-            <span className="icon--large icon-hex-logo"/>
-            <div>
+            <span className="icon icon--hexLogo"/>
+            <div className="home__content__text">
               <h1 className="title title--large">{data.title}</h1>
               <p className="subtitle">
                 <span>{data.body}</span>
