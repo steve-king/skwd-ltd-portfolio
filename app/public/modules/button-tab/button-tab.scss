@@ -2,6 +2,7 @@
   position:relative;
   width:100%;
   height:$headerDepth;
+  overflow:hidden;
 
   &:before {
     content:"";
@@ -9,7 +10,13 @@
   }
 
   .button {
-    @include absoluteCenter;
+    // @include absoluteCenter;
+    width:100%;
+    height:100%;
+
+    .iconButton {
+      @include absoluteCenter;
+    }
   }
 
   &--left {
@@ -23,6 +30,10 @@
 
     + main {
       padding-top:$headerDepth;
+    }
+
+    .button {
+      margin-top:2px;
     }
   }
 

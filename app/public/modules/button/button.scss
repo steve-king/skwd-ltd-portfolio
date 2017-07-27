@@ -118,21 +118,22 @@
   display:block;
   // padding:14px;
   text-align: center;
-  width:80px;
-  height:68px;
+  width:60px;
+  height:60px;
   
   &__icon {
     @extend .icon;
     @include absoluteCenter;
     text-indent:-999em;
-    width:36px;
-    height:41px;
+    width:30px;
+    height:34px;
   }
 
   &__chevron {
     @extend .icon;
     position:absolute;
     transition:all 0.2s ease-out;
+    width:16px;
 
     &--down {
       @extend .iconButton__chevron;
@@ -147,9 +148,13 @@
       @extend .iconButton__chevron;
       @extend .icon--chevron--up;
       
-      top: 4px;
-      left: 50%;
+      top: 6px;
+      left: 30px;
       transform:translate(-50%, 0);
+
+      @media (min-width:$phablet){
+        top:5px;
+      }
     }
 
     &--right {
@@ -166,8 +171,12 @@
       @extend .icon--chevron--left;
       
       top: 50%;
-      left: 3px;
+      left:0px;
       transform:translate(0, -50%);
+
+      @media (min-width:$phablet){
+        left:2px;
+      }
     }
 
     
